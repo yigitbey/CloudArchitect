@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/tile_cornerInner.obj-980cbb2d585ce14c0a7f14cbf928ccec.mesh"
+
+[deps]
+
+files=[ "res://.import/tile_cornerInner.obj-980cbb2d585ce14c0a7f14cbf928ccec.mesh" ]
+
+source_file="res://assets/Models/OBJ format/tile_cornerInner.obj"
+dest_files=[ "res://.import/tile_cornerInner.obj-980cbb2d585ce14c0a7f14cbf928ccec.mesh", "res://.import/tile_cornerInner.obj-980cbb2d585ce14c0a7f14cbf928ccec.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

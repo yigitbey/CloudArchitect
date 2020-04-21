@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/tile_cornerRound.obj-888e2493dbfe913ba9ade6944785fec2.mesh"
+
+[deps]
+
+files=[ "res://.import/tile_cornerRound.obj-888e2493dbfe913ba9ade6944785fec2.mesh" ]
+
+source_file="res://assets/Models/OBJ format/tile_cornerRound.obj"
+dest_files=[ "res://.import/tile_cornerRound.obj-888e2493dbfe913ba9ade6944785fec2.mesh", "res://.import/tile_cornerRound.obj-888e2493dbfe913ba9ade6944785fec2.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

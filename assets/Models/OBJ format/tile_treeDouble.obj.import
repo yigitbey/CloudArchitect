@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/tile_treeDouble.obj-abf69c0b2ae1b7a00c965691a8cccddb.mesh"
+
+[deps]
+
+files=[ "res://.import/tile_treeDouble.obj-abf69c0b2ae1b7a00c965691a8cccddb.mesh" ]
+
+source_file="res://assets/Models/OBJ format/tile_treeDouble.obj"
+dest_files=[ "res://.import/tile_treeDouble.obj-abf69c0b2ae1b7a00c965691a8cccddb.mesh", "res://.import/tile_treeDouble.obj-abf69c0b2ae1b7a00c965691a8cccddb.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

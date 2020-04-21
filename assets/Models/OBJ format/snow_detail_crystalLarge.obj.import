@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/snow_detail_crystalLarge.obj-714e61bdeacefdde674ddd55c45f3b2c.mesh"
+
+[deps]
+
+files=[ "res://.import/snow_detail_crystalLarge.obj-714e61bdeacefdde674ddd55c45f3b2c.mesh" ]
+
+source_file="res://assets/Models/OBJ format/snow_detail_crystalLarge.obj"
+dest_files=[ "res://.import/snow_detail_crystalLarge.obj-714e61bdeacefdde674ddd55c45f3b2c.mesh", "res://.import/snow_detail_crystalLarge.obj-714e61bdeacefdde674ddd55c45f3b2c.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

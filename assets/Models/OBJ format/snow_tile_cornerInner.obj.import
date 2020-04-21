@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/snow_tile_cornerInner.obj-58e3b0e4f8f0adb9a9331e7536b809c7.mesh"
+
+[deps]
+
+files=[ "res://.import/snow_tile_cornerInner.obj-58e3b0e4f8f0adb9a9331e7536b809c7.mesh" ]
+
+source_file="res://assets/Models/OBJ format/snow_tile_cornerInner.obj"
+dest_files=[ "res://.import/snow_tile_cornerInner.obj-58e3b0e4f8f0adb9a9331e7536b809c7.mesh", "res://.import/snow_tile_cornerInner.obj-58e3b0e4f8f0adb9a9331e7536b809c7.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

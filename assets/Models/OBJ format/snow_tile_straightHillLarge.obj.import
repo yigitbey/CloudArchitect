@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/snow_tile_straightHillLarge.obj-eab809d418c56e2d589bac84913334ee.mesh"
+
+[deps]
+
+files=[ "res://.import/snow_tile_straightHillLarge.obj-eab809d418c56e2d589bac84913334ee.mesh" ]
+
+source_file="res://assets/Models/OBJ format/snow_tile_straightHillLarge.obj"
+dest_files=[ "res://.import/snow_tile_straightHillLarge.obj-eab809d418c56e2d589bac84913334ee.mesh", "res://.import/snow_tile_straightHillLarge.obj-eab809d418c56e2d589bac84913334ee.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

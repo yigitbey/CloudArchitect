@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/tile_spawn.obj-2156ec374cf2f95d9c4807550801ae9b.mesh"
+
+[deps]
+
+files=[ "res://.import/tile_spawn.obj-2156ec374cf2f95d9c4807550801ae9b.mesh" ]
+
+source_file="res://assets/Models/OBJ format/tile_spawn.obj"
+dest_files=[ "res://.import/tile_spawn.obj-2156ec374cf2f95d9c4807550801ae9b.mesh", "res://.import/tile_spawn.obj-2156ec374cf2f95d9c4807550801ae9b.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

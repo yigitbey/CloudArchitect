@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/snow_detail_dirt.obj-b8dfdfa6016c0bb43f9f95bfe8b90e4a.mesh"
+
+[deps]
+
+files=[ "res://.import/snow_detail_dirt.obj-b8dfdfa6016c0bb43f9f95bfe8b90e4a.mesh" ]
+
+source_file="res://assets/Models/OBJ format/snow_detail_dirt.obj"
+dest_files=[ "res://.import/snow_detail_dirt.obj-b8dfdfa6016c0bb43f9f95bfe8b90e4a.mesh", "res://.import/snow_detail_dirt.obj-b8dfdfa6016c0bb43f9f95bfe8b90e4a.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

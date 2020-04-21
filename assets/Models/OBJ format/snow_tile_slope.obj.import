@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/snow_tile_slope.obj-42ffd1106ee718d5c3da4d84001a7a57.mesh"
+
+[deps]
+
+files=[ "res://.import/snow_tile_slope.obj-42ffd1106ee718d5c3da4d84001a7a57.mesh" ]
+
+source_file="res://assets/Models/OBJ format/snow_tile_slope.obj"
+dest_files=[ "res://.import/snow_tile_slope.obj-42ffd1106ee718d5c3da4d84001a7a57.mesh", "res://.import/snow_tile_slope.obj-42ffd1106ee718d5c3da4d84001a7a57.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
