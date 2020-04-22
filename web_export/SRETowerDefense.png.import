@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/SRETowerDefense.png-80743fa7405bbe44ea6be425f3565a7f.stex"
+path="res://.import/SRETowerDefense.png-7f647b45a6018432951f9f9ff099c6d4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://SRETowerDefense.png"
-dest_files=[ "res://.import/SRETowerDefense.png-80743fa7405bbe44ea6be425f3565a7f.stex" ]
+source_file="res://web_export/SRETowerDefense.png"
+dest_files=[ "res://.import/SRETowerDefense.png-7f647b45a6018432951f9f9ff099c6d4.stex" ]
 
 [params]
 

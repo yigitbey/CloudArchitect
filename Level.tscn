@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/Isometric/tile_split_S.png" type="Texture" id=1]
 [ext_resource path="res://assets/Isometric/tile_crossing_E.png" type="Texture" id=2]
@@ -17,8 +17,6 @@
 [ext_resource path="res://assets/Isometric/tile_split_W.png" type="Texture" id=15]
 [ext_resource path="res://assets/Isometric/tile_end_N.png" type="Texture" id=16]
 [ext_resource path="res://Level.gd" type="Script" id=17]
-[ext_resource path="res://User.gd" type="Script" id=18]
-[ext_resource path="res://User.tscn" type="PackedScene" id=19]
 [ext_resource path="res://HUD.tscn" type="PackedScene" id=21]
 
 [sub_resource type="TileSet" id=1]
@@ -276,12 +274,5 @@ __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
 }
-
-[node name="NavigationLine" type="Line2D" parent="."]
-
-[node name="User" parent="." instance=ExtResource( 19 )]
-position = Vector2( 64, 648 )
-z_index = 3
-script = ExtResource( 18 )
 
 [node name="HUD" parent="." instance=ExtResource( 21 )]

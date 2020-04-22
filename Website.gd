@@ -15,3 +15,6 @@ func _process(delta):
 	$DNSNameLabel.text = dns_name
 	if Input.is_mouse_button_pressed(BUTTON_LEFT) and can_grab:
 		position = get_global_mouse_position() + grabbed_offset
+
+func request():
+	print('backend_request')

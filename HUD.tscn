@@ -6,11 +6,11 @@
 script = ExtResource( 2 )
 
 [node name="Button" type="Button" parent="."]
-margin_left = 176.0
-margin_top = 80.0
-margin_right = 240.0
-margin_bottom = 100.0
-text = "pathfind"
+margin_left = 696.0
+margin_top = 768.0
+margin_right = 792.0
+margin_bottom = 788.0
+text = "send request"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -21,7 +21,22 @@ margin_left = 16.0
 margin_top = 776.0
 margin_right = 110.0
 margin_bottom = 788.0
-text = "new_website"
+rect_pivot_offset = Vector2( 64, 16 )
+text = "new server"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="new_lb" type="Button" parent="."]
+anchor_left = 0.0788732
+anchor_top = -0.01
+anchor_right = 0.0788732
+margin_left = 16.0
+margin_top = 776.0
+margin_right = 110.0
+margin_bottom = 788.0
+rect_pivot_offset = Vector2( 64, 16 )
+text = "new load balancer"
 __meta__ = {
 "_edit_use_anchors_": true
 }
@@ -37,15 +52,19 @@ __meta__ = {
 }
 
 [node name="DNS" type="TextEdit" parent="."]
-margin_left = 1200.0
-margin_top = 773.0
-margin_right = 1344.0
-margin_bottom = 797.0
+margin_left = 1189.0
+margin_top = 770.0
+margin_right = 1333.0
+margin_bottom = 794.0
 text = "server_0"
-highlight_current_line = true
+breakpoint_gutter = true
+highlight_all_occurrences = true
+context_menu_enabled = false
+selecting_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="new_website" to="." method="_on_new_website_pressed"]
+[connection signal="pressed" from="new_lb" to="." method="_on_new_lb_pressed"]
 [connection signal="text_changed" from="DNS" to="." method="_on_DNS_text_changed"]
