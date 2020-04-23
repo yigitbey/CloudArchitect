@@ -25,25 +25,73 @@ scale = Vector2( 0.25, 0.25 )
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="CollisionShape2D"]
-position = Vector2( 2.05334, 0 )
 frames = SubResource( 2 )
 
 [node name="DNSNameLabel" type="Label" parent="."]
-margin_left = -39.3266
-margin_top = 26.3723
-margin_right = 55.6734
-margin_bottom = 40.3723
+margin_left = -47.3266
+margin_top = 28.3723
+margin_right = 47.6734
+margin_bottom = 42.3723
 text = "dns_name"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BackendConfig" type="TextEdit" parent="."]
-margin_left = -39.3266
-margin_top = 48.0
-margin_right = 40.6734
+[node name="ConfigWindow" type="TabContainer" parent="."]
+visible = false
+margin_left = 56.0
+margin_top = -32.0
+margin_right = 236.0
 margin_bottom = 96.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="text_changed" from="BackendConfig" to="." method="_on_BackendConfig_text_changed"]
+
+[node name="Servers" type="Tabs" parent="ConfigWindow"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+tab_align = 0
+
+[node name="BackendConfig" type="TextEdit" parent="ConfigWindow/Servers"]
+margin_left = 4.0
+margin_right = 172.0
+margin_bottom = 88.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" type="Tabs" parent="ConfigWindow"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+tab_align = 0
+
+[node name="config" type="TextEdit" parent="ConfigWindow/Options"]
+margin_left = 4.0
+margin_right = 172.0
+margin_bottom = 88.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ToggleConfig" type="Button" parent="."]
+margin_left = -47.3266
+margin_top = 48.0
+margin_right = 48.6734
+margin_bottom = 68.0
+text = "Configure"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="text_changed" from="ConfigWindow/Servers/BackendConfig" to="." method="_on_BackendConfig_text_changed"]
+[connection signal="text_changed" from="ConfigWindow/Options/config" to="." method="_on_BackendConfig_text_changed"]
+[connection signal="pressed" from="ToggleConfig" to="." method="_on_ToggleConfig_pressed"]

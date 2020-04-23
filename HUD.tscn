@@ -5,57 +5,19 @@
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 2 )
 
-[node name="Button" type="Button" parent="."]
-margin_left = 696.0
-margin_top = 768.0
-margin_right = 792.0
-margin_bottom = 788.0
-text = "send request"
+[node name="Panel" type="Panel" parent="."]
+margin_top = 761.0
+margin_right = 1420.0
+margin_bottom = 801.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="new_website" type="Button" parent="."]
-anchor_top = -0.01
-margin_left = 16.0
-margin_top = 776.0
-margin_right = 110.0
-margin_bottom = 788.0
-rect_pivot_offset = Vector2( 64, 16 )
-text = "new server"
-__meta__ = {
-"_edit_use_anchors_": true
-}
-
-[node name="new_lb" type="Button" parent="."]
-anchor_left = 0.0788732
-anchor_top = -0.01
-anchor_right = 0.0788732
-margin_left = 16.0
-margin_top = 776.0
-margin_right = 110.0
-margin_bottom = 788.0
-rect_pivot_offset = Vector2( 64, 16 )
-text = "new load balancer"
-__meta__ = {
-"_edit_use_anchors_": true
-}
-
-[node name="DNSLabel" type="Label" parent="."]
-margin_left = 1096.0
-margin_top = 776.0
-margin_right = 1136.0
-margin_bottom = 790.0
-text = "DNS A record:"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="DNS" type="TextEdit" parent="."]
-margin_left = 1189.0
-margin_top = 770.0
-margin_right = 1333.0
-margin_bottom = 794.0
+[node name="DNS" type="TextEdit" parent="Panel"]
+margin_left = 1102.0
+margin_top = 9.0
+margin_right = 1246.0
+margin_bottom = 33.0
 text = "server_0"
 breakpoint_gutter = true
 highlight_all_occurrences = true
@@ -64,7 +26,77 @@ selecting_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
-[connection signal="pressed" from="new_website" to="." method="_on_new_website_pressed"]
-[connection signal="pressed" from="new_lb" to="." method="_on_new_lb_pressed"]
-[connection signal="text_changed" from="DNS" to="." method="_on_DNS_text_changed"]
+
+[node name="DNSLabel" type="Label" parent="Panel"]
+margin_left = 1009.0
+margin_top = 13.0
+margin_right = 1098.0
+margin_bottom = 27.0
+text = "DNS A record:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="new_lb" type="Button" parent="Panel"]
+anchor_left = 0.0788732
+anchor_top = -0.41
+anchor_right = 0.0788732
+anchor_bottom = -0.396
+margin_left = 8.94648
+margin_top = 24.56
+margin_right = 135.946
+margin_bottom = 44.0
+rect_pivot_offset = Vector2( 64, 16 )
+text = "new load balancer"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="new_website" type="Button" parent="Panel"]
+anchor_top = -0.385
+anchor_bottom = -0.371
+margin_left = 8.0
+margin_top = 24.56
+margin_right = 102.0
+margin_bottom = 44.0
+rect_pivot_offset = Vector2( 64, 16 )
+text = "new server"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Button" type="Button" parent="Panel"]
+margin_left = 1272.0
+margin_top = 9.15997
+margin_right = 1368.0
+margin_bottom = 29.16
+text = "send request"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MoneyLabel" type="Label" parent="Panel"]
+margin_left = 721.0
+margin_top = 13.0
+margin_right = 768.0
+margin_bottom = 27.0
+rect_pivot_offset = Vector2( 40, 2 )
+text = "Money:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Money" type="Label" parent="Panel"]
+margin_left = 777.0
+margin_top = 13.0
+margin_right = 824.0
+margin_bottom = 27.0
+rect_pivot_offset = Vector2( 40, 2 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="text_changed" from="Panel/DNS" to="." method="_on_DNS_text_changed"]
+[connection signal="pressed" from="Panel/new_lb" to="." method="_on_new_lb_pressed"]
+[connection signal="pressed" from="Panel/new_website" to="." method="_on_new_website_pressed"]
+[connection signal="pressed" from="Panel/Button" to="." method="_on_Button_pressed"]

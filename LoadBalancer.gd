@@ -9,7 +9,7 @@ export var dns_name = ""
 
 export var backend_config = []
 
-var Request = preload("res://User.tscn")
+var Request = preload("res://Request.tscn")
 
 func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
@@ -22,11 +22,10 @@ func _process(delta):
 		position = get_global_mouse_position() + grabbed_offset
 
 func _on_BackendConfig_text_changed():
-	backend_config = $BackendConfig.text.split('\n')
+	backend_config = $ConfigWindow/Servers/BackendConfig.text.split('\n')
 	emit_signal("backend_config_changed")
 	
 func request():
-	print('lb_request')
 	var server = backend_config[randi() % backend_config.size()]
 	var level = get_parent()
 	
@@ -37,4 +36,12 @@ func request():
 
 	req.pathfind(level.nav_map, level.objects[server])
 	req.set_process(true)
+	
 
+func _on_ToggleConfig_pressed():
+	if $ConfigWindow.visible:
+		$ConfigWindow.visible = false
+		$ToggleConfig.text = "Configure"
+	else:
+		$ConfigWindow.visible = true
+		$ToggleConfig.text = "Hide config"

@@ -10,6 +10,8 @@ var path setget set_path
 var destination = Node
 var at_target = false
 
+var money = 1
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_animation("NE")
