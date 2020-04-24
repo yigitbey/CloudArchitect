@@ -5,11 +5,14 @@ onready var nav_map = $Navigation2D
 var StaticServer = preload("res://StaticServer.tscn")
 var Request = preload("res://Request.tscn")
 var LoadBalancer = preload("res://LoadBalancer.tscn")
+var User = preload("res://User.tscn")
 var websites = []
 var load_balancers = []
 var objects = {}
+export var money = 0
 var infra_types = [StaticServer, LoadBalancer]
 
+export var entry_position = Vector2(64,648)
 export var dns_record = "static_0"
 
 func _ready():
@@ -33,12 +36,15 @@ func set_dns_record():
 	dns_record = $HUD.dns_record
 
 func new_user_request():
-	var request = Request.instance()
-	request.position = Vector2(64,648)
-	request.connect('arrived', self, "_on_request_arrived", [request])
-	add_child(request)
+	var origin = User.instance()
+	origin.position = entry_position
+	add_child(origin)
 	
-	request.pathfind(nav_map, objects[dns_record])
+	var request = Request.instance()
+	add_child(request)
+
+	request.connect('arrived', self, "_on_request_arrived", [request])
+	request.init(origin, nav_map, objects[dns_record])
 	
 func _on_request_arrived(request):
-	request.destination.request() # create a new request on destination
+	request.destination.get_response(request) # create a new request on destination

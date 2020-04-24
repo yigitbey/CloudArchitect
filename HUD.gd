@@ -9,6 +9,10 @@ export var dns_record = "static_0"
 
 func _ready():
 	pass
+	
+func _process(delta):
+	var level = get_parent()
+	$Panel/Money.text = str(level.money)
 
 func _on_Button_pressed():
 	emit_signal('user_request')

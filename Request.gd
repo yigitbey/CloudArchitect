@@ -9,8 +9,9 @@ var speed = 400
 var path setget set_path
 var destination = Node
 var at_target = false
+var origin = Node2D
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	set_animation("NE")
 	set_process(false)
@@ -24,12 +25,17 @@ func _process(delta):
 	
 	if path.size() == 0:
 		arrived()
-		
+
+func init(_origin, nav_map, target, speed=100):
+	origin = _origin
+	position = origin.position
+	pathfind(nav_map, target)
+	
 func arrived():
 	if !at_target:
 		emit_signal("arrived")
-	at_target = true
-	set_process(false)
+	#at_target = true
+	#set_process(false)
 	
 	
 func pathfind(map, to):

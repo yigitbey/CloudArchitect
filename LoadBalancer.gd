@@ -6,6 +6,7 @@ export var backend_config = []
 
 func vars():
 	dns_prefix = "loadbalancer_"
+	$CollisionShape2D/AnimatedSprite.animation = "LoadBalancer"
 
 func init(level, servers, all):
 	vars()
@@ -15,17 +16,20 @@ func _on_BackendConfig_text_changed():
 	backend_config = $ConfigWindow/Servers/BackendConfig.text.split('\n')
 	emit_signal("backend_config_changed")
 	
-func request():
+func get_response(req):
+	var r = request(req)
+	return_response(r)
+	
+func request(original_req):
 
 	var server = backend_config[randi() % backend_config.size()]
 	var level = get_parent()
 	
 	var req = Request.instance()
-	req.speed = 1000
-	req.position = position
+	req.init(original_req,level.nav_map, level.objects[server], 1000)
+
 	level.add_child(req)
-
-	req.pathfind(level.nav_map, level.objects[server])
 	req.set_process(true)
+	
+	return req
 
-	.request()
