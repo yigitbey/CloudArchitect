@@ -1,10 +1,25 @@
 extends KinematicBody2D
 
-# Pickable needs to be selected from the inspector
+
+var Request = preload("res://Request.tscn")
 
 var can_grab = false
 var grabbed_offset = Vector2()
 export var dns_name = ""
+export var dns_prefix = "server_"
+
+func init(level, servers, all):
+	position = Vector2(500,500)
+	var id = servers.size()
+	dns_name = dns_prefix + str(id)
+	
+	servers.append(self)
+	all[dns_name] = self
+	
+	level.add_child(self)
+
+func _ready():
+	$ConfigWindow.visible = false
 
 func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
@@ -19,3 +34,10 @@ func _process(delta):
 func request():
 	print('backend_request')
 	
+func _on_ToggleConfig_pressed():
+	if $ConfigWindow.visible:
+		$ConfigWindow.visible = false
+		$ToggleConfig.text = "Configure"
+	else:
+		$ConfigWindow.visible = true
+		$ToggleConfig.text = "Hide config"

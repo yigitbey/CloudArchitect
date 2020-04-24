@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Server.gd" type="Script" id=1]
 [ext_resource path="res://assets/Isometric/towerRound_sampleB_N.png" type="Texture" id=2]
+[ext_resource path="res://assets/fa/wrench-solid.svg" type="Texture" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 65.6288
@@ -38,3 +39,25 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ConfigWindow" type="TabContainer" parent="."]
+margin_left = 38.0
+margin_top = -29.0
+margin_right = 178.0
+margin_bottom = 55.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ToggleConfig" type="ToolButton" parent="."]
+margin_left = -32.0
+margin_top = -22.0
+margin_right = 492.0
+margin_bottom = 498.0
+rect_scale = Vector2( 0.03, 0.03 )
+button_mask = 3
+icon = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="ToggleConfig" to="." method="_on_ToggleConfig_pressed"]
