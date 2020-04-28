@@ -5,12 +5,11 @@ signal backend_config_changed
 export var backend_config = []
 
 func vars():
-	dns_prefix = "loadbalancer_"
 	$CollisionShape2D/AnimatedSprite.animation = "LoadBalancer"
 
-func init(level, servers, all):
+func init(level, all):
 	vars()
-	.init(level, servers, all)
+	.init(level, all)
 	
 func _on_BackendConfig_text_changed():
 	backend_config = $ConfigWindow/Servers/BackendConfig.text.split('\n')

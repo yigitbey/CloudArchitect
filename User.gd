@@ -1,19 +1,14 @@
 extends KinematicBody2D
 
+const Interface = preload("src/Interface.gd")
+var eth0: Interface
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+func _init():
+	eth0 = Interface.new()
+	
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	pass
 
 func get_response(req):
 	var level = get_parent()

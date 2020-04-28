@@ -6,8 +6,6 @@ var StaticServer = preload("res://StaticServer.tscn")
 var Request = preload("res://Request.tscn")
 var LoadBalancer = preload("res://LoadBalancer.tscn")
 var User = preload("res://User.tscn")
-var websites = []
-var load_balancers = []
 var objects = {}
 export var money = 0
 var infra_types = [StaticServer, LoadBalancer]
@@ -26,11 +24,11 @@ func connect_signals():
 
 func new_staticserver():
 	var new = StaticServer.instance()
-	new.init(self, websites, objects)
+	new.init(self, objects)
 
 func new_lb():
 	var new = LoadBalancer.instance()
-	new.init(self, load_balancers, objects)
+	new.init(self, objects)
 
 func set_dns_record():
 	dns_record = $HUD.dns_record
