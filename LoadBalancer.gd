@@ -7,17 +7,12 @@ export var backend_config = []
 func vars():
 	$CollisionShape2D/AnimatedSprite.animation = "LoadBalancer"
 
-func init(level, all):
+func _init():
 	vars()
-	.init(level, all)
-	
+
 func _on_BackendConfig_text_changed():
 	backend_config = $ConfigWindow/Servers/BackendConfig.text.split('\n')
 	emit_signal("backend_config_changed")
-	
-func get_response(req):
-	var r = request(req)
-	return_response(r)
 	
 func request(original_req):
 

@@ -1,13 +1,13 @@
 const Interface = preload("Interface.gd")
-var origin : Interface
+var origin : String
 var data : String
-var destination : Interface
+var destination : String
 var port: int
 
 const allocated_ports = 1024
 const max_port = 65535
 
-func init(orig:Interface, data:String, dest:Interface) -> int:
+func init(orig:String, data:String, dest:String) -> int:
 	origin = orig
 	data = data
 	destination = dest

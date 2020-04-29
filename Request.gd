@@ -1,16 +1,17 @@
 extends Node2D
 
 signal arrived
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text" 
 
 var speed = 400
-var path setget set_path
+var path = []
 var destination = Node
-var at_target = false
 var origin = Node2D
+var at_target = false
+var packet = preload("src/Packet.gd")
+var level = Node2D
 
+func init2():
+	level = get_parent()
 
 func _ready():
 	set_animation("NE")
@@ -23,26 +24,31 @@ func _process(delta):
 	var move_distance = speed * delta
 	move_along_path(move_distance)
 	
-	if path.size() == 0:
+	if path.size() == 0 and not at_target:
 		arrived()
 
-func init(_origin, nav_map, target, speed=100):
-	origin = _origin
-	position = origin.position
-	pathfind(nav_map, target)
-	
 func arrived():
-	if !at_target:
-		emit_signal("arrived")
-	#at_target = true
-	#set_process(false)
+	at_target = true
+	set_process(false)
+	destination.get_response(self)
 	
+func back():
+	var swp = destination
+	destination = origin
+	origin = swp
 	
-func pathfind(map, to):
+func send(speed=100):
+	origin = level.iptable[packet.origin]
+	destination = level.iptable[packet.destination]
+	position = origin.position
+	
+	pathfind(level.nav_map)
+	
 	at_target = false
-	destination = to
-	path = map.get_simple_path(global_position, to.global_position, false)
 	set_process(true)
+	
+func pathfind(map):
+	path = map.get_simple_path(global_position, destination.global_position, false)
 
 func move_along_path(distance):
 	var start = position
@@ -61,8 +67,6 @@ func move_along_path(distance):
 		start = path[0]
 		path.remove(0)
 	
-	#set_process(false)
-
 func choose_animation(target):
 	var direction = target - global_position
 	if direction.x > 0 and direction.y > 0:
@@ -73,12 +77,5 @@ func choose_animation(target):
 		$AnimatedSprite.animation = "SW"
 	if direction.x < 0 and direction.y < 0:
 		$AnimatedSprite.animation = "NW"	
-	
-func set_path(value):
-	path = value
-	if value.size() == 0:
-		return
-	
-	set_process(true)
 	
 
