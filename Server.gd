@@ -3,20 +3,22 @@ extends KinematicBody2D
 
 const Request = preload("res://Request.tscn")
 const Interface = preload("src/Interface.gd")
+const Packet = preload("src/Packet.gd")
 
 var can_grab = false
 var grabbed_offset = Vector2()
 var eth0: Interface
+var level: Node2D
 
-func init(level, all):
-	var margin = all.size()*10
+func init2():
+	level = get_parent()
+	print('server.init2')
+	var margin = level.iptable.size()*10
 	position = Vector2(500+margin, 500+margin)
 	
 	eth0 = Interface.new()
-	all[eth0.ip] = self
+	level.iptable[eth0.ip] = self
 	
-	level.add_child(self)
-
 func _ready():
 	$ConfigWindow.visible = false
 
@@ -31,15 +33,18 @@ func _process(delta):
 		position = get_global_mouse_position() + grabbed_offset
 
 func get_response(req):
-	request(req)
-	return_response(req)
+	var response = process_request(req)
+	return_response(req, response)
 
-func return_response(req):
-	var level = get_parent()
-	req.pathfind(level.nav_map, req.origin)
+func return_response(req, response):
+	var packet = Packet.new()
+	packet.init(req.destination.eth0.ip, response, req.origin.eth0.ip)
+	req.packet = packet
+	req.send()
 
-func request(req):
+func process_request(req):
 	print('backend_request')
+	return "200 OK"
 	
 func _on_ToggleConfig_pressed():
 	if $ConfigWindow.visible:

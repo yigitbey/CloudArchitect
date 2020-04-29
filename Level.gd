@@ -6,11 +6,13 @@ var StaticServer = preload("res://StaticServer.tscn")
 var Request = preload("res://Request.tscn")
 var LoadBalancer = preload("res://LoadBalancer.tscn")
 var User = preload("res://User.tscn")
-var objects = {}
+var Packet = preload("res://src/Packet.gd")
+
+var iptable = {}
 export var money = 0
 var infra_types = [StaticServer, LoadBalancer]
 
-export var entry_position = Vector2(64,648)
+
 export var dns_record = "static_0"
 
 func _ready():
@@ -19,30 +21,25 @@ func _ready():
 func connect_signals():
 	$HUD.connect("user_request", self, "new_user_request")
 	$HUD.connect('dns_change', self, 'set_dns_record')
-	$HUD.connect('new_staticserver', self, 'new_staticserver')
-	$HUD.connect('new_lb', self, 'new_lb')
+	$HUD.connect('new_staticserver', self, 'new_instance', [StaticServer])
+	$HUD.connect('new_lb', self, 'new_instance', [LoadBalancer])
 
-func new_staticserver():
-	var new = StaticServer.instance()
-	new.init(self, objects)
-
-func new_lb():
-	var new = LoadBalancer.instance()
-	new.init(self, objects)
+func new_instance(obj):
+	var new = obj.instance()
+	add_child(new)
+	new.init2()
+	return new
 
 func set_dns_record():
 	dns_record = $HUD.dns_record
 
 func new_user_request():
-	var origin = User.instance()
-	origin.position = entry_position
-	add_child(origin)
-	
-	var request = Request.instance()
-	add_child(request)
+	var user = new_instance(User)	
+	var request = new_instance(Request)
 
-	request.connect('arrived', self, "_on_request_arrived", [request])
-	request.init(origin, nav_map, objects[dns_record])
-	
-func _on_request_arrived(request):
-	request.destination.get_response(request) # create a new request on destination
+	var data = "GET /"
+	var packet = Packet.new()
+	packet.init(user.eth0.ip, data, dns_record)
+	request.packet = packet
+	request.send()
+

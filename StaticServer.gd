@@ -3,6 +3,5 @@ extends "res://Server.gd"
 func vars():
 	$CollisionShape2D/AnimatedSprite.animation = "StaticServer"
 
-func init(level, all):
+func _init():
 	vars()
-	.init(level, all)
