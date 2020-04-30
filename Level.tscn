@@ -266,6 +266,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 2, 1, 5, 6 ), PoolIntA
 outlines = [ PoolVector2Array( 958.788, 224.606, 1239.66, 363.145, 1026.11, 473.454, 897.417, 409.107, 740.44, 490.424, 1028.23, 638.209, 1192.28, 555.478, 1065, 491.838, 1316.73, 361.731, 958.788, 176.606, 22.7875, 648.606, 62.7875, 672.606 ), PoolVector2Array( 821.259, 491.259, 898.953, 448.581, 1107.96, 553.086, 1028.63, 595.216, 1011.23, 586.493 ) ]
 
 [node name="Level0" type="Node2D"]
+scale = Vector2( 0.9, 1 )
 script = ExtResource( 17 )
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
@@ -291,3 +292,5 @@ __meta__ = {
 }
 
 [node name="HUD" parent="." instance=ExtResource( 21 )]
+scale = Vector2( 0.87, 1 )
+transform = Transform2D( 0.87, 0, 0, 1, 0, 0 )

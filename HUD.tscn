@@ -23,7 +23,6 @@ text = "server_0"
 breakpoint_gutter = true
 highlight_all_occurrences = true
 context_menu_enabled = false
-selecting_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -94,7 +93,7 @@ margin_top = 13.0
 margin_right = 824.0
 margin_bottom = 27.0
 rect_pivot_offset = Vector2( 40, 2 )
-text = "0"
+text = "5"
 __meta__ = {
 "_edit_use_anchors_": false
 }

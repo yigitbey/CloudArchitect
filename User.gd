@@ -22,7 +22,7 @@ func get_response(req):
 	var level = get_parent()
 	level.money = level.money + 10
 
-	print ('request successful')
+	print ('request successful:' + req.packet.data)
 	
 	req.queue_free()
 	queue_free()

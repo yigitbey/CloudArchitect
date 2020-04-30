@@ -9,6 +9,7 @@ var can_grab = false
 var grabbed_offset = Vector2()
 var eth0: Interface
 var level: Node2D
+var callback: Object
 
 func init2():
 	level = get_parent()
@@ -33,18 +34,21 @@ func _process(delta):
 		position = get_global_mouse_position() + grabbed_offset
 
 func get_response(req):
-	var response = process_request(req)
+	var response = yield(process_request(req), "completed")
 	return_response(req, response)
 
 func return_response(req, response):
 	var packet = Packet.new()
 	packet.init(req.destination.eth0.ip, response, req.origin.eth0.ip)
 	req.packet = packet
+	#req.packet.data = response
 	req.send()
 
 func process_request(req):
+	yield(get_tree(), "idle_frame")
 	print('backend_request')
-	return "200 OK"
+	#emit_signal('response_created')
+	return("200 OK")
 	
 func _on_ToggleConfig_pressed():
 	if $ConfigWindow.visible:

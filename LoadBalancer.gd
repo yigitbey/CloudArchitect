@@ -13,17 +13,17 @@ func _init():
 func _on_BackendConfig_text_changed():
 	backend_config = $ConfigWindow/Servers/BackendConfig.text.split('\n')
 	emit_signal("backend_config_changed")
-	
-func request(original_req):
+
+func process_request(original_req):
 
 	var server = backend_config[randi() % backend_config.size()]
-	var level = get_parent()
 	
-	var req = Request.instance()
-	req.init(original_req,level.nav_map, level.objects[server], 1000)
-
-	level.add_child(req)
-	req.set_process(true)
+	var req = level.new_instance(Request)
+	var packet = Packet.new()
+	packet.init(eth0.ip, original_req.packet.data, server)
+	req.packet = packet
+	req.send(100)
 	
-	return req
-
+	yield()
+	
+	
