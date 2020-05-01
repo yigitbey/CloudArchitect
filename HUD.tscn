@@ -97,7 +97,18 @@ text = "5"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ClearUsers" type="Button" parent="."]
+margin_left = 592.0
+margin_top = 24.0
+margin_right = 674.0
+margin_bottom = 44.0
+text = "clear users"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="text_changed" from="Panel/DNS" to="." method="_on_DNS_text_changed"]
 [connection signal="pressed" from="Panel/new_LoadBalancer" to="." method="_on_new_lb_pressed"]
 [connection signal="pressed" from="Panel/new_StaticServer" to="." method="_on_new_website_pressed"]
 [connection signal="pressed" from="Panel/Request" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="ClearUsers" to="." method="_on_ClearUsers_pressed"]

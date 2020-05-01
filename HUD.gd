@@ -4,6 +4,7 @@ signal user_request
 signal new_staticserver
 signal dns_change
 signal new_lb
+signal clear
 
 export var dns_record = "static_0"
 
@@ -26,3 +27,7 @@ func _on_new_lb_pressed():
 func _on_DNS_text_changed():
 	dns_record = $Panel/DNS.text
 	emit_signal('dns_change')
+
+
+func _on_ClearUsers_pressed():
+	emit_signal('clear')

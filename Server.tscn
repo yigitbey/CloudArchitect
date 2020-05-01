@@ -11,14 +11,14 @@ height = 37.147
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "LoadBalancer",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
 "name": "StaticServer",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "LoadBalancer",
 "speed": 5.0
 } ]
 
@@ -64,6 +64,17 @@ margin_bottom = 498.0
 rect_scale = Vector2( 0.03, 0.03 )
 button_mask = 3
 icon = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SysLoadBar" type="ProgressBar" parent="."]
+margin_left = -26.0842
+margin_top = -37.9533
+margin_right = 25.9158
+margin_bottom = -23.9533
+max_value = 1.0
+value = 0.5
 __meta__ = {
 "_edit_use_anchors_": false
 }

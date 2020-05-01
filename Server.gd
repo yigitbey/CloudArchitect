@@ -10,6 +10,8 @@ var grabbed_offset = Vector2()
 var eth0: Interface
 var level: Node2D
 var callback: Object
+var ports = {}
+var sysload: float
 
 func init2():
 	level = get_parent()
@@ -30,24 +32,55 @@ func _input_event(viewport, event, shape_idx):
 
 func _process(delta):
 	$DNSNameLabel.text = eth0.ip
+	$SysLoadBar.value = sysload
 	if Input.is_mouse_button_pressed(BUTTON_LEFT) and can_grab:
 		position = get_global_mouse_position() + grabbed_offset
 
 func get_response(req):
+#	var port = req.get_instance_id()
+#	if ports.get(port):
+#		ports[port].append(req)
+#	else:
+#		ports[port] = [req]
 	var response = yield(process_request(req), "completed")
+	
 	return_response(req, response)
 
 func return_response(req, response):
+
+	#var destination = request.route.pop_back()
 	var packet = Packet.new()
-	packet.init(req.destination.eth0.ip, response, req.origin.eth0.ip)
-	req.packet = packet
-	#req.packet.data = response
+#	packet.init(eth0.ip, response, destination.eth0.ip)
+#	req.packet = packet
+	req.response = req.response + response
 	req.send()
 
+func generate_system_load(wait, amount=0.1, duration=3):
+	sysload = sysload + amount
+	duration = duration*(1+sysload)
+	var timer = get_tree().create_timer(wait+duration)
+	timer.connect('timeout',self, "end_system_load", [amount])
+	
+func end_system_load(amount):
+	sysload = sysload - amount
+
+func calculate_response_time():
+	var wait
+	if sysload < 0.9:
+		wait = 0.5*sysload
+	else:
+		wait = 10
+	generate_system_load(wait)
+
+	yield(get_tree().create_timer(wait), "timeout")
+#should yield
 func process_request(req):
 	yield(get_tree(), "idle_frame")
 	print('backend_request')
-	#emit_signal('response_created')
+	req.route.pop_back()
+
+	yield(calculate_response_time(), "completed")
+	
 	return("200 OK")
 	
 func _on_ToggleConfig_pressed():

@@ -1,6 +1,7 @@
 extends Node2D
 
-signal arrived
+signal processed
+
 
 var speed = 400
 var path = []
@@ -9,13 +10,20 @@ var origin = Node2D
 var at_target = false
 var packet = preload("src/Packet.gd")
 var level = Node2D
+var route = []
+var data: String
+var response: String
 
 func init2():
 	level = get_parent()
-
+	
 func _ready():
 	set_animation("NE")
 	set_process(false)
+
+func set_origin(orig):
+	origin = orig
+	position = origin.position
 
 func set_animation(anim):
 	$AnimatedSprite.animation = anim
@@ -31,16 +39,11 @@ func arrived():
 	at_target = true
 	set_process(false)
 	destination.get_response(self)
+	emit_signal('processed)')
 	
-func back():
-	var swp = destination
-	destination = origin
-	origin = swp
 	
 func send(speed=100):
-	origin = level.iptable[packet.origin]
-	destination = level.iptable[packet.destination]
-	position = origin.position
+	destination = level.iptable[self.route[-1]]
 	
 	pathfind(level.nav_map)
 	
