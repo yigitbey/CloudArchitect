@@ -1,14 +1,18 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
+[ext_resource path="res://assets/cloud/lb.png" type="Texture" id=1]
 [ext_resource path="res://HUD.gd" type="Script" id=2]
+[ext_resource path="res://assets/cloud/staticserver.png" type="Texture" id=3]
+[ext_resource path="res://assets/cloud/dynamicserver.png" type="Texture" id=4]
+[ext_resource path="res://assets/cloud/database.png" type="Texture" id=5]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 2 )
 
 [node name="Panel" type="Panel" parent="."]
-margin_top = 761.0
+margin_top = 760.954
 margin_right = 1420.0
-margin_bottom = 801.0
+margin_bottom = 800.954
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -38,30 +42,65 @@ __meta__ = {
 }
 
 [node name="new_LoadBalancer" type="Button" parent="Panel"]
-anchor_left = 0.0894743
-anchor_top = -0.388999
-anchor_right = 0.0894746
-anchor_bottom = -0.374999
-margin_left = 8.94648
-margin_top = 24.56
-margin_right = 135.946
-margin_bottom = 44.0
-rect_pivot_offset = Vector2( 64, 16 )
-text = "new load balancer"
+anchor_left = 0.00285492
+anchor_top = -0.637859
+anchor_right = 0.00285492
+anchor_bottom = -0.224
+margin_left = 87.946
+margin_top = 25.5143
+margin_right = 127.946
+margin_bottom = 48.96
+hint_tooltip = "new load balancer"
+icon = ExtResource( 1 )
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="new_Database" type="Button" parent="Panel"]
+anchor_left = 0.0979253
+anchor_top = -0.637859
+anchor_right = 0.0979253
+anchor_bottom = -0.0988586
+margin_left = -5.05399
+margin_top = 25.5143
+margin_right = 34.946
+margin_bottom = 43.9543
+hint_tooltip = "Database"
+icon = ExtResource( 5 )
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="new_DynamicServer" type="Button" parent="Panel"]
+anchor_left = 0.0267986
+anchor_top = -0.637859
+anchor_right = 0.0267986
+anchor_bottom = -0.0988586
+margin_left = 11.946
+margin_top = 25.5143
+margin_right = 51.946
+margin_bottom = 43.9543
+hint_tooltip = "Dynamic Server
+"
+icon = ExtResource( 4 )
+expand_icon = true
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="new_StaticServer" type="Button" parent="Panel"]
-anchor_top = -0.385
-anchor_bottom = -0.371
+anchor_top = -0.614
+anchor_bottom = -0.024
 margin_left = 8.0
 margin_top = 24.56
-margin_right = 102.0
-margin_bottom = 44.0
+margin_right = 48.0
+margin_bottom = 40.96
 rect_scale = Vector2( 1, 1.00285 )
-rect_pivot_offset = Vector2( 64, 16 )
-text = "new StaticServer"
+hint_tooltip = "Static Server"
+icon = ExtResource( 3 )
+expand_icon = true
 __meta__ = {
 "_edit_use_anchors_": true
 }
@@ -109,6 +148,8 @@ __meta__ = {
 }
 [connection signal="text_changed" from="Panel/DNS" to="." method="_on_DNS_text_changed"]
 [connection signal="pressed" from="Panel/new_LoadBalancer" to="." method="_on_new_lb_pressed"]
+[connection signal="pressed" from="Panel/new_Database" to="." method="_on_new_lb_pressed"]
+[connection signal="pressed" from="Panel/new_DynamicServer" to="." method="_on_new_lb_pressed"]
 [connection signal="pressed" from="Panel/new_StaticServer" to="." method="_on_new_website_pressed"]
 [connection signal="pressed" from="Panel/Request" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="ClearUsers" to="." method="_on_ClearUsers_pressed"]

@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Server.gd" type="Script" id=1]
-[ext_resource path="res://assets/Isometric/towerRound_sampleB_N.png" type="Texture" id=2]
+[ext_resource path="res://assets/cloud/staticserver.png" type="Texture" id=2]
 [ext_resource path="res://assets/fa/wrench-solid.svg" type="Texture" id=3]
-[ext_resource path="res://assets/Isometric/woodStructure_W.png" type="Texture" id=4]
+[ext_resource path="res://assets/cloud/lb.png" type="Texture" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 65.6288
@@ -32,15 +32,14 @@ scale = Vector2( 0.25, 0.25 )
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="CollisionShape2D"]
-position = Vector2( 2.05334, 0 )
 frames = SubResource( 2 )
 animation = "LoadBalancer"
 
 [node name="DNSNameLabel" type="Label" parent="."]
 margin_left = -47.3266
-margin_top = 26.3723
+margin_top = 53.3723
 margin_right = 47.6734
-margin_bottom = 40.3723
+margin_bottom = 67.3723
 text = "dns_name"
 align = 1
 __meta__ = {
@@ -57,10 +56,10 @@ __meta__ = {
 }
 
 [node name="ToggleConfig" type="ToolButton" parent="."]
-margin_left = -32.0
-margin_top = -22.0
-margin_right = 492.0
-margin_bottom = 498.0
+margin_left = -71.9317
+margin_top = -36.2878
+margin_right = 452.068
+margin_bottom = 483.712
 rect_scale = Vector2( 0.03, 0.03 )
 button_mask = 3
 icon = ExtResource( 3 )
@@ -69,12 +68,15 @@ __meta__ = {
 }
 
 [node name="SysLoadBar" type="ProgressBar" parent="."]
-margin_left = -26.0842
-margin_top = -37.9533
-margin_right = 25.9158
-margin_bottom = -23.9533
+margin_left = -71.5707
+margin_top = 26.0
+margin_right = -27.5707
+margin_bottom = 40.0
+rect_rotation = -90.0
+hint_tooltip = "Server Load"
 max_value = 1.0
 value = 0.5
+percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
