@@ -2,8 +2,10 @@ extends "res://Server.gd"
 
 signal backend_config_changed
 
-export var backend_config = []
 export var initial_cost = 50
+
+
+export var backend_config = []
 
 func vars():
 	$CollisionShape2D/AnimatedSprite.animation = "LoadBalancer"

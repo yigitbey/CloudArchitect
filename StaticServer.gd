@@ -1,6 +1,6 @@
 extends "res://Server.gd"
 
-export var initial_cost = 50
+export var initial_cost = 20
 
 
 func vars():
