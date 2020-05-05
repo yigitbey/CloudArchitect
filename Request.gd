@@ -14,12 +14,17 @@ var data: String
 var response: String
 var money = 0
 
+var created_at = 0
+var ttl = 10
+
+
 func init2():
 	level = get_parent()
 	
 func _ready():
 	set_animation("NE")
 	set_process(false)
+	created_at = OS.get_unix_time()
 
 func set_origin(orig):
 	origin = orig
@@ -29,15 +34,24 @@ func set_animation(anim):
 	$AnimatedSprite.animation = anim
 
 func _process(delta):
+	var alive = OS.get_unix_time() - created_at
 	var move_distance = speed * delta
 	move_along_path(move_distance)
 	
 	if path.size() == 0 and not at_target:
 		arrived()
+	print(alive)
+	if alive > ttl:
+		queue_free()	
+	if alive > ttl*0.5:
+		$AnimatedSprite.modulate = Color(1,0.5,0)
+	if alive > ttl*0.8:
+		$AnimatedSprite.modulate = Color(1,0,0)
+
 
 func arrived():
 	at_target = true
-	set_process(false)
+	#set_process(false)
 	destination.get_response(self)
 	emit_signal('processed)')
 	

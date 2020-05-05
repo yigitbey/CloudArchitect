@@ -2,7 +2,15 @@ extends Node
 
 const json = """
 {
-  "servers": {
+  "entities": {
+	"User":{
+		"name": "User",
+		"initial_cost":0
+	},
+	"Request":{
+		"name": "Request",
+		"initial_cost": 0
+	},
 	"StaticServer": {
 	  "name": "Static Server",
 	  "description": "Serves static content",

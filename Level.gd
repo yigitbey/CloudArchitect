@@ -15,15 +15,16 @@ var iptable = {}
 export var money = 20
 export var wave = 0
 var waves = {}
+var objects = {}
 
 export var dns_record: String
 
 func _ready():
 	connect_signals()
 	
-	var objects = load("res://src/objects.gd")
-	var objects2 = JSON.parse(objects.json).result
-	waves = objects2['waves']
+	objects = load("res://src/objects.gd")
+	objects = JSON.parse(objects.json).result
+	waves = objects['waves']
 	
 func connect_signals():
 	$HUD.connect("user_request", self, "new_user_request")
@@ -43,11 +44,16 @@ func clear():
 			i.queue_free()
 
 func new_instance(obj_name):
-	var obj = get(obj_name)
-	var new = obj.instance()
-	add_child(new)
-	new.init2()
-	return new
+	var cost = objects['entities'][obj_name]['initial_cost']
+	if  cost <= money:
+		var obj = get(obj_name)
+		var new = obj.instance()
+		add_child(new)
+		new.init2()
+		return new
+	else:
+		#TODO: money error
+		pass
 
 func set_dns_record():
 	dns_record = $HUD.dns_record

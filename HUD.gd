@@ -39,7 +39,7 @@ func _on_ClearUsers_pressed():
 
 
 func _on_panel_button_mouse_entered(ServerType):
-	var Server = objects["servers"][ServerType]
+	var Server = objects["entities"][ServerType]
 	
 	$ToolTip/InfoBox/Label.text = Server["name"]
 	$ToolTip/InfoBox/Description.text = Server["description"]

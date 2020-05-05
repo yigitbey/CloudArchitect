@@ -104,16 +104,6 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="Request" type="Button" parent="Panel"]
-margin_left = 712.0
-margin_top = -736.0
-margin_right = 808.0
-margin_bottom = -716.0
-text = "send request"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="new_Wave" type="Button" parent="Panel"]
 margin_left = 1288.0
 margin_top = 10.0
@@ -164,16 +154,6 @@ margin_right = 1309.0
 margin_bottom = 27.0
 rect_pivot_offset = Vector2( 18, 10.9999 )
 text = "0"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ClearUsers" type="Button" parent="."]
-margin_left = 592.0
-margin_top = 24.0
-margin_right = 674.0
-margin_bottom = 44.0
-text = "clear users"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -255,6 +235,50 @@ text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="DebugPanel" type="Panel" parent="."]
+margin_left = 1232.0
+margin_top = 24.0
+margin_right = 1392.0
+margin_bottom = 152.0
+
+[node name="ClearUsers" type="Button" parent="DebugPanel"]
+margin_left = 16.0
+margin_top = 32.0
+margin_right = 139.0
+margin_bottom = 56.0
+text = "clear users"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Request" type="Button" parent="DebugPanel"]
+margin_left = 16.0
+margin_top = 64.0
+margin_right = 152.0
+margin_bottom = 88.0
+text = "send request"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Request2" type="Button" parent="DebugPanel"]
+margin_left = 16.0
+margin_top = 94.0
+margin_right = 152.0
+margin_bottom = 118.0
+disabled = true
+text = "money 1000"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelLabel" type="Label" parent="DebugPanel"]
+margin_left = 20.0
+margin_top = 4.0
+margin_right = 100.0
+margin_bottom = 18.0
+text = "Debug Panel"
 [connection signal="text_changed" from="Panel/DNS" to="." method="_on_DNS_text_changed"]
 [connection signal="mouse_entered" from="Panel/new_LoadBalancer" to="." method="_on_panel_button_mouse_entered" binds= [ "LoadBalancer" ]]
 [connection signal="mouse_exited" from="Panel/new_LoadBalancer" to="." method="_on_panel_button_mouse_exited"]
@@ -268,6 +292,7 @@ __meta__ = {
 [connection signal="mouse_entered" from="Panel/new_StaticServer" to="." method="_on_panel_button_mouse_entered" binds= [ "StaticServer" ]]
 [connection signal="mouse_exited" from="Panel/new_StaticServer" to="." method="_on_panel_button_mouse_exited"]
 [connection signal="pressed" from="Panel/new_StaticServer" to="." method="_on_panel_button_pressed" binds= [ "StaticServer" ]]
-[connection signal="pressed" from="Panel/Request" to="." method="_on_Request_pressed"]
 [connection signal="pressed" from="Panel/new_Wave" to="." method="_on_Wave_pressed"]
-[connection signal="pressed" from="ClearUsers" to="." method="_on_ClearUsers_pressed"]
+[connection signal="pressed" from="DebugPanel/ClearUsers" to="." method="_on_ClearUsers_pressed"]
+[connection signal="pressed" from="DebugPanel/Request" to="." method="_on_Request_pressed"]
+[connection signal="pressed" from="DebugPanel/Request2" to="." method="_on_Request_pressed"]

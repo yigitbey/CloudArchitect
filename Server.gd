@@ -29,7 +29,7 @@ func _ready():
 	
 	var objects = load("res://src/objects.gd")
 	objects = JSON.parse(objects.json).result
-	properties = objects['servers'][type]
+	properties = objects['entities'][type]
 
 func _input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
@@ -41,17 +41,26 @@ func _process(_delta):
 	$SysLoadBar.value = sysload
 	if Input.is_mouse_button_pressed(BUTTON_LEFT) and can_grab:
 		position = get_global_mouse_position() + grabbed_offset
+	if sysload <= 0.5:
+		$CollisionShape2D.modulate = Color(1,1,1,1)
+	if sysload > 0.5 and sysload < 0.9:
+		$CollisionShape2D.modulate = Color(1,0.5,0)
+	if sysload >= 0.9:
+		$CollisionShape2D.modulate = Color(1,0,0)
 
 func get_response(req):
 	var response = yield(process_request(req), "completed")
-	req.money += properties['revenue']
-	return_response(req, response)
+
+	var req_ref = weakref(req);
+	if (req_ref.get_ref()): #check if request is still alive
+		req.money += properties['revenue']
+		return_response(req, response)
 
 func return_response(req, response):
 	req.response = req.response + response
 	req.send()
 
-func generate_system_load(wait, amount=0.1, duration=3):
+func generate_system_load(wait, amount=0.1, duration=2):
 	sysload = sysload + amount
 	duration = duration*(1+sysload)
 	var timer = get_tree().create_timer(wait+duration)
