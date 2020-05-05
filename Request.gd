@@ -12,6 +12,7 @@ var level = Node2D
 var route = []
 var data: String
 var response: String
+var money = 0
 
 func init2():
 	level = get_parent()

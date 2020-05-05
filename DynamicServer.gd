@@ -1,19 +1,15 @@
 extends "res://Server.gd"
 
-export var initial_cost = 50
-
 export var db: String
 
-func vars():
-	$CollisionShape2D/AnimatedSprite.animation = "DynamicServer"
 
 func _init():
-	vars()
+	type = "Database"
 
 func _on_DatabaseConfig_text_changed():
 	db = $ConfigWindow/Database/DatabaseConfig.text
 
-#move this to Server and override it
+#move this to Server and then override it
 func process_request(req):
 	if req.response:
 		req.route.pop_back()

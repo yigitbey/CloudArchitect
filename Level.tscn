@@ -267,7 +267,6 @@ outlines = [ PoolVector2Array( -65.2125, 680.606, 70.7875, 616.606, 70.7875, 48.
 
 [node name="Level0" type="Node2D"]
 script = ExtResource( 17 )
-dns_record = ""
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
 __meta__ = {

@@ -6,6 +6,8 @@ var eth0: Interface
 var level: Node2D
 export var entry_position = Vector2(64,648)
 
+var speeds = {'slow':100, 'med':250, 'fast': 500}
+
 func _init():
 	eth0 = Interface.new()
 	
@@ -20,7 +22,7 @@ func _ready():
 
 func get_response(req):
 	var level = get_parent()
-	level.money = level.money + 10
+	level.money += req.money
 
 	print ('request successful:' + req.response)
 	

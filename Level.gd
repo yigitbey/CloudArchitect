@@ -12,14 +12,22 @@ const Request = preload("res://Request.tscn")
 
 var iptable = {}
 
-export var money = 80
-export var dns_record = "static_0"
+export var money = 20
+export var wave = 0
+var waves = {}
+
+export var dns_record: String
 
 func _ready():
 	connect_signals()
-
+	
+	var objects = load("res://src/objects.gd")
+	var objects2 = JSON.parse(objects.json).result
+	waves = objects2['waves']
+	
 func connect_signals():
 	$HUD.connect("user_request", self, "new_user_request")
+	$HUD.connect("new_wave", self, "new_wave")
 	$HUD.connect('dns_change', self, 'set_dns_record')
 	
 	$HUD.connect('new_server', self, 'new_instance')
@@ -39,21 +47,31 @@ func new_instance(obj_name):
 	var new = obj.instance()
 	add_child(new)
 	new.init2()
-	if new.get('initial_cost'):
-		money = money - new.initial_cost
 	return new
 
 func set_dns_record():
 	dns_record = $HUD.dns_record
 
 #todo: move this under user
-func new_user_request():
+func new_user_request(speed="slow"):
 	var user = new_instance("User")	
 	var request = new_instance("Request")
 
+	speed = user.speeds[speed]
 	request.data = "GET /"
 	request.set_origin(user)
 	request.route.append(user.eth0.ip)
 	request.route.append(dns_record)
-	request.send()
+	
+	request.send(speed)
 
+func new_wave():
+	wave += 1
+	var w = waves[str(wave)]
+	
+	for speed in ['slow', 'med', 'fast']:
+		
+		for i in range(0,w['requests'][speed]):
+			var timer = get_tree().create_timer(w['time_between_requests'])
+			yield(timer, "timeout")
+			new_user_request()

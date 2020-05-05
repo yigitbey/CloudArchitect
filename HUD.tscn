@@ -18,9 +18,9 @@ __meta__ = {
 }
 
 [node name="DNS" type="TextEdit" parent="Panel"]
-margin_left = 1102.0
+margin_left = 954.0
 margin_top = 9.0
-margin_right = 1246.0
+margin_right = 1098.0
 margin_bottom = 33.0
 text = "<server_ip>"
 breakpoint_gutter = true
@@ -31,9 +31,9 @@ __meta__ = {
 }
 
 [node name="DNSLabel" type="Label" parent="Panel"]
-margin_left = 1009.0
+margin_left = 861.0
 margin_top = 13.0
-margin_right = 1098.0
+margin_right = 950.0
 margin_bottom = 27.0
 text = "DNS A record:"
 __meta__ = {
@@ -105,33 +105,65 @@ __meta__ = {
 }
 
 [node name="Request" type="Button" parent="Panel"]
-margin_left = 1272.0
-margin_top = 9.15997
-margin_right = 1368.0
-margin_bottom = 29.16
+margin_left = 712.0
+margin_top = -736.0
+margin_right = 808.0
+margin_bottom = -716.0
 text = "send request"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="new_Wave" type="Button" parent="Panel"]
+margin_left = 1288.0
+margin_top = 10.0
+margin_right = 1384.0
+margin_bottom = 30.0001
+text = "Send Wave"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="MoneyLabel" type="Label" parent="Panel"]
-margin_left = 721.0
+margin_left = 566.0
 margin_top = 13.0
-margin_right = 768.0
+margin_right = 613.0
 margin_bottom = 27.0
-rect_pivot_offset = Vector2( 40, 2 )
+rect_pivot_offset = Vector2( 74, 10.9999 )
 text = "Money:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Money" type="Label" parent="Panel"]
-margin_left = 777.0
+margin_left = 622.0
 margin_top = 13.0
-margin_right = 824.0
+margin_right = 669.0
 margin_bottom = 27.0
-rect_pivot_offset = Vector2( 40, 2 )
+rect_pivot_offset = Vector2( 18, 10.9999 )
 text = "5"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WaveLabel" type="Label" parent="Panel"]
+margin_left = 1206.0
+margin_top = 13.0
+margin_right = 1253.0
+margin_bottom = 27.0
+rect_pivot_offset = Vector2( 74, 10.9999 )
+text = "Wave:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Wave" type="Label" parent="Panel"]
+margin_left = 1262.0
+margin_top = 13.0
+margin_right = 1309.0
+margin_bottom = 27.0
+rect_pivot_offset = Vector2( 18, 10.9999 )
+text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -237,4 +269,5 @@ __meta__ = {
 [connection signal="mouse_exited" from="Panel/new_StaticServer" to="." method="_on_panel_button_mouse_exited"]
 [connection signal="pressed" from="Panel/new_StaticServer" to="." method="_on_panel_button_pressed" binds= [ "StaticServer" ]]
 [connection signal="pressed" from="Panel/Request" to="." method="_on_Request_pressed"]
+[connection signal="pressed" from="Panel/new_Wave" to="." method="_on_Wave_pressed"]
 [connection signal="pressed" from="ClearUsers" to="." method="_on_ClearUsers_pressed"]

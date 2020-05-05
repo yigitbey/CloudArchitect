@@ -11,17 +11,25 @@ var level: Node2D
 var callback: Object
 var ports = {}
 var sysload: float
+var type: String
+var properties = {}
 
 func init2():
+	$CollisionShape2D/AnimatedSprite.animation = type
 	level = get_parent()
 	var margin = level.iptable.size()*30
 	position = Vector2(200+margin, 200+margin)
 	
 	eth0 = Interface.new()
 	level.iptable[eth0.ip] = self
+	level.money -= properties['initial_cost']
 	
 func _ready():
 	$ConfigWindow.visible = false
+	
+	var objects = load("res://src/objects.gd")
+	objects = JSON.parse(objects.json).result
+	properties = objects['servers'][type]
 
 func _input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
@@ -36,7 +44,7 @@ func _process(_delta):
 
 func get_response(req):
 	var response = yield(process_request(req), "completed")
-	
+	req.money += properties['revenue']
 	return_response(req, response)
 
 func return_response(req, response):
@@ -65,7 +73,6 @@ func calculate_response_time():
 #should yield
 func process_request(req):
 	yield(get_tree(), "idle_frame")
-	print('backend_request')
 	req.route.pop_back()
 
 	yield(calculate_response_time(), "completed")
