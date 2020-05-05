@@ -1,39 +1,37 @@
 extends CanvasLayer
 
 signal user_request
-signal new_staticserver
+signal new_StaticServer
+signal new_LoadBalancer
+signal new_Database
+signal new_DynamicServer
 signal dns_change
-signal new_lb
 signal clear
 
-export var dns_record = "static_0"
-var objects = {}
+signal new_server(ServerType)
+
+
+export var dns_record = "<server_ip>"
+var objects
 
 func _ready():
-	print('s')
-	var file = File.new()
-	file.open("res://src/objects.json", file.READ)
-	var text = file.get_as_text()
-	objects = JSON.parse(text).result
-	file.close()
+	objects = load("res://src/objects.gd")
+	objects = JSON.parse(objects.json).result
 
 func _process(delta):
 	var level = get_parent()
 	$Panel/Money.text = str(level.money)
 
-func _on_Button_pressed():
+func _on_Request_pressed():
 	emit_signal('user_request')
 
-func _on_new_website_pressed():
-	emit_signal('new_staticserver')
+func _on_panel_button_pressed(ServerType):
+	emit_signal("new_"+ServerType)
+	emit_signal("new_server", ServerType)
 	
-func _on_new_lb_pressed():
-	emit_signal('new_lb')
-
 func _on_DNS_text_changed():
 	dns_record = $Panel/DNS.text
 	emit_signal('dns_change')
-
 
 func _on_ClearUsers_pressed():
 	emit_signal('clear')

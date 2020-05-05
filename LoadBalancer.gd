@@ -15,7 +15,6 @@ func _init():
 
 func _on_BackendConfig_text_changed():
 	backend_config = $ConfigWindow/Servers/BackendConfig.text.split('\n')
-	emit_signal("backend_config_changed")
 	
 func process_request(req):
 	print('loadbalancer')

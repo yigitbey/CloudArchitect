@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Server.tscn" type="PackedScene" id=1]
+[ext_resource path="res://DynamicServer.gd" type="Script" id=2]
+
+[node name="Server" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="ConfigWindow" parent="." index="2"]
+margin_left = 42.0
+margin_top = -30.0
+margin_right = 182.0
+margin_bottom = 54.0
+
+[node name="Database" type="Tabs" parent="ConfigWindow" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="DatabaseConfig" type="TextEdit" parent="ConfigWindow/Database" index="0"]
+margin_right = 134.0
+margin_bottom = 50.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="text_changed" from="ConfigWindow/Database/DatabaseConfig" to="." method="_on_DatabaseConfig_text_changed"]

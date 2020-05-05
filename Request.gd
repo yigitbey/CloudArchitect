@@ -8,7 +8,6 @@ var path = []
 var destination = Node
 var origin = Node2D
 var at_target = false
-var packet = preload("src/Packet.gd")
 var level = Node2D
 var route = []
 var data: String

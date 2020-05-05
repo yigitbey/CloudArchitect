@@ -3,7 +3,6 @@ extends KinematicBody2D
 
 const Request = preload("res://Request.tscn")
 const Interface = preload("src/Interface.gd")
-const Packet = preload("src/Packet.gd")
 
 var can_grab = false
 var grabbed_offset = Vector2()
@@ -15,9 +14,8 @@ var sysload: float
 
 func init2():
 	level = get_parent()
-	print('server.init2')
-	var margin = level.iptable.size()*10
-	position = Vector2(500+margin, 500+margin)
+	var margin = level.iptable.size()*30
+	position = Vector2(200+margin, 200+margin)
 	
 	eth0 = Interface.new()
 	level.iptable[eth0.ip] = self
@@ -25,33 +23,23 @@ func init2():
 func _ready():
 	$ConfigWindow.visible = false
 
-func _input_event(viewport, event, shape_idx):
+func _input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
 		can_grab = event.pressed
 		grabbed_offset = position - get_global_mouse_position()
 
-func _process(delta):
+func _process(_delta):
 	$DNSNameLabel.text = eth0.ip
 	$SysLoadBar.value = sysload
 	if Input.is_mouse_button_pressed(BUTTON_LEFT) and can_grab:
 		position = get_global_mouse_position() + grabbed_offset
 
 func get_response(req):
-#	var port = req.get_instance_id()
-#	if ports.get(port):
-#		ports[port].append(req)
-#	else:
-#		ports[port] = [req]
 	var response = yield(process_request(req), "completed")
 	
 	return_response(req, response)
 
 func return_response(req, response):
-
-	#var destination = request.route.pop_back()
-	var packet = Packet.new()
-#	packet.init(eth0.ip, response, destination.eth0.ip)
-#	req.packet = packet
 	req.response = req.response + response
 	req.send()
 
@@ -73,6 +61,7 @@ func calculate_response_time():
 	generate_system_load(wait)
 
 	yield(get_tree().create_timer(wait), "timeout")
+
 #should yield
 func process_request(req):
 	yield(get_tree(), "idle_frame")
