@@ -58,7 +58,7 @@ func return_response(req, response):
 	req.response = req.response + response
 	req.send()
 
-func generate_system_load(wait, amount=0.1, duration=2):
+func generate_system_load(wait, amount=0.1, duration=0.1):
 	sysload = sysload + amount
 	duration = duration*(1+sysload)
 	var timer = get_tree().create_timer(wait+duration)
