@@ -7,12 +7,21 @@
 [ext_resource path="res://assets/cloud/dynamicserver.png" type="Texture" id=5]
 [ext_resource path="res://assets/cloud/database.png" type="Texture" id=6]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 65.6288
-height = 37.147
+[sub_resource type="CircleShape2D" id=1]
+radius = 177.757
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "Database",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "DynamicServer",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
 "name": "StaticServer",
@@ -21,16 +30,6 @@ animations = [ {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "LoadBalancer",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "DynamicServer",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 6 ) ],
-"loop": true,
-"name": "Database",
 "speed": 5.0
 } ]
 

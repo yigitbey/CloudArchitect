@@ -31,7 +31,7 @@ window/stretch/aspect="keep_width"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "FontAwesome5" )
+enabled=PoolStringArray(  )
 
 [rendering]
 

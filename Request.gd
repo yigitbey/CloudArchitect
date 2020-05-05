@@ -42,7 +42,9 @@ func _process(delta):
 		arrived()
 	print(alive)
 	if alive > ttl:
-		queue_free()	
+		pass
+		
+		#queue_free()	
 	if alive > ttl*0.5:
 		$AnimatedSprite.modulate = Color(1,0.5,0)
 	if alive > ttl*0.8:

@@ -51,10 +51,8 @@ func _process(_delta):
 func get_response(req):
 	var response = yield(process_request(req), "completed")
 
-	var req_ref = weakref(req);
-	if (req_ref.get_ref()): #check if request is still alive
-		req.money += properties['revenue']
-		return_response(req, response)
+	req.money += properties['revenue']
+	return_response(req, response)
 
 func return_response(req, response):
 	req.response = req.response + response

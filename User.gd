@@ -27,5 +27,6 @@ func get_response(req):
 
 	print ('request successful:' + req.response)
 	
+	level.iptable.erase(eth0.ip)
 	req.queue_free()
 	queue_free()
