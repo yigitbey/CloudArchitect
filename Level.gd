@@ -12,7 +12,7 @@ const Request = preload("res://Request.tscn")
 
 var iptable = {}
 
-export var money = 20
+export var money = 300
 export var wave = 0
 var waves = {}
 var objects = {}

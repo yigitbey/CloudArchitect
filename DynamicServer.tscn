@@ -7,12 +7,24 @@
 script = ExtResource( 2 )
 
 [node name="ConfigWindow" parent="." index="2"]
-margin_left = 42.0
-margin_top = -30.0
-margin_right = 182.0
-margin_bottom = 54.0
+margin_top = -46.0
+margin_right = 320.0
+margin_bottom = 46.0
 
-[node name="Database" type="Tabs" parent="ConfigWindow" index="0"]
+[node name="InstanceTypeLabel" parent="ConfigWindow/Info" index="2"]
+anchor_top = 0.696429
+anchor_bottom = 0.696429
+margin_left = -3.0
+margin_top = 0.0
+margin_right = 90.0
+margin_bottom = 14.0
+
+[node name="InstanceType" parent="ConfigWindow/Info" index="3"]
+margin_left = 92.0
+margin_right = 186.0
+
+[node name="Database" type="Control" parent="ConfigWindow" index="1"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -21,9 +33,39 @@ margin_right = -4.0
 margin_bottom = -4.0
 
 [node name="DatabaseConfig" type="TextEdit" parent="ConfigWindow/Database" index="0"]
-margin_right = 134.0
-margin_bottom = 50.0
+margin_left = 60.0
+margin_right = 180.0
+margin_bottom = 24.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ConfigWindow/Database" index="1"]
+margin_top = 5.0
+margin_right = 57.0
+margin_bottom = 19.0
+text = "Master:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DatabaseConfig2" type="TextEdit" parent="ConfigWindow/Database" index="2"]
+margin_left = 60.0
+margin_top = 30.0
+margin_right = 180.0
+margin_bottom = 54.0
+readonly = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="ConfigWindow/Database" index="3"]
+margin_top = 35.0
+margin_right = 57.0
+margin_bottom = 49.0
+text = "Replicas:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="text_changed" from="ConfigWindow/Database/DatabaseConfig" to="." method="_on_DatabaseConfig_text_changed"]
+[connection signal="text_changed" from="ConfigWindow/Database/DatabaseConfig2" to="." method="_on_DatabaseConfig_text_changed"]

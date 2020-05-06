@@ -1,11 +1,13 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Server.gd" type="Script" id=1]
 [ext_resource path="res://assets/cloud/staticserver.png" type="Texture" id=2]
-[ext_resource path="res://assets/fa/wrench-solid.svg" type="Texture" id=3]
 [ext_resource path="res://assets/cloud/lb.png" type="Texture" id=4]
 [ext_resource path="res://assets/cloud/dynamicserver.png" type="Texture" id=5]
 [ext_resource path="res://assets/cloud/database.png" type="Texture" id=6]
+[ext_resource path="res://monospace_font.tres" type="Theme" id=7]
+[ext_resource path="res://addons/FontAwesome5/FontAwesome.gd" type="Script" id=8]
+[ext_resource path="res://addons/FontAwesome5/fa-solid-900.ttf" type="DynamicFontData" id=9]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 177.757
@@ -33,9 +35,25 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="DynamicFontData" id=3]
+hinting = 1
+font_path = "res://assets/fonts/SourceCodePro-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=4]
+font_data = SubResource( 3 )
+
+[sub_resource type="Theme" id=5]
+default_font = SubResource( 4 )
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 9 )
+
 [node name="Server" type="KinematicBody2D"]
 input_pickable = true
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_vertical_guides_": [ 60.7049 ]
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 4 )
@@ -51,6 +69,7 @@ margin_left = -47.3266
 margin_top = 53.3723
 margin_right = 47.6734
 margin_bottom = 67.3723
+theme = SubResource( 5 )
 text = "dns_name"
 align = 1
 __meta__ = {
@@ -58,25 +77,116 @@ __meta__ = {
 }
 
 [node name="ConfigWindow" type="TabContainer" parent="."]
-margin_left = 38.0
-margin_top = -29.0
-margin_right = 178.0
-margin_bottom = 55.0
+margin_left = 62.0
+margin_top = -42.0
+margin_right = 323.0
+margin_bottom = 48.0
+tab_align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Info" type="Control" parent="ConfigWindow"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+rect_min_size = Vector2( 0, 15 )
+
+[node name="NameLabel" type="Label" parent="ConfigWindow/Info"]
+margin_top = 0.774063
+margin_right = 93.0
+margin_bottom = 14.7741
+text = "Name:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="LineEdit" parent="ConfigWindow/Info"]
+margin_left = 98.0
+margin_top = -3.0
+margin_right = 183.0
+margin_bottom = 17.0
+theme = ExtResource( 7 )
+text = "10.0.0.0"
+max_length = 12
+caret_blink = true
+
+[node name="InstanceTypeLabel" type="Label" parent="ConfigWindow/Info"]
+margin_top = 39.0
+margin_right = 93.0
+margin_bottom = 53.0
+text = "Instance Type:"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="InstanceType" type="Label" parent="ConfigWindow/Info"]
+margin_left = 97.0
+margin_top = 39.0
+margin_right = 184.0
+margin_bottom = 53.0
+text = "a1-medium-1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UpgradeInstance" type="Button" parent="ConfigWindow/Info"]
+margin_left = 188.0
+margin_top = 36.0
+margin_right = 253.0
+margin_bottom = 56.0
+disabled = true
+text = "Upgrade"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IPLabel" type="Label" parent="ConfigWindow/Info"]
+margin_top = 21.0
+margin_right = 93.0
+margin_bottom = 35.0
+text = "IP Address:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IP" type="Label" parent="ConfigWindow/Info"]
+margin_left = 97.0
+margin_top = 21.0
+margin_right = 184.0
+margin_bottom = 35.0
+text = "10.0.0.0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ToggleConfig" type="ToolButton" parent="."]
 margin_left = -71.9317
-margin_top = -36.2878
-margin_right = 452.068
-margin_bottom = 483.712
-rect_scale = Vector2( 0.03, 0.03 )
-button_mask = 3
-icon = ExtResource( 3 )
+margin_top = -42.2878
+margin_right = -51.9317
+margin_bottom = -20.2878
+focus_mode = 0
+enabled_focus_mode = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Icon" type="Label" parent="ToggleConfig"]
+modulate = Color( 0.647059, 0.647059, 0.647059, 1 )
+margin_left = -3.0
+margin_right = 17.0
+margin_bottom = 22.0
+custom_fonts/font = SubResource( 6 )
+align = 1
+valign = 1
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+icon_name = "wrench"
 
 [node name="SysLoadBar" type="ProgressBar" parent="."]
 margin_left = -71.5707
@@ -91,4 +201,5 @@ percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="text_changed" from="ConfigWindow/Info/Name" to="." method="_on_Name_text_changed"]
 [connection signal="pressed" from="ToggleConfig" to="." method="_on_ToggleConfig_pressed"]

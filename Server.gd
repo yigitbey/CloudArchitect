@@ -13,6 +13,7 @@ var ports = {}
 var sysload: float
 var type: String
 var properties = {}
+var server_name: String
 
 func init2():
 	$CollisionShape2D/AnimatedSprite.animation = type
@@ -22,7 +23,12 @@ func init2():
 	
 	eth0 = Interface.new()
 	level.iptable[eth0.ip] = self
-	level.money -= properties['initial_cost']
+
+	server_name = eth0.ip
+	$ConfigWindow/Info/Name.text = server_name
+	$ConfigWindow/Info/IP.text = server_name
+	
+	level.money -= properties['initial_cost']	
 	
 func _ready():
 	$ConfigWindow.visible = false
@@ -37,7 +43,7 @@ func _input_event(_viewport, event, _shape_idx):
 		grabbed_offset = position - get_global_mouse_position()
 
 func _process(_delta):
-	$DNSNameLabel.text = eth0.ip
+	$DNSNameLabel.text = server_name
 	$SysLoadBar.value = sysload
 	if Input.is_mouse_button_pressed(BUTTON_LEFT) and can_grab:
 		position = get_global_mouse_position() + grabbed_offset
@@ -51,7 +57,6 @@ func _process(_delta):
 func get_response(req):
 	var response = yield(process_request(req), "completed")
 
-	req.money += properties['revenue']
 	return_response(req, response)
 
 func return_response(req, response):
@@ -81,7 +86,7 @@ func calculate_response_time():
 func process_request(req):
 	yield(get_tree(), "idle_frame")
 	req.route.pop_back()
-
+	req.money += properties['revenue']
 	yield(calculate_response_time(), "completed")
 	
 	return("200 OK")
@@ -89,7 +94,13 @@ func process_request(req):
 func _on_ToggleConfig_pressed():
 	if $ConfigWindow.visible:
 		$ConfigWindow.visible = false
-		$ToggleConfig.text = "Configure"
+		$ToggleConfig/Icon.icon_name = "wrench"
+		$ToggleConfig/Icon.modulate = Color(0.7,0.7,0.7,1)
 	else:
 		$ConfigWindow.visible = true
-		$ToggleConfig.text = "Hide config"
+		$ToggleConfig/Icon.icon_name = "window-close"
+		$ToggleConfig/Icon.modulate = Color(1,0,0,0.8)
+
+
+func _on_Name_text_changed(text):
+	server_name = text

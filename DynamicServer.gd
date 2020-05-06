@@ -4,7 +4,8 @@ export var db: String
 
 
 func _init():
-	type = "Database"
+	type = "DynamicServer"
+	
 
 func _on_DatabaseConfig_text_changed():
 	db = $ConfigWindow/Database/DatabaseConfig.text
@@ -17,7 +18,7 @@ func process_request(req):
 		req.route.append(db)
 		
 	yield(calculate_response_time(), "completed")
-	
+	req.money += properties['revenue']
 	req.send(100)
 
 	var response =	yield(req, 'processed')

@@ -40,7 +40,7 @@ func _process(delta):
 	
 	if path.size() == 0 and not at_target:
 		arrived()
-	print(alive)
+
 	if alive > ttl:
 		pass
 		

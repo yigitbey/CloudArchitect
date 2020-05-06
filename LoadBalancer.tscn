@@ -7,14 +7,14 @@
 script = ExtResource( 2 )
 
 [node name="ConfigWindow" parent="." index="2"]
-margin_left = 60.3336
-margin_top = -30.9486
-margin_right = 200.334
-margin_bottom = 53.0514
+margin_left = 60.0
+margin_top = -31.0
+margin_bottom = 62.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Servers" type="Tabs" parent="ConfigWindow" index="0"]
+[node name="Servers" type="Control" parent="ConfigWindow" index="1"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
