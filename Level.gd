@@ -73,11 +73,17 @@ func new_user_request(speed="slow"):
 
 func new_wave():
 	wave += 1
-	var w = waves[str(wave)]
 	
-	for speed in ['slow', 'med', 'fast']:
-		
-		for i in range(0,w['requests'][speed]):
-			var timer = get_tree().create_timer(w['time_between_requests'])
+	if wave >= waves.size():
+		for i in range(0,30*wave):
+			var timer = get_tree().create_timer(0.1)
 			yield(timer, "timeout")
 			new_user_request()
+	else:
+		var w = waves[str(wave)]
+		
+		for speed in ['slow', 'med', 'fast']:
+			for i in range(0,w['requests'][speed]):
+				var timer = get_tree().create_timer(w['time_between_requests'])
+				yield(timer, "timeout")
+				new_user_request()

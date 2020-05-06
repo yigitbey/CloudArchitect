@@ -40,7 +40,6 @@ func _process(delta):
 	
 	if path.size() == 0 and not at_target:
 		arrived()
-
 	if alive > ttl:
 		pass
 		
@@ -60,7 +59,7 @@ func arrived():
 	
 func send(speed=100):
 	destination = level.iptable[self.route[-1]]
-	
+		
 	pathfind(level.nav_map)
 	
 	at_target = false
