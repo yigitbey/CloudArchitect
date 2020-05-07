@@ -73,3 +73,7 @@ func _on_Wave_pressed():
 
 func _on_Money1000_pressed():
 	level.money += 1000
+
+func _on_GameOver_confirmed():
+	get_tree().change_scene("res://Level.tscn")
+

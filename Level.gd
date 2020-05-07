@@ -14,8 +14,9 @@ var iptable = {}
 
 export var product_cost_base = 30
 export var product_cost: float
-export var money = 50 setget set_money
+export var money = 130 setget set_money
 export var wave_income = 0
+export var game_over = true
 
 export var wave = 0
 var waves = {}
@@ -29,6 +30,10 @@ func _ready():
 	objects = load("res://src/objects.gd")
 	objects = JSON.parse(objects.json).result
 	waves = objects['waves']
+	
+func _process(_delta):
+	if money < 0:
+		$HUD/GameOver.blocking_popup_centered()
 	
 func connect_signals():
 	$HUD.connect("user_request", self, "new_user_request")
@@ -48,16 +53,13 @@ func clear():
 			i.queue_free()
 
 func new_instance(obj_name):
-	var cost = objects['entities'][obj_name]['initial_cost']
-	if  cost <= money:
-		var obj = get(obj_name)
-		var new = obj.instance()
-		add_child(new)
-		new.init2()
-		return new
-	else:
-		#TODO: money error
-		pass
+
+	var obj = get(obj_name)
+	var new = obj.instance()
+	add_child(new)
+	new.init2()
+	return new
+
 
 func set_dns_record():
 	dns_record = $HUD.dns_record
@@ -77,6 +79,11 @@ func new_user_request(speed="slow"):
 
 
 func set_money(val):
+	if val < 0:	
+		game_over = true
+		$HUD/GameOver.blocking_popup_centered()
+	
+	
 	if money < val:
 		wave_income += val - money
 	money = val
@@ -90,7 +97,7 @@ func new_wave():
 	
 	if wave >= waves.size():
 		for i in range(0,30*wave):
-			var timer = get_tree().create_timer(0.1)
+			var timer = get_tree().create_timer(0.01+(100-wave)/1000)
 			yield(timer, "timeout")
 			new_user_request()
 	else:

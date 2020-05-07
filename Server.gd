@@ -74,12 +74,14 @@ func get_response(req):
 	return_response(req, response)
 
 func return_response(req, response):
-	req.response = req.response + response
-	req.send()
+	if response: #temp bug workaround
+		req.response = req.response + response
+		req.send()
 
 func generate_system_load(wait):
 	var amount = properties['load_per_request'] / cpu
-	var duration = properties['load_per_request'] / (cpu*2)
+	
+	var duration = (properties['load_per_request'] / cpu)*5 + properties['load_per_request']
 	
 	sysload = sysload + amount
 	duration *= (1+sysload)
@@ -94,7 +96,7 @@ func calculate_response_time():
 	if sysload < 0.9:
 		wait = 0.5*sysload
 	else:
-		wait = 2
+		wait = 5
 	generate_system_load(wait)
 
 	yield(get_tree().create_timer(wait), "timeout")

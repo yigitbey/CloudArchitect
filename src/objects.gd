@@ -23,21 +23,21 @@ const json = """
 	  "description": "Queries configured databases and returns dynamic content",
 	  "initial_cost": 100,
 	  "revenue": 5,
-	  "load_per_request": 0.3
+	  "load_per_request": 0.12
 	},
 	"LoadBalancer":{
 	  "name": "Load Balancer",
 	  "description": "Routes incoming traffic to configured servers",
 	  "initial_cost": 100,
 	  "revenue": 0,
-	  "load_per_request": 0.1
+	  "load_per_request": 0.025
 	},
 	"Database":{
 	  "name": "Database",
 	  "description": "Returns to DB queries",
 	  "initial_cost": 200,
 	  "revenue": 0,
-	  "load_per_request":0.5
+	  "load_per_request":0.2
 	}
   },
   "waves":{
@@ -55,7 +55,7 @@ const json = """
 			"med": 10,
 			"fast": 2
 		},
-		"time_between_requests": 0.4
+		"time_between_requests": 0.3
 	},
 	"3":{
 		"requests":{
@@ -71,7 +71,7 @@ const json = """
 			"med": 40,
 			"fast": 10
 		},
-		"time_between_requests": 0.2
+		"time_between_requests": 0.15
 	},
 	"5":{
 		"requests":{
