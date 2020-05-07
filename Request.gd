@@ -16,6 +16,7 @@ var money = 0
 
 var created_at = 0
 var ttl = 10
+var alive = 0
 
 
 func init2():
@@ -34,7 +35,7 @@ func set_animation(anim):
 	$AnimatedSprite.animation = anim
 
 func _process(delta):
-	var alive = OS.get_unix_time() - created_at
+	alive = OS.get_unix_time() - created_at
 	var move_distance = speed * delta
 	move_along_path(move_distance)
 	
@@ -54,7 +55,7 @@ func arrived():
 	at_target = true
 	#set_process(false)
 	destination.get_response(self)
-	emit_signal('processed)')
+	emit_signal('processed')
 	
 	
 func send(speed=100):
@@ -66,7 +67,11 @@ func send(speed=100):
 	set_process(true)
 	
 func pathfind(map):
-	path = map.get_simple_path(global_position, destination.global_position, false)
+	var to = destination.global_position
+	to[0] += (randi() % 50) - 25
+	to[1] += (randi() % 50) - 25
+	
+	path = map.get_simple_path(global_position, to, false)
 
 func move_along_path(distance):
 	var start = position
@@ -97,3 +102,13 @@ func choose_animation(target):
 		$AnimatedSprite.animation = "NW"	
 	
 
+
+
+func _on_Request_body_entered(body):
+	modulate.a = 0.2
+
+
+func _on_Request_body_exited(body):
+	modulate.a = 1
+
+		

@@ -8,7 +8,7 @@ func _init():
 	type = "LoadBalancer"
 
 func _on_BackendConfig_text_changed():
-	backend_config = $ConfigWindow/Servers/BackendConfig.text.split('\n')
+	backend_config = $Meta/ConfigWindow/Servers/BackendConfig.text.split('\n')
 
 #move to Server
 func process_request(req):

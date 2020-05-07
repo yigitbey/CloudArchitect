@@ -36,6 +36,8 @@ func _process(delta):
 			
 	$Panel/Money.text = str(level.money)
 	$Panel/Wave.text = str(level.wave)
+	$Panel/Cost.text = str(level.product_cost)
+	$Panel/WaveIncome.text = str(level.wave_income)
 	money_old = level.money
 
 func _on_Request_pressed():

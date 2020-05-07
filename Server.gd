@@ -30,14 +30,14 @@ func init2():
 	level.iptable[eth0.ip] = self
 
 	server_name = eth0.ip
-	$ConfigWindow/Info/Name.text = server_name
-	$ConfigWindow/Info/IP.text = server_name
-	$ConfigWindow/Info/InstanceSize.text = instance_size
+	$Meta/ConfigWindow/Info/Name.text = server_name
+	$Meta/ConfigWindow/Info/IP.text = server_name
+	$Meta/ConfigWindow/Info/InstanceSize.text = instance_size
 	
 	level.money -= properties['initial_cost']	
 	
 func _ready():
-	$ConfigWindow.visible = false
+	$Meta/ConfigWindow.visible = false
 	
 	var objects = load("res://src/objects.gd")
 	objects = JSON.parse(objects.json).result
@@ -45,13 +45,17 @@ func _ready():
 
 func _input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
-		can_grab = event.pressed
-		grabbed_offset = position - get_global_mouse_position()
+		if event.button_index == 1:
+			can_grab = event.pressed
+			grabbed_offset = position - get_global_mouse_position()
+		if event.button_index == 2 and !event.is_pressed():
+			level.iptable.erase(eth0.ip)
+			queue_free()
 
 func _process(_delta):	
-	$DNSNameLabel.text = server_name
-	$SysLoadBar.value = sysload
-	$ConfigWindow/Info/InstanceSize.text = instance_size
+	$Meta/DNSNameLabel.text = server_name
+	$Meta/SysLoadBar.value = sysload
+	$Meta/ConfigWindow/Info/InstanceSize.text = instance_size
 	
 	if Input.is_mouse_button_pressed(BUTTON_LEFT) and can_grab:
 		position = get_global_mouse_position() + grabbed_offset
@@ -73,12 +77,12 @@ func return_response(req, response):
 	req.response = req.response + response
 	req.send()
 
-func generate_system_load(wait, amount=0.1, duration=0.1):
-	amount /= cpu
-	duration /= cpu
+func generate_system_load(wait):
+	var amount = properties['load_per_request'] / cpu
+	var duration = properties['load_per_request'] / (cpu*2)
 	
 	sysload = sysload + amount
-	duration = duration*(1+sysload)
+	duration *= (1+sysload)
 	var timer = get_tree().create_timer(wait+duration)
 	timer.connect('timeout',self, "end_system_load", [amount])
 	
@@ -90,7 +94,7 @@ func calculate_response_time():
 	if sysload < 0.9:
 		wait = 0.5*sysload
 	else:
-		wait = 10
+		wait = 2
 	generate_system_load(wait)
 
 	yield(get_tree().create_timer(wait), "timeout")
@@ -114,17 +118,17 @@ func upgrade():
 	level.money -= upgrade_cost
 	instance_size = instance_family + "-" + str(cpu)
 	if cpu == cpu_max:
-		$ConfigWindow/Info/UpgradeInstance.disabled = true
+		$Meta/ConfigWindow/Info/UpgradeInstance.disabled = true
 	
 func _on_ToggleConfig_pressed():
-	if $ConfigWindow.visible:
-		$ConfigWindow.visible = false
-		$ToggleConfig/Icon.icon_name = "wrench"
-		$ToggleConfig/Icon.modulate = Color(0.7,0.7,0.7,1)
+	if $Meta/ConfigWindow.visible:
+		$Meta/ConfigWindow.visible = false
+		$Meta/ToggleConfig/Icon.icon_name = "wrench"
+		$Meta/ToggleConfig/Icon.modulate = Color(0.7,0.7,0.7,1)
 	else:
-		$ConfigWindow.visible = true
-		$ToggleConfig/Icon.icon_name = "window-close"
-		$ToggleConfig/Icon.modulate = Color(1,0,0,0.8)
+		$Meta/ConfigWindow.visible = true
+		$Meta/ToggleConfig/Icon.icon_name = "window-close"
+		$Meta/ToggleConfig/Icon.modulate = Color(1,0,0,0.8)
 
 
 func _on_Name_text_changed(text):

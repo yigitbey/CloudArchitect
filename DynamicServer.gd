@@ -8,7 +8,7 @@ func _init():
 	
 
 func _on_DatabaseConfig_text_changed():
-	db = $ConfigWindow/Database/DatabaseConfig.text
+	db = $Meta/ConfigWindow/Database/DatabaseConfig.text
 
 #move this to Server and then override it
 func process_request(req):

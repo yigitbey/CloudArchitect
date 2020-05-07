@@ -64,19 +64,24 @@ shape = SubResource( 1 )
 frames = SubResource( 2 )
 animation = "Database"
 
-[node name="DNSNameLabel" type="Label" parent="."]
+[node name="Meta" type="Node2D" parent="."]
+z_index = 10
+z_as_relative = false
+
+[node name="DNSNameLabel" type="Label" parent="Meta"]
 margin_left = -47.3266
 margin_top = 53.3723
 margin_right = 47.6734
-margin_bottom = 67.3723
+margin_bottom = 74.3723
 theme = SubResource( 5 )
 text = "dns_name"
 align = 1
+max_lines_visible = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ConfigWindow" type="TabContainer" parent="."]
+[node name="ConfigWindow" type="TabContainer" parent="Meta"]
 margin_left = 62.0
 margin_top = -42.0
 margin_right = 323.0
@@ -86,7 +91,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Info" type="Control" parent="ConfigWindow"]
+[node name="Info" type="Control" parent="Meta/ConfigWindow"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -95,7 +100,7 @@ margin_right = -4.0
 margin_bottom = -4.0
 rect_min_size = Vector2( 0, 15 )
 
-[node name="NameLabel" type="Label" parent="ConfigWindow/Info"]
+[node name="NameLabel" type="Label" parent="Meta/ConfigWindow/Info"]
 margin_top = 0.774063
 margin_right = 93.0
 margin_bottom = 14.7741
@@ -104,7 +109,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Name" type="LineEdit" parent="ConfigWindow/Info"]
+[node name="Name" type="LineEdit" parent="Meta/ConfigWindow/Info"]
 margin_left = 98.0
 margin_top = -3.0
 margin_right = 183.0
@@ -114,7 +119,7 @@ text = "10.0.0.0"
 max_length = 12
 caret_blink = true
 
-[node name="InstanceSizeLabel" type="Label" parent="ConfigWindow/Info"]
+[node name="InstanceSizeLabel" type="Label" parent="Meta/ConfigWindow/Info"]
 margin_top = 39.0
 margin_right = 93.0
 margin_bottom = 53.0
@@ -123,7 +128,7 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="InstanceSize" type="Label" parent="ConfigWindow/Info"]
+[node name="InstanceSize" type="Label" parent="Meta/ConfigWindow/Info"]
 margin_left = 97.0
 margin_top = 39.0
 margin_right = 184.0
@@ -133,7 +138,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="UpgradeInstance" type="Button" parent="ConfigWindow/Info"]
+[node name="UpgradeInstance" type="Button" parent="Meta/ConfigWindow/Info"]
 margin_left = 188.0
 margin_top = 36.0
 margin_right = 253.0
@@ -143,7 +148,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="IPLabel" type="Label" parent="ConfigWindow/Info"]
+[node name="IPLabel" type="Label" parent="Meta/ConfigWindow/Info"]
 margin_top = 21.0
 margin_right = 93.0
 margin_bottom = 35.0
@@ -152,7 +157,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="IP" type="Label" parent="ConfigWindow/Info"]
+[node name="IP" type="Label" parent="Meta/ConfigWindow/Info"]
 margin_left = 97.0
 margin_top = 21.0
 margin_right = 184.0
@@ -162,7 +167,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ToggleConfig" type="ToolButton" parent="."]
+[node name="ToggleConfig" type="ToolButton" parent="Meta"]
 margin_left = -71.9317
 margin_top = -42.2878
 margin_right = -51.9317
@@ -173,7 +178,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Icon" type="Label" parent="ToggleConfig"]
+[node name="Icon" type="Label" parent="Meta/ToggleConfig"]
 modulate = Color( 0.647059, 0.647059, 0.647059, 1 )
 margin_left = -3.0
 margin_right = 17.0
@@ -188,7 +193,7 @@ __meta__ = {
 }
 icon_name = "wrench"
 
-[node name="SysLoadBar" type="ProgressBar" parent="."]
+[node name="SysLoadBar" type="ProgressBar" parent="Meta"]
 margin_left = -71.5707
 margin_top = 26.0
 margin_right = -27.5707
@@ -201,6 +206,6 @@ percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="text_changed" from="ConfigWindow/Info/Name" to="." method="_on_Name_text_changed"]
-[connection signal="pressed" from="ConfigWindow/Info/UpgradeInstance" to="." method="upgrade"]
-[connection signal="pressed" from="ToggleConfig" to="." method="_on_ToggleConfig_pressed"]
+[connection signal="text_changed" from="Meta/ConfigWindow/Info/Name" to="." method="_on_Name_text_changed"]
+[connection signal="pressed" from="Meta/ConfigWindow/Info/UpgradeInstance" to="." method="upgrade"]
+[connection signal="pressed" from="Meta/ToggleConfig" to="." method="_on_ToggleConfig_pressed"]

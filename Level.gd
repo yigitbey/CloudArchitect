@@ -12,7 +12,11 @@ const Request = preload("res://Request.tscn")
 
 var iptable = {}
 
-export var money = 300
+export var product_cost_base = 30
+export var product_cost: float
+export var money = 300 setget set_money
+export var wave_income = 0
+
 export var wave = 0
 var waves = {}
 var objects = {}
@@ -71,8 +75,18 @@ func new_user_request(speed="slow"):
 	
 	request.send(speed)
 
+
+func set_money(val):
+	if money < val:
+		wave_income += val - money
+	money = val
+	
 func new_wave():
+	money -= product_cost
 	wave += 1
+	wave_income = 0
+	product_cost = product_cost_base * wave
+	
 	
 	if wave >= waves.size():
 		for i in range(0,30*wave):

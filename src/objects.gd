@@ -15,25 +15,29 @@ const json = """
 	  "name": "Static Server",
 	  "description": "Serves static content",
 	  "initial_cost": 20,
-	  "revenue": 1
+	  "revenue": 1,
+	  "load_per_request": 0.1
 	},
 	"DynamicServer":{
 	  "name": "Dynamic Server",
 	  "description": "Queries configured databases and returns dynamic content",
 	  "initial_cost": 100,
-	  "revenue": 5
+	  "revenue": 5,
+	  "load_per_request": 0.3
 	},
 	"LoadBalancer":{
 	  "name": "Load Balancer",
 	  "description": "Routes incoming traffic to configured servers",
 	  "initial_cost": 100,
-	  "revenue": 0
+	  "revenue": 0,
+	  "load_per_request": 0.1
 	},
 	"Database":{
 	  "name": "Database",
 	  "description": "Returns to DB queries",
 	  "initial_cost": 200,
-	  "revenue": 0
+	  "revenue": 0,
+	  "load_per_request":0.5
 	}
   },
   "waves":{

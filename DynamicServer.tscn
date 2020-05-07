@@ -1,29 +1,21 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Server.tscn" type="PackedScene" id=1]
 [ext_resource path="res://DynamicServer.gd" type="Script" id=2]
+[ext_resource path="res://addons/FontAwesome5/fa-solid-900.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 3 )
 
 [node name="Server" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="ConfigWindow" parent="." index="2"]
+[node name="ConfigWindow" parent="Meta" index="1"]
 margin_top = -46.0
 margin_right = 320.0
 margin_bottom = 46.0
 
-[node name="InstanceTypeLabel" parent="ConfigWindow/Info" index="2"]
-anchor_top = 0.696429
-anchor_bottom = 0.696429
-margin_left = -3.0
-margin_top = 0.0
-margin_right = 90.0
-margin_bottom = 14.0
-
-[node name="InstanceType" parent="ConfigWindow/Info" index="3"]
-margin_left = 92.0
-margin_right = 186.0
-
-[node name="Database" type="Control" parent="ConfigWindow" index="1"]
+[node name="Database" type="Control" parent="Meta/ConfigWindow" index="1"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -32,7 +24,7 @@ margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
 
-[node name="DatabaseConfig" type="TextEdit" parent="ConfigWindow/Database" index="0"]
+[node name="DatabaseConfig" type="TextEdit" parent="Meta/ConfigWindow/Database" index="0"]
 margin_left = 60.0
 margin_right = 180.0
 margin_bottom = 24.0
@@ -40,7 +32,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="ConfigWindow/Database" index="1"]
+[node name="Label" type="Label" parent="Meta/ConfigWindow/Database" index="1"]
 margin_top = 5.0
 margin_right = 57.0
 margin_bottom = 19.0
@@ -49,7 +41,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DatabaseConfig2" type="TextEdit" parent="ConfigWindow/Database" index="2"]
+[node name="DatabaseConfig2" type="TextEdit" parent="Meta/ConfigWindow/Database" index="2"]
 margin_left = 60.0
 margin_top = 30.0
 margin_right = 180.0
@@ -59,7 +51,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="ConfigWindow/Database" index="3"]
+[node name="Label2" type="Label" parent="Meta/ConfigWindow/Database" index="3"]
 margin_top = 35.0
 margin_right = 57.0
 margin_bottom = 49.0
@@ -67,5 +59,8 @@ text = "Replicas:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="text_changed" from="ConfigWindow/Database/DatabaseConfig" to="." method="_on_DatabaseConfig_text_changed"]
-[connection signal="text_changed" from="ConfigWindow/Database/DatabaseConfig2" to="." method="_on_DatabaseConfig_text_changed"]
+
+[node name="Icon" parent="Meta/ToggleConfig" index="0"]
+custom_fonts/font = SubResource( 1 )
+[connection signal="text_changed" from="Meta/ConfigWindow/Database/DatabaseConfig" to="." method="_on_DatabaseConfig_text_changed"]
+[connection signal="text_changed" from="Meta/ConfigWindow/Database/DatabaseConfig2" to="." method="_on_DatabaseConfig_text_changed"]
