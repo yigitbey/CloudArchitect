@@ -14,7 +14,7 @@ var iptable = {}
 
 export var product_cost_base = 30
 export var product_cost: float
-export var money = 300 setget set_money
+export var money = 50 setget set_money
 export var wave_income = 0
 
 export var wave = 0
