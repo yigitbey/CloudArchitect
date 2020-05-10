@@ -135,3 +135,5 @@ func _on_ToggleConfig_pressed():
 
 func _on_Name_text_changed(text):
 	server_name = text
+	
+

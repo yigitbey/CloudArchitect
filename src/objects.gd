@@ -40,6 +40,9 @@ const json = """
 	  "load_per_request":0.2
 	}
   },
+  "week":{
+	"duration": 30
+  },
   "waves":{
 	"1":{
 		"requests":{

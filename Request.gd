@@ -14,7 +14,6 @@ var data: String
 var response: String
 var money = 0
 
-var created_at = 0
 var ttl = 10
 var alive = 0
 
@@ -25,7 +24,7 @@ func init2():
 func _ready():
 	set_animation("NE")
 	set_process(false)
-	created_at = OS.get_unix_time()
+	add_to_group("will_pause")
 
 func set_origin(orig):
 	origin = orig
@@ -35,7 +34,7 @@ func set_animation(anim):
 	$AnimatedSprite.animation = anim
 
 func _process(delta):
-	alive = OS.get_unix_time() - created_at
+	alive += delta
 	var move_distance = speed * delta
 	move_along_path(move_distance)
 	
@@ -100,9 +99,6 @@ func choose_animation(target):
 		$AnimatedSprite.animation = "SW"
 	if direction.x < 0 and direction.y < 0:
 		$AnimatedSprite.animation = "NW"	
-	
-
-
 
 func _on_Request_body_entered(body):
 	modulate.a = 0.2
@@ -111,4 +107,8 @@ func _on_Request_body_entered(body):
 func _on_Request_body_exited(body):
 	modulate.a = 1
 
-		
+func pause():
+	set_process(false)
+	
+func resume():
+	set_process(true)

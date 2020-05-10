@@ -23,6 +23,7 @@ var waves = {}
 var objects = {}
 
 export var dns_record: String
+var week_timer: Timer
 
 func _ready():
 	connect_signals()
@@ -30,10 +31,11 @@ func _ready():
 	objects = load("res://src/objects.gd")
 	objects = JSON.parse(objects.json).result
 	waves = objects['waves']
+	week_timer = $WeekTimer
+	week_timer.wait_time = objects['week']['duration']
 	
 func _process(_delta):
-	if money < 0:
-		$HUD/GameOver.blocking_popup_centered()
+	pass
 	
 func connect_signals():
 	$HUD.connect("user_request", self, "new_user_request")
@@ -87,8 +89,8 @@ func set_money(val):
 	if money < val:
 		wave_income += val - money
 	money = val
-	
-func new_wave():
+
+func new_wave():		
 	money -= product_cost
 	wave += 1
 	wave_income = 0
@@ -97,14 +99,18 @@ func new_wave():
 	
 	if wave >= waves.size():
 		for i in range(0,30*wave):
-			var timer = get_tree().create_timer(0.01+(100-wave)/1000)
-			yield(timer, "timeout")
-			new_user_request()
-	else:
-		var w = waves[str(wave)]
-		
-		for speed in ['slow', 'med', 'fast']:
-			for i in range(0,w['requests'][speed]):
-				var timer = get_tree().create_timer(w['time_between_requests'])
+				var timer = get_tree().create_timer(0.01+(100-wave)/1000)
 				yield(timer, "timeout")
 				new_user_request()
+	else:
+		var w = waves[str(wave)]
+		for speed in ['slow', 'med', 'fast']:
+			for i in range(0,w['requests'][speed]):
+					var timer = get_tree().create_timer(w['time_between_requests'])
+					yield(timer, "timeout")
+					new_user_request()
+
+
+func _on_WeekTimer_timeout():
+	if !$WeekTimer.one_shot:
+		new_wave()

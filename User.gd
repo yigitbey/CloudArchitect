@@ -18,6 +18,8 @@ func _init():
 
 	
 func init2():
+	entry_position[0] += (randi() % 20) - 10
+	entry_position[1] += (randi() % 20) - 10
 	position = entry_position
 	level = get_parent()
 	
@@ -29,7 +31,7 @@ func init2():
 	level.iptable[eth0.ip] = self
 
 func _ready():
-	pass
+	add_to_group("will_pause")
 
 func get_response(req):
 	var level = get_parent()
@@ -53,3 +55,9 @@ func get_response(req):
 	
 	req.queue_free()
 	queue_free()
+
+func pause():
+	set_process(false)
+	
+func resume():
+	set_process(true)
