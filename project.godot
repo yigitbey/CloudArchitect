@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="SRETowerDefense"
+config/name="CloudArchitect"
 run/main_scene="res://Level.tscn"
 config/icon="res://icon.png"
 
