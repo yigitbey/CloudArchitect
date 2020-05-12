@@ -21,7 +21,6 @@ var entity_buttons = [
 	"new_DynamicServer", "new_StaticServer"
 	]
 
-
 func _ready():
 	level = get_parent()
 	money_old = level.money
@@ -35,7 +34,7 @@ func _ready():
 func _process(delta):
 	if level.money <= 0:
 		$Panel/FinancesButton.modulate = Color(1,0,0,1)
-		$GameOver.blocking_popup_centered()
+		#$GameOver.popup_centered()
 	else:
 		$Panel/FinancesButton.modulate = Color(1,1,1,1)
 	
@@ -46,12 +45,12 @@ func _process(delta):
 			$Panel/FinancesButton.modulate = Color(0,1,0,1)
 			yield(get_tree().create_timer(0.3),"timeout")
 			
-	$Panel/FinancesButton.text = str(level.money)
-	$FinancesPanel/TotalBalance.text = str(level.money)
-	$FinancesPanel/ProductCost.text = str(level.product_cost)
-	$FinancesPanel/ServerCosts.text = str(level.server_costs)
-	$FinancesPanel/MonthlyIncome.text = str(level.month_income)
-	$FinancesPanel/Profit.text = str(level.month_income - level.product_cost - level.server_costs)
+	$Panel/FinancesButton.text = str(floor(level.money))
+	$FinancesPanel/TotalBalance.text = str(floor(level.money))
+	$FinancesPanel/ProductCost.text = str(floor(level.product_cost))
+	$FinancesPanel/ServerCosts.text = str(floor(level.server_costs))
+	$FinancesPanel/MonthlyIncome.text = str(floor(level.month_income))
+	$FinancesPanel/Profit.text = str(floor(level.month_income - level.product_cost - level.server_costs))
 	
 	money_old = level.money
 	$MonthControl/MonthProgress.value = level.month_timer.wait_time - level.month_timer.time_left
@@ -89,6 +88,7 @@ func _on_panel_button_mouse_exited():
 
 
 func _on_month_pressed():
+	level.money -= level.server_costs + level.product_cost #TODO: move to level
 	start_month()
 
 func start_month():

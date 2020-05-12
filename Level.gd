@@ -89,6 +89,7 @@ func new_user_request(is_malicious:bool, speed:String="slow"):
 func set_money(val):
 	if val < 0:	
 		game_over = true
+		#get_tree().paused = true
 		$HUD/GameOver.blocking_popup_centered()
 	
 	
@@ -122,4 +123,3 @@ func _on_MonthTimer_timeout():
 	
 	if !$MonthTimer.one_shot:
 		new_month()
-

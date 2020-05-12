@@ -269,7 +269,6 @@ outlines = [ PoolVector2Array( -65.2125, 680.606, 70.7875, 616.606, 70.7875, 48.
 script = ExtResource( 17 )
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
-pause_mode = 2
 __meta__ = {
 "_editor_description_": ""
 }
@@ -293,8 +292,8 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="HUD" parent="." instance=ExtResource( 21 )]
-
 [node name="MonthTimer" type="Timer" parent="."]
 wait_time = 30.0
+
+[node name="HUD" parent="." instance=ExtResource( 21 )]
 [connection signal="timeout" from="MonthTimer" to="." method="_on_MonthTimer_timeout"]
