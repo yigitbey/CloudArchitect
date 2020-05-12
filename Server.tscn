@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Server.gd" type="Script" id=1]
 [ext_resource path="res://assets/cloud/staticserver.png" type="Texture" id=2]
+[ext_resource path="res://assets/cloud/firewall.png" type="Texture" id=3]
 [ext_resource path="res://assets/cloud/lb.png" type="Texture" id=4]
 [ext_resource path="res://assets/cloud/dynamicserver.png" type="Texture" id=5]
 [ext_resource path="res://assets/cloud/database.png" type="Texture" id=6]
@@ -19,19 +20,24 @@ animations = [ {
 "name": "Database",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "DynamicServer",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
 "name": "StaticServer",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "DynamicServer",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "LoadBalancer",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "Firewall",
 "speed": 5.0
 } ]
 

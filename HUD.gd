@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Node2D
 
 signal user_request
 signal new_StaticServer
@@ -23,7 +23,7 @@ func _ready():
 	objects = JSON.parse(objects.json).result
 	
 	$WeekControl/WaveProgress.max_value = objects['week']['duration']
-	$Messages.add_item("")
+	$Messages/List.add_item("")
 	
 
 func _process(delta):
@@ -47,9 +47,11 @@ func _process(delta):
 	$WeekControl/WaveProgress.value = level.week_timer.wait_time - level.week_timer.time_left
 	$WeekControl/WaveProgress/Wave.text = str(level.wave)
 
+	for msg in level.messages:
+		add_message(level.messages.pop_front())
 	
-func _on_Request_pressed():
-	emit_signal('user_request')
+func _on_Request_pressed(is_malicious=false):
+	emit_signal('user_request', is_malicious)
 
 func _on_panel_button_pressed(ServerType):
 	emit_signal("new_"+ServerType)
@@ -105,9 +107,9 @@ func _on_GameOver_confirmed():
 
 
 func add_message(msg):
-	$Messages.add_item(msg)
-	$Messages.select($Messages.get_item_count()-1)
-	$Messages.ensure_current_is_visible()
+	$Messages/List.add_item(msg)
+	$Messages/List.select($Messages/List.get_item_count()-1)
+	$Messages/List.ensure_current_is_visible()
 
 func _on_AutoAdvance_pressed():
 	if level.week_timer.time_left == 0:

@@ -6,6 +6,7 @@ const StaticServer =  preload("res://StaticServer.tscn")
 const DynamicServer = preload("res://DynamicServer.tscn")
 const LoadBalancer = preload("res://LoadBalancer.tscn")
 const Database = preload("res://Database.tscn")
+const Firewall = preload("res://Firewall.tscn")
 
 const User = preload("res://User.tscn")
 const Request = preload("res://Request.tscn")
@@ -19,6 +20,8 @@ export var wave_income = 0
 export var game_over = true
 
 export var wave = 0
+
+var messages = []
 var waves = {}
 var objects = {}
 
@@ -67,17 +70,19 @@ func set_dns_record():
 	dns_record = $HUD.dns_record
 
 #todo: move this under user
-func new_user_request(speed="slow"):
+func new_user_request(is_malicious:bool, speed:String="slow"):
 	var user = new_instance("User")	
 	var request = new_instance("Request")
 
-	speed = user.speeds[speed]
+	var req_speed:int = user.speeds[speed]
 	request.data = "GET /"
 	request.set_origin(user)
 	request.route.append(user.eth0.ip)
 	request.route.append(dns_record)
 	
-	request.send(speed)
+	request.is_malicious = is_malicious
+	
+	request.send(req_speed)
 
 
 func set_money(val):
@@ -101,14 +106,21 @@ func new_wave():
 		for i in range(0,30*wave):
 				var timer = get_tree().create_timer(0.01+(100-wave)/1000)
 				yield(timer, "timeout")
-				new_user_request()
+				var is_malicious = false
+				if randf() < 0.08:
+					is_malicious = true
+				new_user_request(is_malicious)
 	else:
 		var w = waves[str(wave)]
 		for speed in ['slow', 'med', 'fast']:
 			for i in range(0,w['requests'][speed]):
 					var timer = get_tree().create_timer(w['time_between_requests'])
 					yield(timer, "timeout")
-					new_user_request()
+					var is_malicious = false
+					if randf() < w['requests']['malicious']:
+						is_malicious = true
+					new_user_request(is_malicious)
+			
 
 
 func _on_WeekTimer_timeout():

@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Server.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Firewall.gd" type="Script" id=2]
+[ext_resource path="res://addons/FontAwesome5/fa-solid-900.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 3 )
+
+[node name="Server" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="AnimatedSprite" parent="CollisionShape2D" index="0"]
+animation = "Firewall"
+
+[node name="ConfigWindow" parent="Meta" index="1"]
+margin_left = 60.0
+margin_top = -31.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Backend" type="Control" parent="Meta/ConfigWindow" index="1"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Label" type="Label" parent="Meta/ConfigWindow/Backend" index="0"]
+margin_left = 1.0
+margin_top = 3.0
+margin_right = 59.0
+margin_bottom = 17.0
+text = "Backend:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackendConfig" type="LineEdit" parent="Meta/ConfigWindow/Backend" index="1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 74.1008
+margin_top = 0.369751
+margin_right = -9.89917
+margin_bottom = -32.6302
+max_length = 14
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" parent="Meta/ToggleConfig" index="0"]
+custom_fonts/font = SubResource( 1 )
+[connection signal="text_changed" from="Meta/ConfigWindow/Backend/BackendConfig" to="." method="_on_BackendConfig_text_changed"]

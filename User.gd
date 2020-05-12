@@ -12,6 +12,8 @@ var normal_response_time = 10
 var fast_response_time = 5
 var slow_response_time = 30
 
+signal amount_stolen
+
 #TODO: clear if user.request is already freed (request timed out)
 func _init():
 	eth0 = Interface.new()
@@ -45,9 +47,15 @@ func get_response(req):
 	else:
 		rev_multiplier = 0
 	
+	if req.is_malicious and req.response != "403 Forbidden":
+		rev_multiplier *= (randi()%50) * -1
+		var amount_stolen = req.money*rev_multiplier
+		level.messages.append("Hackers managed to steal $" + str(amount_stolen*-1))
+	
 	level.money += req.money * rev_multiplier
+	
 
-	print ('request successful:' + req.response)
+	print ('request successful:' + req.response + str(req.money * rev_multiplier))
 	
 	#TODO: fix ip collision
 	level.iptable.erase(eth0.ip)

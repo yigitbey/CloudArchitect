@@ -13,6 +13,7 @@ var route = []
 var data: String
 var response: String
 var money = 0
+var is_malicious: bool
 
 var ttl = 10
 var alive = 0
@@ -43,11 +44,15 @@ func _process(delta):
 	if alive > ttl:
 		pass
 		
-		#queue_free()	
-	if alive > ttl*0.5:
-		$AnimatedSprite.modulate = Color(1,0.5,0)
-	if alive > ttl*0.8:
-		$AnimatedSprite.modulate = Color(1,0,0)
+		#queue_free()
+		
+	if is_malicious:
+		$AnimatedSprite.modulate = Color(0,0,0,0.7)
+	else:
+		if alive > ttl*0.5:
+			$AnimatedSprite.modulate = Color(1,0.5,0)
+		if alive > ttl*0.8:
+			$AnimatedSprite.modulate = Color(1,0,0)
 
 
 func arrived():
