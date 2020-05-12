@@ -44,7 +44,7 @@ const json = """
 	  "description": "Returns to DB queries",
 	  "initial_cost": 200,
 	  "revenue": 0,
-	  "load_per_request":0.2
+	  "load_per_request":0.06
 	}
   },
   "week":{

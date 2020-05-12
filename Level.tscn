@@ -294,7 +294,6 @@ __meta__ = {
 }
 
 [node name="HUD" parent="." instance=ExtResource( 21 )]
-follow_viewport_enable = true
 
 [node name="WeekTimer" type="Timer" parent="."]
 wait_time = 30.0

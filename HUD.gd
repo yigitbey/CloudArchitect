@@ -16,6 +16,12 @@ var objects
 var level
 var money_old = 0
 
+var entity_buttons = [
+	"new_LoadBalancer", "new_Database", "new_Firewall",
+	"new_DynamicServer", "new_StaticServer"
+	]
+
+
 func _ready():
 	level = get_parent()
 	money_old = level.money
@@ -46,6 +52,13 @@ func _process(delta):
 	money_old = level.money
 	$WeekControl/WaveProgress.value = level.week_timer.wait_time - level.week_timer.time_left
 	$WeekControl/WaveProgress/Wave.text = str(level.wave)
+	
+	for button in entity_buttons:
+		var b = get_node("Panel/"+button)
+		if objects['entities'][b.editor_description]['initial_cost'] > level.money:
+			b.disabled = true
+		else:
+			b.disabled = false
 
 	for msg in level.messages:
 		add_message(level.messages.pop_front())

@@ -119,7 +119,8 @@ hint_tooltip = "new load balancer"
 icon = ExtResource( 1 )
 expand_icon = true
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_editor_description_": "LoadBalancer"
 }
 
 [node name="new_Database" type="Button" parent="Panel"]
@@ -135,7 +136,8 @@ hint_tooltip = "Database"
 icon = ExtResource( 5 )
 expand_icon = true
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_editor_description_": "Database"
 }
 
 [node name="new_Firewall" type="Button" parent="Panel"]
@@ -151,7 +153,8 @@ hint_tooltip = "Firewall"
 icon = ExtResource( 10 )
 expand_icon = true
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_editor_description_": "Firewall"
 }
 
 [node name="new_DynamicServer" type="Button" parent="Panel"]
@@ -168,7 +171,8 @@ hint_tooltip = "Dynamic Server
 icon = ExtResource( 4 )
 expand_icon = true
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_editor_description_": "DynamicServer"
 }
 
 [node name="new_StaticServer" type="Button" parent="Panel"]
@@ -182,7 +186,8 @@ hint_tooltip = "Static Server"
 icon = ExtResource( 3 )
 expand_icon = true
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_editor_description_": "StaticServer"
 }
 
 [node name="MoneyLabel" type="Label" parent="Panel"]
