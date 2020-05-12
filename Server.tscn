@@ -89,10 +89,10 @@ __meta__ = {
 }
 
 [node name="ConfigWindow" type="TabContainer" parent="Meta"]
-margin_left = 62.0
+margin_left = 72.0
 margin_top = -42.0
-margin_right = 323.0
-margin_bottom = 48.0
+margin_right = 338.0
+margin_bottom = 64.0
 tab_align = 0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -146,9 +146,9 @@ __meta__ = {
 }
 
 [node name="UpgradeInstance" type="Button" parent="Meta/ConfigWindow/Info"]
-margin_left = 188.0
+margin_left = 193.0
 margin_top = 36.0
-margin_right = 253.0
+margin_right = 258.0
 margin_bottom = 56.0
 text = "Upgrade"
 __meta__ = {
@@ -170,6 +170,25 @@ margin_top = 21.0
 margin_right = 184.0
 margin_bottom = 35.0
 text = "10.0.0.0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CostLabel" type="Label" parent="Meta/ConfigWindow/Info"]
+margin_top = 55.0
+margin_right = 93.0
+margin_bottom = 69.0
+text = "Cost:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cost" type="Label" parent="Meta/ConfigWindow/Info"]
+margin_left = 97.0
+margin_top = 55.0
+margin_right = 184.0
+margin_bottom = 69.0
+text = "10"
 __meta__ = {
 "_edit_use_anchors_": false
 }

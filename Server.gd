@@ -66,6 +66,7 @@ func _process(_delta):
 	if sysload >= 0.9:
 		$CollisionShape2D.modulate = Color(1,0,0)
 		
+	$Meta/ConfigWindow/Info/Cost.text = str(properties['monthly_cost']*cpu)
 		
 func get_response(req):
 	var response = yield(process_request(req), "completed")

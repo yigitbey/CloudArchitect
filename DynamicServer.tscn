@@ -11,9 +11,9 @@ font_data = ExtResource( 3 )
 script = ExtResource( 2 )
 
 [node name="ConfigWindow" parent="Meta" index="1"]
-margin_top = -46.0
-margin_right = 320.0
-margin_bottom = 46.0
+margin_left = 60.0
+margin_top = -31.0
+margin_bottom = 70.0
 
 [node name="Database" type="Control" parent="Meta/ConfigWindow" index="1"]
 visible = false
