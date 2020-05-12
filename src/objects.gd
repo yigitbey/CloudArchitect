@@ -5,52 +5,56 @@ const json = """
   "entities": {
 	"User":{
 		"name": "User",
-		"initial_cost":0
+		"monthly_cost":0
 	},
 	"Request":{
 		"name": "Request",
-		"initial_cost": 0
+		"monthly_cost": 0
 	},
 	"StaticServer": {
 	  "name": "Static Server",
 	  "description": "Serves static content",
-	  "initial_cost": 20,
+	  "monthly_cost": 10,
 	  "revenue": 1,
 	  "load_per_request": 0.1
 	},
 	"DynamicServer":{
 	  "name": "Dynamic Server",
 	  "description": "Queries configured databases and returns dynamic content",
-	  "initial_cost": 100,
+	  "monthly_cost": 20,
 	  "revenue": 5,
 	  "load_per_request": 0.12
 	},
 	"LoadBalancer":{
 	  "name": "Load Balancer",
 	  "description": "Routes incoming traffic to configured servers",
-	  "initial_cost": 100,
+	  "monthly_cost": 20,
 	  "revenue": 0,
 	  "load_per_request": 0.025
 	},
 	"Firewall":{
 	  "name": "Firewall",
 	  "description": "Stops hackers",
-	  "initial_cost": 100,
+	  "monthly_cost": 40,
 	  "revenue": 0,
 	  "load_per_request": 0.025
 	},
 	"Database":{
 	  "name": "Database",
 	  "description": "Returns to DB queries",
-	  "initial_cost": 200,
+	  "monthly_cost": 20,
 	  "revenue": 0,
 	  "load_per_request":0.06
 	}
   },
-  "week":{
+  "month":{
 	"duration": 30
   },
-  "waves":{
+  "requests":{
+	"spread":"1/log(x+1)^2",
+	"malicious": 0.05
+  },
+  "months":{
 	"1":{
 		"requests":{
 			"slow": 20,

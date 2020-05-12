@@ -295,6 +295,6 @@ __meta__ = {
 
 [node name="HUD" parent="." instance=ExtResource( 21 )]
 
-[node name="WeekTimer" type="Timer" parent="."]
+[node name="MonthTimer" type="Timer" parent="."]
 wait_time = 30.0
-[connection signal="timeout" from="WeekTimer" to="." method="_on_WeekTimer_timeout"]
+[connection signal="timeout" from="MonthTimer" to="." method="_on_MonthTimer_timeout"]

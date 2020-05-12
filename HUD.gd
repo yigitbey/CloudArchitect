@@ -7,7 +7,7 @@ signal new_Database
 signal new_DynamicServer
 signal dns_change
 signal clear
-signal new_wave
+signal new_month
 
 signal new_server(ServerType)
 
@@ -28,37 +28,34 @@ func _ready():
 	objects = load("res://src/objects.gd")
 	objects = JSON.parse(objects.json).result
 	
-	$WeekControl/WaveProgress.max_value = objects['week']['duration']
+	$MonthControl/MonthProgress.max_value = objects['month']['duration']
 	$Messages/List.add_item("")
 	
 
 func _process(delta):
 	if level.money <= 0:
-		$Panel/Money.modulate = Color(1,0,0,1)
+		$Panel/FinancesButton.modulate = Color(1,0,0,1)
 		$GameOver.blocking_popup_centered()
 	else:
-		$Panel/Money.modulate = Color(1,1,1,1)
+		$Panel/FinancesButton.modulate = Color(1,1,1,1)
 	
 	if money_old > level.money:
-			$Panel/Money.modulate = Color(1,0,0,1)
+			$Panel/FinancesButton.modulate = Color(1,0,0,1)
 			yield(get_tree().create_timer(0.2),"timeout")
 	if money_old < level.money:
-			$Panel/Money.modulate = Color(0,1,0,1)
+			$Panel/FinancesButton.modulate = Color(0,1,0,1)
 			yield(get_tree().create_timer(0.3),"timeout")
 			
-	$Panel/Money.text = str(level.money)
-	$Panel/Cost.text = str(level.product_cost)
-	$Panel/WaveIncome.text = str(level.wave_income)
-	money_old = level.money
-	$WeekControl/WaveProgress.value = level.week_timer.wait_time - level.week_timer.time_left
-	$WeekControl/WaveProgress/Wave.text = str(level.wave)
+	$Panel/FinancesButton.text = str(level.money)
+	$FinancesPanel/TotalBalance.text = str(level.money)
+	$FinancesPanel/ProductCost.text = str(level.product_cost)
+	$FinancesPanel/ServerCosts.text = str(level.server_costs)
+	$FinancesPanel/MonthlyIncome.text = str(level.month_income)
+	$FinancesPanel/Profit.text = str(level.month_income - level.product_cost - level.server_costs)
 	
-	for button in entity_buttons:
-		var b = get_node("Panel/"+button)
-		if objects['entities'][b.editor_description]['initial_cost'] > level.money:
-			b.disabled = true
-		else:
-			b.disabled = false
+	money_old = level.money
+	$MonthControl/MonthProgress.value = level.month_timer.wait_time - level.month_timer.time_left
+	$MonthControl/MonthProgress/Month.text = str(level.month)
 
 	for msg in level.messages:
 		add_message(level.messages.pop_front())
@@ -83,7 +80,7 @@ func _on_panel_button_mouse_entered(ServerType):
 	
 	$ToolTip/InfoBox/Label.text = Server["name"]
 	$ToolTip/InfoBox/Description.text = Server["description"]
-	$ToolTip/InfoBox/GridContainer/Cost.text = str(Server["initial_cost"])
+	$ToolTip/InfoBox/GridContainer/Cost.text = str(Server["monthly_cost"])
 	$ToolTip/InfoBox/GridContainer/Revenue.text = str(Server["revenue"])
 	$ToolTip.visible = true
 
@@ -91,18 +88,18 @@ func _on_panel_button_mouse_exited():
 	$ToolTip.visible = false
 
 
-func _on_Wave_pressed():
-	start_week()
+func _on_month_pressed():
+	start_month()
 
-func start_week():
+func start_month():
 	if !dns_record:
 		add_message("DNS is not configured")
 		warning_animation($Panel/DNS)
 		return false
 	else:
-		level.week_timer.start()
-		add_message("Starting week.")
-		emit_signal("new_wave")
+		level.month_timer.start()
+		add_message("Starting month.")
+		emit_signal("new_month")
 		return true
 
 func warning_animation(container):
@@ -125,20 +122,26 @@ func add_message(msg):
 	$Messages/List.ensure_current_is_visible()
 
 func _on_AutoAdvance_pressed():
-	if level.week_timer.time_left == 0:
-		if start_week():
-			$WeekControl/AutoAdvance/FontAwesome.icon_name = "history"
+	if level.month_timer.time_left == 0:
+		if start_month():
+			$MonthControl/AutoAdvance/FontAwesome.icon_name = "history"
 			add_message("Auto advance on")
-			$WeekControl/AutoAdvance.pressed = true
+			$MonthControl/AutoAdvance.pressed = true
 		else:
-			$WeekControl/AutoAdvance.pressed = false
+			$MonthControl/AutoAdvance.pressed = false
 	else:
-		if $WeekControl/AutoAdvance.pressed:
-			level.week_timer.one_shot = false
-			level.week_timer.paused = false
-			$WeekControl/AutoAdvance.pressed = true
+		if $MonthControl/AutoAdvance.pressed:
+			level.month_timer.one_shot = false
+			level.month_timer.paused = false
+			$MonthControl/AutoAdvance.pressed = true
 			add_message("Auto advance on")
 		else:
-			level.week_timer.one_shot = true
-			$WeekControl/AutoAdvance.pressed = false
+			level.month_timer.one_shot = true
+			$MonthControl/AutoAdvance.pressed = false
 			add_message("Auto advance off")
+
+func _on_FinancesButton_toggled(button_pressed):
+	if button_pressed:
+		$FinancesPanel.show()
+	else:
+		$FinancesPanel.hide()

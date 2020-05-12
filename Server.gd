@@ -15,8 +15,8 @@ var type: String
 var properties = {}
 var server_name: String
 var cpu = 1
-const cpu_max = 8
-var instance_family = "a1-medium"
+const cpu_max = 64
+var instance_family = "m4-standard"
 var instance_size: String
 
 func init2():
@@ -33,8 +33,7 @@ func init2():
 	$Meta/ConfigWindow/Info/Name.text = server_name
 	$Meta/ConfigWindow/Info/IP.text = server_name
 	$Meta/ConfigWindow/Info/InstanceSize.text = instance_size
-	
-	level.money -= properties['initial_cost']	
+
 	
 func _ready():
 	$Meta/ConfigWindow.visible = false
@@ -112,12 +111,11 @@ func process_request(req):
 	
 func upgrade():
 	cpu *= 2
-	var upgrade_cost = properties['initial_cost']*cpu
+	var upgrade_cost = properties['monthly_cost']*cpu
 	var new = $CollisionShape2D/AnimatedSprite.duplicate()
 	new.name = "cpu"+str(cpu)
 	new.position[1] = -25*(log(cpu)/log(2))
 	$CollisionShape2D.add_child(new)
-	level.money -= upgrade_cost
 	instance_size = instance_family + "-" + str(cpu)
 	if cpu == cpu_max:
 		$Meta/ConfigWindow/Info/UpgradeInstance.disabled = true

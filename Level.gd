@@ -15,34 +15,35 @@ var iptable = {}
 
 export var product_cost_base = 30
 export var product_cost: float
-export var money = 130 setget set_money
-export var wave_income = 0
+export var money = 250 setget set_money
+export var month_income = 0
 export var game_over = true
-
-export var wave = 0
+export var server_costs = 0
+export var month = 0
 
 var messages = []
-var waves = {}
+var months = {}
 var objects = {}
 
 export var dns_record: String
-var week_timer: Timer
+var month_timer: Timer
 
 func _ready():
+	randomize()
 	connect_signals()
 	
 	objects = load("res://src/objects.gd")
 	objects = JSON.parse(objects.json).result
-	waves = objects['waves']
-	week_timer = $WeekTimer
-	week_timer.wait_time = objects['week']['duration']
+	months = objects['months']
+	month_timer = $MonthTimer
+	month_timer.wait_time = objects['month']['duration']
 	
 func _process(_delta):
-	pass
+	server_costs = calculate_server_cost()
 	
 func connect_signals():
 	$HUD.connect("user_request", self, "new_user_request")
-	$HUD.connect("new_wave", self, "new_wave")
+	$HUD.connect("new_month", self, "new_month")
 	$HUD.connect('dns_change', self, 'set_dns_record')
 	
 	$HUD.connect('new_server', self, 'new_instance')
@@ -92,37 +93,33 @@ func set_money(val):
 	
 	
 	if money < val:
-		wave_income += val - money
+		month_income += val - money
 	money = val
 
-func new_wave():		
-	money -= product_cost
-	wave += 1
-	wave_income = 0
-	product_cost = product_cost_base * wave
-	
-	
-	if wave >= waves.size():
-		for i in range(0,30*wave):
-				var timer = get_tree().create_timer(0.01+(100-wave)/1000)
-				yield(timer, "timeout")
-				var is_malicious = false
-				if randf() < 0.08:
-					is_malicious = true
-				new_user_request(is_malicious)
-	else:
-		var w = waves[str(wave)]
-		for speed in ['slow', 'med', 'fast']:
-			for i in range(0,w['requests'][speed]):
-					var timer = get_tree().create_timer(w['time_between_requests'])
-					yield(timer, "timeout")
-					var is_malicious = false
-					if randf() < w['requests']['malicious']:
-						is_malicious = true
-					new_user_request(is_malicious)
-			
+func new_month():
+	month += 1
+	month_income = 0
+	product_cost = product_cost_base * month
+	server_costs = calculate_server_cost()
 
+	var spread:float = 1/(log(month+1)*log(month+1))	
+	while month_timer.time_left:
+		var is_malicious = false
+		if randf() < objects['requests']['malicious'] and month>=3:
+			is_malicious = true
+		new_user_request(is_malicious)
+		yield(get_tree().create_timer(spread), "timeout")
 
-func _on_WeekTimer_timeout():
-	if !$WeekTimer.one_shot:
-		new_wave()
+func calculate_server_cost():
+	server_costs = 0
+	for s in iptable.values():
+		if s.properties['monthly_cost']:
+			server_costs += s.properties['monthly_cost']*s.cpu	
+	return server_costs
+	
+func _on_MonthTimer_timeout():
+	money -= server_costs + product_cost
+	
+	if !$MonthTimer.one_shot:
+		new_month()
+

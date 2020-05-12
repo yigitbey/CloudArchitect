@@ -12,6 +12,8 @@ var normal_response_time = 10
 var fast_response_time = 5
 var slow_response_time = 30
 
+var properties = {}
+var type = "User"
 signal amount_stolen
 
 #TODO: clear if user.request is already freed (request timed out)
@@ -34,6 +36,10 @@ func init2():
 
 func _ready():
 	add_to_group("will_pause")
+
+	var objects = load("res://src/objects.gd")
+	objects = JSON.parse(objects.json).result
+	properties = objects['entities'][type]
 
 func get_response(req):
 	var level = get_parent()

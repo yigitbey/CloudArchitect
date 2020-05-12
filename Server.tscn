@@ -15,14 +15,14 @@ radius = 177.757
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "LoadBalancer",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
 "name": "Database",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "StaticServer",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ) ],
@@ -30,9 +30,9 @@ animations = [ {
 "name": "DynamicServer",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ) ],
+"frames": [ ExtResource( 2 ) ],
 "loop": true,
-"name": "LoadBalancer",
+"name": "StaticServer",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ) ],
