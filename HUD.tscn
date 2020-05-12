@@ -213,12 +213,12 @@ __meta__ = {
 }
 
 [node name="CostLabel" type="Label" parent="Panel"]
-margin_left = 1166.0
+margin_left = 1164.0
 margin_top = 6.0
-margin_right = 1251.0
+margin_right = 1252.0
 margin_bottom = 20.0
 rect_pivot_offset = Vector2( 74, 10.9999 )
-text = "Weekly Cost:"
+text = "Monthly Cost:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -235,12 +235,12 @@ __meta__ = {
 }
 
 [node name="WaveIncomeLabel" type="Label" parent="Panel"]
-margin_left = 1166.0
+margin_left = 1164.0
 margin_top = 23.0
-margin_right = 1270.0
+margin_right = 1273.0
 margin_bottom = 37.0
 rect_pivot_offset = Vector2( 74, 10.9999 )
-text = "Weekly Income:"
+text = "Monthly Income:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -484,7 +484,7 @@ margin_top = 6.0
 margin_right = 56.0
 margin_bottom = 20.0
 rect_pivot_offset = Vector2( 74, 10.9999 )
-text = "Week:"
+text = "Month:"
 align = 1
 valign = 1
 __meta__ = {

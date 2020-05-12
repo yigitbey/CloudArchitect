@@ -18,7 +18,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Servers" type="Control" parent="Meta/ConfigWindow" index="1"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -29,6 +28,8 @@ margin_bottom = -4.0
 [node name="BackendConfig" type="TextEdit" parent="Meta/ConfigWindow/Servers" index="0"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+text = "<server_ip_1>
+<server_ip_2>"
 __meta__ = {
 "_edit_use_anchors_": false
 }
