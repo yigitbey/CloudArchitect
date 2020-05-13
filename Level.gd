@@ -29,6 +29,7 @@ export var dns_record: String
 var month_timer: Timer
 
 func _ready():
+	get_tree().paused = false
 	randomize()
 	connect_signals()
 	
@@ -91,7 +92,6 @@ func set_money(val):
 		game_over = true
 		#get_tree().paused = true
 		$HUD/GameOver.blocking_popup_centered()
-	
 	
 	if money < val:
 		month_income += val - money
