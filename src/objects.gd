@@ -15,14 +15,14 @@ const json = """
 	  "name": "Static Server",
 	  "description": "Serves static content",
 	  "monthly_cost": 10,
-	  "revenue": 1,
+	  "revenue": 0.8,
 	  "load_per_request": 0.1
 	},
 	"DynamicServer":{
 	  "name": "Dynamic Server",
 	  "description": "Queries configured databases and returns dynamic content",
 	  "monthly_cost": 20,
-	  "revenue": 5,
+	  "revenue": 2,
 	  "load_per_request": 0.12
 	},
 	"LoadBalancer":{
@@ -35,14 +35,14 @@ const json = """
 	"Firewall":{
 	  "name": "Firewall",
 	  "description": "Stops hackers",
-	  "monthly_cost": 40,
+	  "monthly_cost": 80,
 	  "revenue": 0,
-	  "load_per_request": 0.025
+	  "load_per_request": 0.1
 	},
 	"Database":{
 	  "name": "Database",
 	  "description": "Returns to DB queries",
-	  "monthly_cost": 20,
+	  "monthly_cost": 40,
 	  "revenue": 0,
 	  "load_per_request":0.06
 	}
@@ -52,7 +52,7 @@ const json = """
   },
   "requests":{
 	"spread":"1/log(x+1)^2",
-	"malicious": 0.05
+	"malicious": 0.01
   },
   "months":{
 	"1":{

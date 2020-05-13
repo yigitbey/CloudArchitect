@@ -18,6 +18,7 @@ var cpu = 1
 const cpu_max = 64
 var instance_family = "m4-standard"
 var instance_size: String
+var config_warning: bool = false
 
 func init2():
 	instance_size = instance_family + "-" + str(cpu)
@@ -67,6 +68,11 @@ func _process(_delta):
 		$CollisionShape2D.modulate = Color(1,0,0)
 		
 	$Meta/ConfigWindow/Info/Cost.text = str(properties['monthly_cost']*cpu)
+	
+	if config_warning:
+		$Meta/ToggleConfig.modulate = Color(1,0.2,0.2,1)
+	else:
+		$Meta/ToggleConfig.modulate = Color(1,1,1,1)
 		
 func get_response(req):
 	var response = yield(process_request(req), "completed")
@@ -134,5 +140,3 @@ func _on_ToggleConfig_pressed():
 
 func _on_Name_text_changed(text):
 	server_name = text
-	
-

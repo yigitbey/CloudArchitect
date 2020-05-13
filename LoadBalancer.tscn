@@ -28,14 +28,37 @@ margin_right = -4.0
 margin_bottom = -4.0
 
 [node name="BackendConfig" type="TextEdit" parent="Meta/ConfigWindow/Servers" index="0"]
+modulate = Color( 1, 0.196078, 0.196078, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 78.0
+margin_top = -1.0
+margin_right = -3.0
+margin_bottom = -1.0
 text = "<server_ip_1>
 <server_ip_2>"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label" type="Label" parent="Meta/ConfigWindow/Servers" index="1"]
+margin_right = 51.0
+margin_bottom = 14.0
+text = "Servers:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Meta/ConfigWindow/Servers" index="2"]
+margin_left = 1.66434
+margin_top = 19.9721
+margin_right = 42.6643
+margin_bottom = 39.9721
+text = "Save"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Icon" parent="Meta/ToggleConfig" index="0"]
 custom_fonts/font = SubResource( 1 )
-[connection signal="text_changed" from="Meta/ConfigWindow/Servers/BackendConfig" to="." method="_on_BackendConfig_text_changed"]
+[connection signal="pressed" from="Meta/ConfigWindow/Servers/Button" to="." method="_on_BackendConfig_text_changed"]

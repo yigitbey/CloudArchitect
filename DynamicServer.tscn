@@ -25,6 +25,7 @@ margin_right = -4.0
 margin_bottom = -4.0
 
 [node name="DatabaseConfig" type="TextEdit" parent="Meta/ConfigWindow/Database" index="0"]
+modulate = Color( 1, 0.196078, 0.196078, 1 )
 margin_left = 60.0
 margin_right = 180.0
 margin_bottom = 24.0

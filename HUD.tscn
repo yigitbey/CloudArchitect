@@ -23,7 +23,7 @@ font_data = SubResource( 1 )
 [sub_resource type="Theme" id=3]
 default_font = SubResource( 2 )
 
-[sub_resource type="StyleBoxFlat" id=17]
+[sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.0980392, 0.368627, 0.0313726, 1 )
 corner_radius_top_left = 3
 corner_radius_top_right = 3
@@ -32,7 +32,7 @@ corner_radius_bottom_left = 3
 shadow_size = 3
 shadow_offset = Vector2( 2, 2 )
 
-[sub_resource type="Theme" id=18]
+[sub_resource type="Theme" id=5]
 Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
 Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
@@ -41,11 +41,11 @@ Button/constants/hseparation = 2
 Button/fonts/font = null
 Button/styles/disabled = null
 Button/styles/focus = null
-Button/styles/hover = SubResource( 17 )
-Button/styles/normal = SubResource( 17 )
-Button/styles/pressed = SubResource( 17 )
+Button/styles/hover = SubResource( 4 )
+Button/styles/normal = SubResource( 4 )
+Button/styles/pressed = SubResource( 4 )
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.172549, 0.231373, 0.258824, 0.670588 )
 corner_radius_top_left = 5
 corner_radius_top_right = 5
@@ -53,23 +53,23 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 corner_detail = 20
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=7]
 size = 10
 font_data = ExtResource( 8 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=8]
 size = 10
 font_data = ExtResource( 8 )
 
-[sub_resource type="StyleBoxFlat" id=7]
+[sub_resource type="StyleBoxFlat" id=9]
 bg_color = Color( 0.0823529, 0.494118, 0.156863, 0.709804 )
 corner_detail = 20
 
-[sub_resource type="StyleBoxFlat" id=8]
+[sub_resource type="StyleBoxFlat" id=10]
 
-[sub_resource type="StyleBoxEmpty" id=9]
+[sub_resource type="StyleBoxEmpty" id=11]
 
-[sub_resource type="Theme" id=10]
+[sub_resource type="Theme" id=12]
 default_font = ExtResource( 9 )
 VScrollBar/icons/decrement = null
 VScrollBar/icons/decrement_highlight = null
@@ -78,12 +78,8 @@ VScrollBar/icons/increment_highlight = null
 VScrollBar/styles/grabber = null
 VScrollBar/styles/grabber_highlight = null
 VScrollBar/styles/grabber_pressed = null
-VScrollBar/styles/scroll = SubResource( 9 )
+VScrollBar/styles/scroll = SubResource( 11 )
 VScrollBar/styles/scroll_focus = null
-
-[sub_resource type="StyleBoxEmpty" id=11]
-
-[sub_resource type="StyleBoxEmpty" id=12]
 
 [sub_resource type="StyleBoxEmpty" id=13]
 
@@ -92,6 +88,10 @@ VScrollBar/styles/scroll_focus = null
 [sub_resource type="StyleBoxEmpty" id=15]
 
 [sub_resource type="StyleBoxEmpty" id=16]
+
+[sub_resource type="StyleBoxEmpty" id=17]
+
+[sub_resource type="StyleBoxEmpty" id=18]
 
 [node name="HUD" type="Node2D"]
 pause_mode = 2
@@ -224,7 +224,7 @@ margin_left = 928.0
 margin_top = 8.0
 margin_right = 1012.0
 margin_bottom = 34.0
-theme = SubResource( 18 )
+theme = SubResource( 5 )
 toggle_mode = true
 text = "300"
 icon = ExtResource( 11 )
@@ -316,57 +316,70 @@ modulate = Color( 1, 1, 1, 0.588235 )
 margin_left = 1032.0
 margin_top = 24.0
 margin_right = 1192.0
-margin_bottom = 184.0
+margin_bottom = 176.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ClearUsers" type="Button" parent="DebugPanel"]
-margin_left = 16.0
-margin_top = 35.0
-margin_right = 139.0
-margin_bottom = 59.0
+margin_left = 8.0
+margin_top = 19.0
+margin_right = 131.0
+margin_bottom = 43.0
 text = "clear users"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Request" type="Button" parent="DebugPanel"]
-margin_left = 16.0
-margin_top = 64.0
-margin_right = 152.0
-margin_bottom = 88.0
+margin_left = 8.0
+margin_top = 46.0
+margin_right = 144.0
+margin_bottom = 70.0
 text = "send request"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Hacker" type="Button" parent="DebugPanel"]
-margin_left = 16.0
-margin_top = 93.0
-margin_right = 152.0
-margin_bottom = 117.0
+margin_left = 8.0
+margin_top = 73.0
+margin_right = 144.0
+margin_bottom = 97.0
 text = "send hacker"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Money1000" type="Button" parent="DebugPanel"]
-margin_left = 16.0
-margin_top = 122.0
-margin_right = 152.0
-margin_bottom = 146.0
+margin_left = 8.0
+margin_top = 99.0
+margin_right = 144.0
+margin_bottom = 123.0
 text = "money +=1000"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Restart" type="Button" parent="DebugPanel"]
+margin_left = 8.0
+margin_top = 126.0
+margin_right = 144.0
+margin_bottom = 150.0
+text = "restart"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="PanelLabel" type="Label" parent="DebugPanel"]
-margin_left = 20.0
+margin_left = 8.0
 margin_top = 4.0
-margin_right = 100.0
+margin_right = 88.0
 margin_bottom = 18.0
 text = "Debug Panel"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="GameOver" type="AcceptDialog" parent="."]
 pause_mode = 2
@@ -413,7 +426,7 @@ margin_left = 1028.0
 margin_top = 760.0
 margin_right = 1196.0
 margin_bottom = 800.0
-custom_styles/panel = SubResource( 4 )
+custom_styles/panel = SubResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -432,7 +445,7 @@ __meta__ = {
 [node name="FontAwesome" type="Label" parent="MonthControl/AutoAdvance"]
 margin_right = 24.0
 margin_bottom = 24.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
 text = ""
 align = 1
 valign = 1
@@ -456,7 +469,7 @@ __meta__ = {
 [node name="FontAwesome" type="Label" parent="MonthControl/new_Wave"]
 margin_right = 24.0
 margin_bottom = 24.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 8 )
 text = ""
 align = 1
 valign = 1
@@ -472,8 +485,8 @@ margin_left = 36.0
 margin_top = 8.0
 margin_right = 136.0
 margin_bottom = 32.0
-custom_styles/fg = SubResource( 7 )
-custom_styles/bg = SubResource( 8 )
+custom_styles/fg = SubResource( 9 )
+custom_styles/bg = SubResource( 10 )
 max_value = 30.0
 value = 15.0
 percent_visible = false
@@ -517,13 +530,13 @@ margin_bottom = 160.0
 rect_min_size = Vector2( 168, 40 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme = SubResource( 10 )
-custom_styles/cursor = SubResource( 11 )
-custom_styles/selected_focus = SubResource( 12 )
-custom_styles/bg_focus = SubResource( 13 )
-custom_styles/cursor_unfocused = SubResource( 14 )
-custom_styles/selected = SubResource( 15 )
-custom_styles/bg = SubResource( 16 )
+theme = SubResource( 12 )
+custom_styles/cursor = SubResource( 13 )
+custom_styles/selected_focus = SubResource( 14 )
+custom_styles/bg_focus = SubResource( 15 )
+custom_styles/cursor_unfocused = SubResource( 16 )
+custom_styles/selected = SubResource( 17 )
+custom_styles/bg = SubResource( 18 )
 custom_colors/guide_color = Color( 0, 0, 0, 0 )
 custom_colors/font_color_selected = Color( 1, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -689,6 +702,7 @@ __meta__ = {
 [connection signal="pressed" from="DebugPanel/Request" to="." method="_on_Request_pressed"]
 [connection signal="pressed" from="DebugPanel/Hacker" to="." method="_on_Request_pressed" binds= [ true ]]
 [connection signal="pressed" from="DebugPanel/Money1000" to="." method="_on_Money1000_pressed"]
+[connection signal="pressed" from="DebugPanel/Restart" to="." method="_on_restart_pressed"]
 [connection signal="confirmed" from="GameOver" to="." method="_on_GameOver_confirmed"]
 [connection signal="pressed" from="MonthControl/AutoAdvance" to="." method="_on_AutoAdvance_pressed"]
 [connection signal="pressed" from="MonthControl/new_Wave" to="." method="_on_month_pressed"]

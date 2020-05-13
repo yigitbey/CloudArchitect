@@ -42,6 +42,7 @@ __meta__ = {
 }
 
 [node name="BackendConfig" type="LineEdit" parent="Meta/ConfigWindow/Backend" index="1"]
+modulate = Color( 1, 0.196078, 0.196078, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 74.1008

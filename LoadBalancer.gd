@@ -6,10 +6,20 @@ export var backend_config = []
 
 func _init():
 	type = "LoadBalancer"
+	config_warning = true
 
 func _on_BackendConfig_text_changed():
 	backend_config = $Meta/ConfigWindow/Servers/BackendConfig.text.split('\n')
-
+	if len(backend_config):	
+		config_warning = false
+		
+		for b in backend_config:
+			if not b in level.iptable:
+				config_warning = true
+		
+	if config_warning == false:
+		$Meta/ConfigWindow/Servers/BackendConfig.modulate = Color(1,1,1,1)
+		
 #move to Server
 func process_request(req):
 	print('loadbalancer')

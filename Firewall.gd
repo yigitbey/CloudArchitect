@@ -6,9 +6,13 @@ export var backend_config = []
 
 func _init():
 	type = "Firewall"
+	config_warning = true
 
 func _on_BackendConfig_text_changed(text):
 	backend_config = text
+	if backend_config in level.iptable:
+		config_warning = false
+		$Meta/ConfigWindow/Backend/BackendConfig.modulate = Color(1,1,1,1)
 
 #move to Server
 func process_request(req):

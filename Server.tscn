@@ -41,17 +41,17 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="DynamicFontData" id=3]
+[sub_resource type="DynamicFontData" id=4]
 hinting = 1
 font_path = "res://assets/fonts/SourceCodePro-Regular.ttf"
 
-[sub_resource type="DynamicFont" id=4]
-font_data = SubResource( 3 )
+[sub_resource type="DynamicFont" id=5]
+font_data = SubResource( 4 )
 
-[sub_resource type="Theme" id=5]
-default_font = SubResource( 4 )
+[sub_resource type="Theme" id=6]
+default_font = SubResource( 5 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=7]
 font_data = ExtResource( 9 )
 
 [node name="Server" type="KinematicBody2D"]
@@ -73,14 +73,13 @@ animation = "Database"
 
 [node name="Meta" type="Node2D" parent="."]
 z_index = 10
-z_as_relative = false
 
 [node name="DNSNameLabel" type="Label" parent="Meta"]
 margin_left = -47.3266
 margin_top = 53.3723
 margin_right = 47.6734
 margin_bottom = 74.3723
-theme = SubResource( 5 )
+theme = SubResource( 6 )
 text = "dns_name"
 align = 1
 max_lines_visible = 1
@@ -194,10 +193,12 @@ __meta__ = {
 }
 
 [node name="ToggleConfig" type="ToolButton" parent="Meta"]
-margin_left = -71.9317
-margin_top = -42.2878
-margin_right = -51.9317
-margin_bottom = -20.2878
+show_behind_parent = true
+margin_left = -72.0
+margin_top = -42.0
+margin_right = -52.0
+margin_bottom = -20.0
+rect_min_size = Vector2( 20, 20 )
 focus_mode = 0
 enabled_focus_mode = 0
 __meta__ = {
@@ -206,10 +207,11 @@ __meta__ = {
 
 [node name="Icon" type="Label" parent="Meta/ToggleConfig"]
 modulate = Color( 0.647059, 0.647059, 0.647059, 1 )
+show_behind_parent = true
 margin_left = -3.0
 margin_right = 17.0
 margin_bottom = 22.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 text = ""
 align = 1
 valign = 1
@@ -220,6 +222,7 @@ __meta__ = {
 icon_name = "wrench"
 
 [node name="SysLoadBar" type="ProgressBar" parent="Meta"]
+show_behind_parent = true
 margin_left = -71.5707
 margin_top = 26.0
 margin_right = -27.5707

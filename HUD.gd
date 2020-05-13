@@ -92,7 +92,7 @@ func _on_month_pressed():
 	start_month()
 
 func start_month():
-	if !dns_record:
+	if not dns_record in level.iptable:
 		add_message("DNS is not configured")
 		warning_animation($Panel/DNS)
 		return false
@@ -127,6 +127,7 @@ func _on_AutoAdvance_pressed():
 			$MonthControl/AutoAdvance/FontAwesome.icon_name = "history"
 			add_message("Auto advance on")
 			$MonthControl/AutoAdvance.pressed = true
+			level.month_timer.one_shot = false
 		else:
 			$MonthControl/AutoAdvance.pressed = false
 	else:
@@ -145,3 +146,7 @@ func _on_FinancesButton_toggled(button_pressed):
 		$FinancesPanel.show()
 	else:
 		$FinancesPanel.hide()
+
+
+func _on_restart_pressed():
+	get_tree().change_scene("res://Level.tscn")
