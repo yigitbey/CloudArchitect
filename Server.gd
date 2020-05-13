@@ -28,7 +28,12 @@ func init2():
 	position = Vector2(200+margin, 200+margin)
 	
 	eth0 = Interface.new()
+	#todo: this should be in interface
+	while eth0.ip in level.iptable:
+		eth0 = Interface.new()
+	
 	level.iptable[eth0.ip] = self
+	
 
 	server_name = eth0.ip
 	$Meta/ConfigWindow/Info/Name.text = server_name
