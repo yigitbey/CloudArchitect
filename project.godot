@@ -35,6 +35,10 @@ window/stretch/aspect="keep_width"
 
 enabled=PoolStringArray( "FontAwesome5" )
 
+[gui]
+
+theme/use_hidpi=true
+
 [input]
 
 wheel_up={

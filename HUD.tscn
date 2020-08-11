@@ -313,59 +313,59 @@ __meta__ = {
 
 [node name="DebugPanel" type="Panel" parent="."]
 modulate = Color( 1, 1, 1, 0.588235 )
-margin_left = 1032.0
+margin_left = 1006.0
 margin_top = 24.0
-margin_right = 1192.0
-margin_bottom = 176.0
+margin_right = 1198.0
+margin_bottom = 256.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ClearUsers" type="Button" parent="DebugPanel"]
-margin_left = 8.0
-margin_top = 19.0
-margin_right = 131.0
-margin_bottom = 43.0
+margin_left = 6.0
+margin_top = 30.0
+margin_right = 148.0
+margin_bottom = 67.0
 text = "clear users"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Request" type="Button" parent="DebugPanel"]
-margin_left = 8.0
-margin_top = 46.0
-margin_right = 144.0
-margin_bottom = 70.0
+margin_left = 6.0
+margin_top = 69.0
+margin_right = 171.0
+margin_bottom = 106.0
 text = "send request"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Hacker" type="Button" parent="DebugPanel"]
-margin_left = 8.0
-margin_top = 73.0
-margin_right = 144.0
-margin_bottom = 97.0
+margin_left = 6.0
+margin_top = 108.0
+margin_right = 161.0
+margin_bottom = 145.0
 text = "send hacker"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Money1000" type="Button" parent="DebugPanel"]
-margin_left = 8.0
-margin_top = 99.0
-margin_right = 144.0
-margin_bottom = 123.0
+margin_left = 6.0
+margin_top = 147.0
+margin_right = 189.0
+margin_bottom = 184.0
 text = "money +=1000"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Restart" type="Button" parent="DebugPanel"]
-margin_left = 8.0
-margin_top = 126.0
-margin_right = 144.0
-margin_bottom = 150.0
+margin_left = 6.0
+margin_top = 185.0
+margin_right = 142.0
+margin_bottom = 222.0
 text = "restart"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -396,25 +396,25 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GameOver"]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 184.0
-margin_bottom = 40.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 210.0
+margin_bottom = 74.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label2" type="Label" parent="GameOver/VBoxContainer"]
-margin_right = 176.0
-margin_bottom = 14.0
+margin_right = 194.0
+margin_bottom = 25.0
 text = "Score:"
 align = 1
 
 [node name="Score" type="Label" parent="GameOver/VBoxContainer"]
-margin_top = 18.0
-margin_right = 176.0
-margin_bottom = 32.0
+margin_top = 33.0
+margin_right = 194.0
+margin_bottom = 58.0
 text = "60"
 align = 1
 __meta__ = {
