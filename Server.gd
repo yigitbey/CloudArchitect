@@ -134,14 +134,26 @@ func upgrade():
 	
 func _on_ToggleConfig_pressed():
 	if $Meta/ConfigWindow.visible:
-		$Meta/ConfigWindow.visible = false
-		$Meta/ToggleConfig/Icon.icon_name = "wrench"
-		$Meta/ToggleConfig/Icon.modulate = Color(0.7,0.7,0.7,1)
+		hide_config()
 	else:
-		$Meta/ConfigWindow.visible = true
-		$Meta/ToggleConfig/Icon.icon_name = "window-close"
-		$Meta/ToggleConfig/Icon.modulate = Color(1,0,0,0.8)
-
+		for server in level.iptable.values():
+			#server.hide_config() #Don't hide other config windows
+			pass
+		show_config()
+			
+func hide_config():
+	$CollisionShape2D.z_index = 0
+	$Meta.z_index = 0
+	$Meta/ConfigWindow.visible = false
+	$Meta/ToggleConfig/Icon.icon_name = "wrench"
+	$Meta/ToggleConfig/Icon.modulate = Color(0.7,0.7,0.7,1)
+	
+func show_config():
+	$CollisionShape2D.z_index = 10 
+	$Meta.z_index = 10
+	$Meta/ConfigWindow.visible = true
+	$Meta/ToggleConfig/Icon.icon_name = "window-close"
+	$Meta/ToggleConfig/Icon.modulate = Color(1,0,0,0.8)
 
 func _on_Name_text_changed(text):
 	server_name = text
