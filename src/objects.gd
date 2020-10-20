@@ -22,7 +22,7 @@ const json = """
 	  "name": "Dynamic Server",
 	  "description": "Queries configured databases and returns dynamic content",
 	  "monthly_cost": 20,
-	  "revenue": 2,
+	  "revenue": 3.2,
 	  "load_per_request": 0.12
 	},
 	"LoadBalancer":{
