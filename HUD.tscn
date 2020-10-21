@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://assets/cloud/lb.png" type="Texture" id=1]
 [ext_resource path="res://HUD.gd" type="Script" id=2]
@@ -93,6 +93,9 @@ VScrollBar/styles/scroll_focus = null
 
 [sub_resource type="StyleBoxEmpty" id=18]
 
+[sub_resource type="StyleBoxFlat" id=23]
+bg_color = Color( 0.113725, 0.113725, 0.113725, 1 )
+
 [sub_resource type="StyleBoxEmpty" id=22]
 
 [sub_resource type="StyleBoxEmpty" id=19]
@@ -114,9 +117,9 @@ __meta__ = {
 }
 
 [node name="DNS" type="LineEdit" parent="Panel"]
-margin_left = 490.0
+margin_left = 1090.0
 margin_top = 7.0
-margin_right = 590.0
+margin_right = 1190.0
 margin_bottom = 33.0
 rect_clip_content = true
 hint_tooltip = "Entrypoint"
@@ -130,9 +133,9 @@ __meta__ = {
 }
 
 [node name="DNSLabel" type="Label" parent="Panel"]
-margin_left = 397.0
+margin_left = 997.0
 margin_top = 13.0
-margin_right = 486.0
+margin_right = 1086.0
 margin_bottom = 27.0
 text = "DNS A record:"
 __meta__ = {
@@ -224,10 +227,10 @@ __meta__ = {
 }
 
 [node name="FinancesButton" type="Button" parent="Panel"]
-margin_left = 1107.0
-margin_top = 8.0
-margin_right = 1191.0
-margin_bottom = 34.0
+margin_left = 566.0
+margin_top = -760.0
+margin_right = 650.0
+margin_bottom = -734.0
 theme = SubResource( 5 )
 toggle_mode = true
 text = "300"
@@ -389,9 +392,9 @@ __meta__ = {
 [node name="GameOver" type="AcceptDialog" parent="."]
 pause_mode = 2
 visible = true
-margin_left = 576.0
+margin_left = 536.0
 margin_top = 336.0
-margin_right = 768.0
+margin_right = 728.0
 margin_bottom = 412.0
 popup_exclusive = true
 window_title = "Game Over!"
@@ -427,9 +430,9 @@ __meta__ = {
 }
 
 [node name="MonthControl" type="Panel" parent="."]
-margin_left = 223.0
+margin_left = 535.0
 margin_top = 760.0
-margin_right = 391.0
+margin_right = 703.0
 margin_bottom = 800.0
 custom_styles/panel = SubResource( 6 )
 __meta__ = {
@@ -554,20 +557,20 @@ __meta__ = {
 }
 
 [node name="FinancesPanel" type="Panel" parent="."]
-visible = false
-margin_left = 992.0
-margin_top = 512.0
-margin_right = 1192.0
-margin_bottom = 712.0
+margin_left = 382.0
+margin_top = 32.0
+margin_right = 838.0
+margin_bottom = 96.0
+custom_styles/panel = SubResource( 23 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TotalBalanceLabel" type="Label" parent="FinancesPanel"]
-margin_left = 24.0
-margin_top = 162.0
-margin_right = 80.0
-margin_bottom = 176.0
+margin_left = 392.0
+margin_top = 24.0
+margin_right = 448.0
+margin_bottom = 38.0
 rect_pivot_offset = Vector2( 74, 10.9999 )
 text = "Balance:"
 __meta__ = {
@@ -575,10 +578,10 @@ __meta__ = {
 }
 
 [node name="TotalBalance" type="Label" parent="FinancesPanel"]
-margin_left = 128.0
-margin_top = 162.0
-margin_right = 200.0
-margin_bottom = 176.0
+margin_left = 392.0
+margin_top = 40.0
+margin_right = 464.0
+margin_bottom = 54.0
 rect_pivot_offset = Vector2( 18, 10.9999 )
 text = "5"
 __meta__ = {
@@ -586,10 +589,10 @@ __meta__ = {
 }
 
 [node name="ProductCostLabel" type="Label" parent="FinancesPanel"]
-margin_left = 24.0
-margin_top = 42.0
-margin_right = 128.0
-margin_bottom = 56.0
+margin_left = 16.0
+margin_top = 26.0
+margin_right = 120.0
+margin_bottom = 40.0
 rect_pivot_offset = Vector2( 74, 10.9999 )
 text = "Product Cost:"
 __meta__ = {
@@ -597,10 +600,10 @@ __meta__ = {
 }
 
 [node name="ProductCost" type="Label" parent="FinancesPanel"]
-margin_left = 128.0
-margin_top = 42.0
-margin_right = 200.0
-margin_bottom = 56.0
+margin_left = 16.0
+margin_top = 40.0
+margin_right = 72.0
+margin_bottom = 54.0
 rect_pivot_offset = Vector2( 18, 10.9999 )
 text = "0"
 __meta__ = {
@@ -608,10 +611,10 @@ __meta__ = {
 }
 
 [node name="ServerCostsLabel" type="Label" parent="FinancesPanel"]
-margin_left = 24.0
-margin_top = 66.0
-margin_right = 128.0
-margin_bottom = 80.0
+margin_left = 113.0
+margin_top = 25.0
+margin_right = 217.0
+margin_bottom = 39.0
 rect_pivot_offset = Vector2( 74, 10.9999 )
 text = "Server Costs:"
 __meta__ = {
@@ -619,10 +622,10 @@ __meta__ = {
 }
 
 [node name="ServerCosts" type="Label" parent="FinancesPanel"]
-margin_left = 128.0
-margin_top = 66.0
-margin_right = 200.0
-margin_bottom = 80.0
+margin_left = 112.0
+margin_top = 41.0
+margin_right = 184.0
+margin_bottom = 55.0
 rect_pivot_offset = Vector2( 18, 10.9999 )
 text = "0"
 __meta__ = {
@@ -630,10 +633,10 @@ __meta__ = {
 }
 
 [node name="MonthlyIncomeLabel" type="Label" parent="FinancesPanel"]
-margin_left = 24.0
-margin_top = 90.0
-margin_right = 128.0
-margin_bottom = 104.0
+margin_left = 213.0
+margin_top = 24.0
+margin_right = 317.0
+margin_bottom = 38.0
 rect_pivot_offset = Vector2( 74, 10.9999 )
 text = "Income:"
 __meta__ = {
@@ -641,10 +644,10 @@ __meta__ = {
 }
 
 [node name="MonthlyIncome" type="Label" parent="FinancesPanel"]
-margin_left = 128.0
-margin_top = 90.0
-margin_right = 200.0
-margin_bottom = 104.0
+margin_left = 214.0
+margin_top = 40.0
+margin_right = 286.0
+margin_bottom = 54.0
 rect_pivot_offset = Vector2( 18, 10.9999 )
 text = "0"
 __meta__ = {
@@ -652,10 +655,10 @@ __meta__ = {
 }
 
 [node name="ProfitLabel" type="Label" parent="FinancesPanel"]
-margin_left = 24.0
-margin_top = 114.0
-margin_right = 128.0
-margin_bottom = 128.0
+margin_left = 304.0
+margin_top = 24.0
+margin_right = 408.0
+margin_bottom = 38.0
 rect_pivot_offset = Vector2( 74, 10.9999 )
 text = "Net Profit:"
 __meta__ = {
@@ -663,10 +666,10 @@ __meta__ = {
 }
 
 [node name="Profit" type="Label" parent="FinancesPanel"]
-margin_left = 128.0
-margin_top = 114.0
-margin_right = 200.0
-margin_bottom = 128.0
+margin_left = 304.0
+margin_top = 40.0
+margin_right = 376.0
+margin_bottom = 54.0
 rect_pivot_offset = Vector2( 18, 10.9999 )
 text = "0"
 __meta__ = {
@@ -675,16 +678,19 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="FinancesPanel"]
 margin_left = 16.0
-margin_top = 18.0
+margin_top = 8.0
 margin_right = 68.0
-margin_bottom = 32.0
-text = "Monthly"
+margin_bottom = 22.0
+text = "Monthly Finance"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label2" type="Label" parent="FinancesPanel"]
-margin_left = 16.0
-margin_top = 138.0
-margin_right = 68.0
-margin_bottom = 152.0
+margin_left = 392.0
+margin_top = 8.0
+margin_right = 444.0
+margin_bottom = 22.0
 text = "Total"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -694,9 +700,10 @@ __meta__ = {
 position = Vector2( 960, 384 )
 
 [node name="List" type="ItemList" parent="Logs"]
-margin_left = -120.0
-margin_right = 232.0
-margin_bottom = 376.0
+margin_left = -64.0
+margin_top = -224.0
+margin_right = 240.0
+margin_bottom = 288.0
 custom_styles/selected = SubResource( 22 )
 custom_styles/bg = SubResource( 19 )
 custom_colors/guide_color = Color( 0, 0, 0, 0 )

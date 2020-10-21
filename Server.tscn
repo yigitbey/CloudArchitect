@@ -56,6 +56,7 @@ font_data = ExtResource( 9 )
 
 [node name="Server" type="KinematicBody2D"]
 pause_mode = 2
+z_index = 1
 input_pickable = true
 script = ExtResource( 1 )
 __meta__ = {

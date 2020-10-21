@@ -48,8 +48,6 @@ func _process(delta):
 	if alive > ttl:
 		pass
 		
-		#queue_free()
-		
 	if is_malicious:
 		$AnimatedSprite.modulate = Color(0,0,0,0.7)
 	else:
@@ -59,9 +57,9 @@ func _process(delta):
 			$AnimatedSprite.modulate = Color(1,0,0)
 
 	if status_code == 200:
-		$AnimatedSprite.modulate = Color(0,0.2,0)
+		$AnimatedSprite.modulate = Color(0,1,0)
 	elif status_code == 404:
-		$AnimatedSprite.modulate = Color(0.2,0,0)
+		$AnimatedSprite.modulate = Color(1,0,0)
 
 
 func arrived():
