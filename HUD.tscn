@@ -110,9 +110,9 @@ __meta__ = {
 }
 
 [node name="DNS" type="LineEdit" parent="Panel"]
-margin_left = 330.0
+margin_left = 490.0
 margin_top = 7.0
-margin_right = 430.0
+margin_right = 590.0
 margin_bottom = 33.0
 rect_clip_content = true
 hint_tooltip = "Entrypoint"
@@ -126,9 +126,9 @@ __meta__ = {
 }
 
 [node name="DNSLabel" type="Label" parent="Panel"]
-margin_left = 237.0
+margin_left = 397.0
 margin_top = 13.0
-margin_right = 326.0
+margin_right = 486.0
 margin_bottom = 27.0
 text = "DNS A record:"
 __meta__ = {
@@ -220,9 +220,9 @@ __meta__ = {
 }
 
 [node name="FinancesButton" type="Button" parent="Panel"]
-margin_left = 928.0
+margin_left = 1107.0
 margin_top = 8.0
-margin_right = 1012.0
+margin_right = 1191.0
 margin_bottom = 34.0
 theme = SubResource( 5 )
 toggle_mode = true
@@ -423,9 +423,9 @@ __meta__ = {
 }
 
 [node name="MonthControl" type="Panel" parent="."]
-margin_left = 1028.0
+margin_left = 223.0
 margin_top = 760.0
-margin_right = 1196.0
+margin_right = 391.0
 margin_bottom = 800.0
 custom_styles/panel = SubResource( 6 )
 __meta__ = {
@@ -455,6 +455,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 icon_size = 10
+icon_type = "solid"
 icon_name = "play"
 
 [node name="new_Wave" type="Button" parent="MonthControl"]
@@ -479,6 +480,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 icon_size = 10
+icon_type = "solid"
 icon_name = "forward"
 
 [node name="MonthProgress" type="ProgressBar" parent="MonthControl"]
