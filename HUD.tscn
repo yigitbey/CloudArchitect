@@ -312,8 +312,8 @@ __meta__ = {
 }
 
 [node name="DebugPanelToggle" type="Button" parent="."]
-margin_left = 1007.0
-margin_right = 1060.0
+margin_left = 7.0
+margin_right = 60.0
 margin_bottom = 20.0
 toggle_mode = true
 text = "Debug"
@@ -324,9 +324,9 @@ __meta__ = {
 [node name="DebugPanel" type="Panel" parent="."]
 visible = false
 modulate = Color( 1, 1, 1, 0.588235 )
-margin_left = 1006.0
+margin_left = 6.0
 margin_top = 24.0
-margin_right = 1198.0
+margin_right = 198.0
 margin_bottom = 232.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -437,7 +437,7 @@ margin_left = 8.0
 margin_top = 8.0
 margin_right = 32.0
 margin_bottom = 32.0
-hint_tooltip = "Play/Pause"
+hint_tooltip = "Auto advance on/off"
 toggle_mode = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -526,13 +526,14 @@ __meta__ = {
 [node name="Messages" type="Node2D" parent="."]
 
 [node name="List" type="ItemList" parent="Messages"]
-margin_left = 40.0
-margin_top = 43.0
-margin_right = 256.0
-margin_bottom = 160.0
+margin_left = 1008.0
+margin_top = 35.0
+margin_right = 1184.0
+margin_bottom = 152.0
+grow_horizontal = 0
 rect_min_size = Vector2( 168, 40 )
 size_flags_horizontal = 0
-size_flags_vertical = 0
+size_flags_vertical = 10
 theme = SubResource( 12 )
 custom_styles/cursor = SubResource( 13 )
 custom_styles/selected_focus = SubResource( 14 )
