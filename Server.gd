@@ -19,6 +19,7 @@ const cpu_max = 64
 var instance_family = "m4-standard"
 var instance_size: String
 var config_warning: bool = false
+var sizeup_animation_scale = 0.01
 
 func init2():
 	instance_size = instance_family + "-" + str(cpu)
@@ -80,10 +81,21 @@ func _process(_delta):
 		$Meta/ToggleConfig.modulate = Color(1,1,1,1)
 		
 func get_response(req):
+	request_animation()
 	var response = yield(process_request(req), "completed")
 
 	return_response(req, response)
 
+func request_animation():
+	$CollisionShape2D.scale.x += sizeup_animation_scale
+	$CollisionShape2D.scale.y += sizeup_animation_scale
+	var timer = get_tree().create_timer(0.1)
+	timer.connect('timeout',self, "_request_animation_end")
+
+func _request_animation_end():
+	$CollisionShape2D.scale.x -= sizeup_animation_scale
+	$CollisionShape2D.scale.y -= sizeup_animation_scale
+	
 func return_response(req, response):
 	if response: #temp bug workaround
 		req.response = req.response + response
