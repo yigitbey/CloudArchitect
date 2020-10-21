@@ -46,9 +46,7 @@ func connect_signals():
 	$HUD.connect("user_request", self, "new_user_request")
 	$HUD.connect("new_month", self, "new_month")
 	$HUD.connect('dns_change', self, 'set_dns_record')
-	
 	$HUD.connect('new_server', self, 'new_instance')
-
 	$HUD.connect('clear', self, 'clear')
 
 func clear():

@@ -311,21 +311,32 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="DebugPanelToggle" type="Button" parent="."]
+margin_left = 1007.0
+margin_right = 1060.0
+margin_bottom = 20.0
+toggle_mode = true
+text = "Debug"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="DebugPanel" type="Panel" parent="."]
+visible = false
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_left = 1006.0
 margin_top = 24.0
 margin_right = 1198.0
-margin_bottom = 256.0
+margin_bottom = 232.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ClearUsers" type="Button" parent="DebugPanel"]
 margin_left = 6.0
-margin_top = 30.0
+margin_top = 6.0
 margin_right = 148.0
-margin_bottom = 67.0
+margin_bottom = 43.0
 text = "clear users"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -333,9 +344,9 @@ __meta__ = {
 
 [node name="Request" type="Button" parent="DebugPanel"]
 margin_left = 6.0
-margin_top = 69.0
+margin_top = 45.0
 margin_right = 171.0
-margin_bottom = 106.0
+margin_bottom = 82.0
 text = "send request"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -343,9 +354,9 @@ __meta__ = {
 
 [node name="Hacker" type="Button" parent="DebugPanel"]
 margin_left = 6.0
-margin_top = 108.0
+margin_top = 84.0
 margin_right = 161.0
-margin_bottom = 145.0
+margin_bottom = 121.0
 text = "send hacker"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -353,9 +364,9 @@ __meta__ = {
 
 [node name="Money1000" type="Button" parent="DebugPanel"]
 margin_left = 6.0
-margin_top = 147.0
+margin_top = 123.0
 margin_right = 189.0
-margin_bottom = 184.0
+margin_bottom = 160.0
 text = "money +=1000"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -363,20 +374,10 @@ __meta__ = {
 
 [node name="Restart" type="Button" parent="DebugPanel"]
 margin_left = 6.0
-margin_top = 185.0
+margin_top = 161.0
 margin_right = 142.0
-margin_bottom = 222.0
+margin_bottom = 198.0
 text = "restart"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PanelLabel" type="Label" parent="DebugPanel"]
-margin_left = 8.0
-margin_top = 4.0
-margin_right = 88.0
-margin_bottom = 18.0
-text = "Debug Panel"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -396,25 +397,25 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GameOver"]
-margin_left = 16.0
-margin_top = 16.0
-margin_right = 210.0
-margin_bottom = 74.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 184.0
+margin_bottom = 40.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label2" type="Label" parent="GameOver/VBoxContainer"]
-margin_right = 194.0
-margin_bottom = 25.0
+margin_right = 176.0
+margin_bottom = 14.0
 text = "Score:"
 align = 1
 
 [node name="Score" type="Label" parent="GameOver/VBoxContainer"]
-margin_top = 33.0
-margin_right = 194.0
-margin_bottom = 58.0
+margin_top = 18.0
+margin_right = 176.0
+margin_bottom = 32.0
 text = "60"
 align = 1
 __meta__ = {
@@ -698,6 +699,7 @@ __meta__ = {
 [connection signal="mouse_exited" from="Panel/new_StaticServer" to="." method="_on_panel_button_mouse_exited"]
 [connection signal="pressed" from="Panel/new_StaticServer" to="." method="_on_panel_button_pressed" binds= [ "StaticServer" ]]
 [connection signal="toggled" from="Panel/FinancesButton" to="." method="_on_FinancesButton_toggled"]
+[connection signal="toggled" from="DebugPanelToggle" to="." method="_on_DebugPanelToggle_toggled"]
 [connection signal="pressed" from="DebugPanel/ClearUsers" to="." method="_on_ClearUsers_pressed"]
 [connection signal="pressed" from="DebugPanel/Request" to="." method="_on_Request_pressed"]
 [connection signal="pressed" from="DebugPanel/Hacker" to="." method="_on_Request_pressed" binds= [ true ]]

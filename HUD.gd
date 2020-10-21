@@ -90,6 +90,8 @@ func _on_panel_button_mouse_exited():
 func _on_month_pressed():
 	level.money -= level.server_costs + level.product_cost #TODO: move to level
 	start_month()
+	
+
 
 func start_month():
 	if not dns_record in level.iptable:
@@ -150,3 +152,10 @@ func _on_FinancesButton_toggled(button_pressed):
 
 func _on_restart_pressed():
 	get_tree().change_scene("res://Level.tscn")
+
+
+func _on_DebugPanelToggle_toggled(button_pressed):
+	if button_pressed:
+		$DebugPanel.show()
+	else:
+		$DebugPanel.hide()
