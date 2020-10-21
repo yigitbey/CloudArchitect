@@ -25,8 +25,12 @@ var messages = []
 var months = {}
 var objects = {}
 
+var request_logs = []
+
 export var dns_record: String
 var month_timer: Timer
+
+var request_types = ['static', 'dynamic']
 
 func _ready():
 	get_tree().paused = false
@@ -75,7 +79,20 @@ func new_user_request(is_malicious:bool, speed:String="slow"):
 	var request = new_instance("Request")
 
 	var req_speed:int = user.speeds[speed]
-	request.data = "GET /"
+
+	request.type = request_types[randi()%2]
+	var potential_urls = objects['request_urls'][request.type]
+	request.url = potential_urls[randi()%len(potential_urls)]
+	
+	if request.type == 'static':
+		request.method = 'GET'
+	else:
+		var methods = ['POST', 'PUT', 'PATCH']
+		request.method = methods[randi() % len(methods)]
+		
+	request.data = request.method + " " + request.url
+	#$HUD.add_log(request.data)
+	
 	request.set_origin(user)
 	request.route.append(user.eth0.ip)
 	request.route.append(dns_record)
@@ -84,6 +101,8 @@ func new_user_request(is_malicious:bool, speed:String="slow"):
 	
 	request.send(req_speed)
 
+func add_log(msg):
+	$HUD.add_log(msg)
 
 func set_money(val):
 	if val < 0:	

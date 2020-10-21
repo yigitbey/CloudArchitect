@@ -2,11 +2,10 @@ extends "res://Server.gd"
 
 export var db: String
 
-
 func _init():
 	type = "DynamicServer"
 	config_warning = true
-	
+	accepted_content_types = ['dynamic']	
 
 func _on_DatabaseConfig_text_changed():
 	db = $Meta/ConfigWindow/Database/DatabaseConfig.text

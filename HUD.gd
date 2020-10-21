@@ -122,6 +122,11 @@ func add_message(msg):
 	$Messages/List.add_item(msg)
 	$Messages/List.select($Messages/List.get_item_count()-1)
 	$Messages/List.ensure_current_is_visible()
+	
+func add_log(msg):
+	$Logs/List.add_item(msg)
+	$Logs/List.select($Logs/List.get_item_count()-1)
+	$Logs/List.ensure_current_is_visible()
 
 func _on_AutoAdvance_pressed():
 	if level.month_timer.time_left == 0:

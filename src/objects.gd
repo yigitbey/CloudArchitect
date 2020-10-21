@@ -46,14 +46,33 @@ const json = """
 	  "revenue": 0,
 	  "load_per_request":0.06
 	}
-  },
+	},
+  "request_urls": {
+	"static": [
+		"/index.html",
+		"assets/style.css",
+		"assets/app.js",
+		"assets/bg.png",
+		"assets/image.png",
+		"assets/logo.png"
+		],
+	"dynamic": [
+		"/api/add-to-cart",
+		"/api/delete",
+		"/api/pay",
+		"/api/create",
+		"/api/login",
+		"/api/logout",
+		"/api/register"
+		]
+  	},
   "month":{
 	"duration": 30
-  },
+	},
   "requests":{
 	"spread":"1/log(x+1)^2",
 	"malicious": 0.01
-  },
+	},
   "months":{
 	"1":{
 		"requests":{
@@ -100,7 +119,7 @@ const json = """
 		},
 		"time_between_requests": 0.1
 	},
-  }
+	}
 }
 """
 

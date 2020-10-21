@@ -14,6 +14,8 @@ var slow_response_time = 30
 
 var properties = {}
 var type = "User"
+
+var log_format = "%d %s %s Money earned: %.1f"
 signal amount_stolen
 
 #TODO: clear if user.request is already freed (request timed out)
@@ -58,14 +60,16 @@ func get_response(req):
 		var amount_stolen = req.money*rev_multiplier
 		level.messages.append("Hackers managed to steal $" + str(amount_stolen*-1))
 	
-	level.money += req.money * rev_multiplier
+	var income = 0
 	
-
-	print ('request successful:' + req.response + str(req.money * rev_multiplier))
+	if req.status_code == 200:
+		income = req.money * rev_multiplier
+		level.money += income
+		
+	level.add_log(log_format % [req.status_code, req.method, req.url, income])
 	
 	#TODO: fix ip collision
 	level.iptable.erase(eth0.ip)
-	
 	
 	req.queue_free()
 	queue_free()

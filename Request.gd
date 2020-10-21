@@ -18,6 +18,10 @@ var is_malicious: bool
 var ttl = 10
 var alive = 0
 
+var type: String
+var url: String
+var method: String
+var status_code: int
 
 func init2():
 	level = get_parent()
@@ -53,6 +57,11 @@ func _process(delta):
 			$AnimatedSprite.modulate = Color(1,0.5,0)
 		if alive > ttl*0.8:
 			$AnimatedSprite.modulate = Color(1,0,0)
+
+	if status_code == 200:
+		$AnimatedSprite.modulate = Color(0,0.2,0)
+	elif status_code == 404:
+		$AnimatedSprite.modulate = Color(0.2,0,0)
 
 
 func arrived():

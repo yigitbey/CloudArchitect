@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://assets/cloud/lb.png" type="Texture" id=1]
 [ext_resource path="res://HUD.gd" type="Script" id=2]
@@ -92,6 +92,10 @@ VScrollBar/styles/scroll_focus = null
 [sub_resource type="StyleBoxEmpty" id=17]
 
 [sub_resource type="StyleBoxEmpty" id=18]
+
+[sub_resource type="StyleBoxEmpty" id=22]
+
+[sub_resource type="StyleBoxEmpty" id=19]
 
 [node name="HUD" type="Node2D"]
 pause_mode = 2
@@ -682,6 +686,23 @@ margin_top = 138.0
 margin_right = 68.0
 margin_bottom = 152.0
 text = "Total"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Logs" type="Node2D" parent="."]
+position = Vector2( 960, 384 )
+
+[node name="List" type="ItemList" parent="Logs"]
+margin_left = -120.0
+margin_right = 232.0
+margin_bottom = 376.0
+custom_styles/selected = SubResource( 22 )
+custom_styles/bg = SubResource( 19 )
+custom_colors/guide_color = Color( 0, 0, 0, 0 )
+custom_colors/font_color_selected = Color( 1, 0.337255, 0.337255, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+max_text_lines = 50
 __meta__ = {
 "_edit_use_anchors_": false
 }

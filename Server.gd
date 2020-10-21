@@ -20,6 +20,7 @@ var instance_family = "m4-standard"
 var instance_size: String
 var config_warning: bool = false
 var sizeup_animation_scale = 0.01
+var accepted_content_types
 
 func init2():
 	instance_size = instance_family + "-" + str(cpu)
@@ -85,6 +86,12 @@ func get_response(req):
 	var response = yield(process_request(req), "completed")
 
 	return_response(req, response)
+	
+func check_content_type(req_type):
+	if req_type in accepted_content_types:
+		return true
+	else:
+		return false
 
 func request_animation():
 	$CollisionShape2D.scale.x += sizeup_animation_scale
@@ -99,6 +106,10 @@ func _request_animation_end():
 func return_response(req, response):
 	if response: #temp bug workaround
 		req.response = req.response + response
+		if check_content_type(req.type):
+			req.status_code = 200
+		else:
+			req.status_code = 404
 		req.send()
 
 func generate_system_load(wait):
