@@ -14,9 +14,12 @@ script = ExtResource( 2 )
 margin_left = 64.0
 margin_top = -31.0
 margin_right = 342.0
-margin_bottom = 72.0
+margin_bottom = 120.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="Info" parent="Meta/ConfigWindow" index="0"]
+size_flags_horizontal = 3
 
 [node name="Servers" type="Control" parent="Meta/ConfigWindow" index="1"]
 visible = false
@@ -27,33 +30,58 @@ margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
 
-[node name="BackendConfig" type="TextEdit" parent="Meta/ConfigWindow/Servers" index="0"]
+[node name="static_backend_config" type="TextEdit" parent="Meta/ConfigWindow/Servers" index="0"]
 modulate = Color( 1, 0.196078, 0.196078, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 78.0
 margin_top = -1.0
 margin_right = -3.0
-margin_bottom = -1.0
+margin_bottom = -76.0
 text = "<server_ip_1>
 <server_ip_2>"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Meta/ConfigWindow/Servers" index="1"]
+[node name="StaticBackend" type="Label" parent="Meta/ConfigWindow/Servers" index="1"]
 margin_right = 51.0
 margin_bottom = 14.0
-text = "Servers:"
+text = "/assets/*
+"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="Meta/ConfigWindow/Servers" index="2"]
-margin_left = 1.66434
-margin_top = 19.9721
-margin_right = 42.6643
-margin_bottom = 39.9721
+[node name="dynamic_backend_config" type="TextEdit" parent="Meta/ConfigWindow/Servers" index="2"]
+modulate = Color( 1, 0.196078, 0.196078, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 78.0
+margin_top = 49.0
+margin_right = -3.0
+margin_bottom = -26.0
+text = "<server_ip_1>
+<server_ip_2>"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DynamicBackend" type="Label" parent="Meta/ConfigWindow/Servers" index="3"]
+margin_top = 50.0
+margin_right = 59.0
+margin_bottom = 81.0
+text = "/api/*
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="saveButton" type="Button" parent="Meta/ConfigWindow/Servers" index="4"]
+margin_left = 1.0
+margin_top = 88.0
+margin_right = 42.0
+margin_bottom = 108.0
 text = "Save"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -61,4 +89,4 @@ __meta__ = {
 
 [node name="Icon" parent="Meta/ToggleConfig" index="0"]
 custom_fonts/font = SubResource( 1 )
-[connection signal="pressed" from="Meta/ConfigWindow/Servers/Button" to="." method="_on_BackendConfig_text_changed"]
+[connection signal="pressed" from="Meta/ConfigWindow/Servers/saveButton" to="." method="_on_saveButton_pressed"]

@@ -16,6 +16,8 @@ var objects
 var level
 var money_old = 0
 
+var max_logs = 20
+
 var entity_buttons = [
 	"new_LoadBalancer", "new_Database", "new_Firewall",
 	"new_DynamicServer", "new_StaticServer"
@@ -90,7 +92,6 @@ func _on_panel_button_mouse_exited():
 func _on_month_pressed():
 	level.money -= level.server_costs + level.product_cost #TODO: move to level
 	start_month()
-	
 
 
 func start_month():
@@ -123,6 +124,9 @@ func add_message(msg):
 	$Messages/List.ensure_current_is_visible()
 	
 func add_log(msg, error=false):
+	if $Logs/List.get_item_count() > max_logs:
+		$Logs/List.remove_item(0)
+		
 	$Logs/List.add_item(msg)
 	var current = $Logs/List.get_item_count()-1
 	if error:

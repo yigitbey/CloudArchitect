@@ -7,6 +7,7 @@ export var backend_config = []
 func _init():
 	type = "Firewall"
 	config_warning = true
+	accepted_content_types = ['dynamic', 'static']
 
 func _on_BackendConfig_text_changed(text):
 	backend_config = text

@@ -639,22 +639,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Logs" type="Node2D" parent="."]
-position = Vector2( 960, 384 )
+[node name="Logs" type="Control" parent="."]
+margin_left = 875.0
+margin_top = 160.0
+margin_right = 1179.0
+margin_bottom = 656.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="List" type="ItemList" parent="Logs"]
-margin_left = -88.0
-margin_top = -216.0
-margin_right = 216.0
-margin_bottom = 256.0
+margin_left = 5.0
+margin_top = 472.0
+margin_right = 309.0
+margin_bottom = 496.0
 grow_vertical = 0
 custom_styles/selected = SubResource( 22 )
 custom_styles/bg = SubResource( 21 )
 custom_colors/guide_color = Color( 0, 0, 0, 0 )
 custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-max_text_lines = 50
 auto_height = true
+same_column_width = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

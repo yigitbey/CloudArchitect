@@ -49,12 +49,13 @@ const json = """
 	},
   "request_urls": {
 	"static": [
-		"/index.html",
-		"assets/style.css",
-		"assets/app.js",
-		"assets/bg.png",
-		"assets/image.png",
-		"assets/logo.png"
+		"/assets/index.html",
+		"/assets/style.css",
+		"/assets/app.js",
+		"/assets/main.js",
+		"/assets/bg.png",
+		"/assets/image.png",
+		"/assets/logo.png"
 		],
 	"dynamic": [
 		"/api/add-to-cart",

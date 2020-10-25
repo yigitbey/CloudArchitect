@@ -2,27 +2,38 @@ extends "res://Server.gd"
 
 signal backend_config_changed
 
-export var backend_config = []
+var backend_config = []
+var config = {}
 
 func _init():
 	type = "LoadBalancer"
 	config_warning = true
+	accepted_content_types = ['dynamic', 'static']
 
-func _on_BackendConfig_text_changed():
-	backend_config = $Meta/ConfigWindow/Servers/BackendConfig.text.split('\n')
-	if len(backend_config):	
+func _on_saveButton_pressed():
+	_save_config('static_backend_config')
+	_save_config('dynamic_backend_config')
+	
+func _save_config(config_type):
+	config[config_type] = $Meta/ConfigWindow/Servers.get_node(config_type).text.split('\n')
+	
+	if len(config[config_type]):	
 		config_warning = false
 		
-		for b in backend_config:
+		for b in config[config_type]:
 			if not b in level.iptable:
 				config_warning = true
 		
 	if config_warning == false:
-		$Meta/ConfigWindow/Servers/BackendConfig.modulate = Color(1,1,1,1)
+		$Meta/ConfigWindow/Servers.get_node(config_type).modulate = Color(1,1,1,1)
 		
 #move to Server
 func process_request(req):
-	print('loadbalancer')
+	if req.type == 'dynamic':
+		backend_config = config['dynamic_backend_config']
+	else:
+		backend_config = config['static_backend_config']
+	
 	var server = backend_config[randi() % backend_config.size()]
 	if req.response:
 		req.route.pop_back()
