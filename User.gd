@@ -15,7 +15,7 @@ var slow_response_time = 30
 var properties = {}
 var type = "User"
 
-var log_format = "%d %s %s Money earned: %.1f"
+var log_format = "%d %s %s Revenue: %.1f"
 signal amount_stolen
 
 #TODO: clear if user.request is already freed (request timed out)

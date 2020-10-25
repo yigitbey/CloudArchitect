@@ -38,6 +38,7 @@ func init2():
 	
 
 	server_name = eth0.ip
+	OS.set_clipboard(eth0.ip)
 	$Meta/ConfigWindow/Info/Name.text = server_name
 	$Meta/ConfigWindow/Info/IP.text = server_name
 	$Meta/ConfigWindow/Info/InstanceSize.text = instance_size
