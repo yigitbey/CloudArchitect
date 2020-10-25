@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Server.gd" type="Script" id=1]
 [ext_resource path="res://assets/cloud/staticserver.png" type="Texture" id=2]
@@ -9,25 +9,50 @@
 [ext_resource path="res://monospace_font.tres" type="Theme" id=7]
 [ext_resource path="res://addons/FontAwesome5/FontAwesome.gd" type="Script" id=8]
 [ext_resource path="res://addons/FontAwesome5/fa-solid-900.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://addons/FontAwesome5/fa-regular-400.ttf" type="DynamicFontData" id=10]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="Animation" id=1]
+resource_name = "copy"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Meta/ClipBoard:icon_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.35 ),
+"transitions": PoolRealArray( 1, 2.82843 ),
+"update": 0,
+"values": [ 24, 16 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Meta/ClipBoard:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.05, 0.45 ),
+"transitions": PoolRealArray( 1, 1.23114 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="CircleShape2D" id=2]
 radius = 177.757
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "Firewall",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
 "name": "Database",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ) ],
+"frames": [ ExtResource( 2 ) ],
 "loop": true,
-"name": "LoadBalancer",
+"name": "StaticServer",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ) ],
@@ -35,23 +60,32 @@ animations = [ {
 "name": "DynamicServer",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ) ],
+"frames": [ ExtResource( 4 ) ],
 "loop": true,
-"name": "StaticServer",
+"name": "LoadBalancer",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "Firewall",
 "speed": 5.0
 } ]
 
-[sub_resource type="DynamicFontData" id=3]
+[sub_resource type="DynamicFontData" id=4]
 hinting = 1
 font_path = "res://assets/fonts/SourceCodePro-Regular.ttf"
 
-[sub_resource type="DynamicFont" id=4]
-font_data = SubResource( 3 )
+[sub_resource type="DynamicFont" id=5]
+font_data = SubResource( 4 )
 
-[sub_resource type="Theme" id=5]
-default_font = SubResource( 4 )
+[sub_resource type="Theme" id=6]
+default_font = SubResource( 5 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=7]
+size = 15
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=8]
 font_data = ExtResource( 9 )
 
 [node name="Server" type="KinematicBody2D"]
@@ -63,13 +97,17 @@ __meta__ = {
 "_edit_vertical_guides_": [ 60.7049 ]
 }
 
+[node name="ClipBoardAnimation" type="AnimationPlayer" parent="."]
+autoplay = "copy"
+anims/copy = SubResource( 1 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 4 )
 scale = Vector2( 0.25, 0.25 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="CollisionShape2D"]
-frames = SubResource( 2 )
+frames = SubResource( 3 )
 animation = "Database"
 
 [node name="Meta" type="Node2D" parent="."]
@@ -79,13 +117,31 @@ margin_left = -47.3266
 margin_top = 53.3723
 margin_right = 47.6734
 margin_bottom = 74.3723
-theme = SubResource( 5 )
+theme = SubResource( 6 )
 text = "dns_name"
 align = 1
 max_lines_visible = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ClipBoard" type="Label" parent="Meta"]
+visible = false
+margin_top = 80.0
+margin_right = 12.0
+margin_bottom = 96.0
+rect_scale = Vector2( 0.8, 0.8 )
+custom_fonts/font = SubResource( 7 )
+text = ""
+align = 1
+valign = 1
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+icon_size = 15
+icon_type = "regular"
+icon_name = "clipboard"
 
 [node name="ConfigWindow" type="TabContainer" parent="Meta"]
 margin_left = 72.0
@@ -210,7 +266,7 @@ modulate = Color( 0.647059, 0.647059, 0.647059, 1 )
 margin_left = -3.0
 margin_right = 17.0
 margin_bottom = 22.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 8 )
 text = ""
 align = 1
 valign = 1

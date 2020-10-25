@@ -36,20 +36,21 @@ func init2():
 	
 	level.iptable[eth0.ip] = self
 	
-
 	server_name = eth0.ip
 	OS.set_clipboard(eth0.ip)
 	$Meta/ConfigWindow/Info/Name.text = server_name
 	$Meta/ConfigWindow/Info/IP.text = server_name
 	$Meta/ConfigWindow/Info/InstanceSize.text = instance_size
-
 	
+	$ClipBoardAnimation.play()
+
 func _ready():
 	$Meta/ConfigWindow.visible = false
 	
 	var objects = load("res://src/objects.gd")
 	objects = JSON.parse(objects.json).result
 	properties = objects['entities'][type]
+
 
 func _input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
