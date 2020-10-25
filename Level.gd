@@ -31,6 +31,7 @@ export var dns_record: String
 var month_timer: Timer
 
 var request_types = ['static', 'dynamic']
+var servers = {}
 
 func _ready():
 	get_tree().paused = false

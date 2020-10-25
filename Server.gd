@@ -26,7 +26,7 @@ func init2():
 	instance_size = instance_family + "-" + str(cpu)
 	$CollisionShape2D/AnimatedSprite.animation = type
 	level = get_parent()
-	var margin = level.iptable.size()*30
+	var margin = level.servers.size()*30
 	position = Vector2(200+margin, 200+margin)
 	
 	eth0 = Interface.new()
@@ -35,6 +35,7 @@ func init2():
 		eth0 = Interface.new()
 	
 	level.iptable[eth0.ip] = self
+	level.servers[eth0.ip] = self
 	
 	server_name = eth0.ip
 	OS.set_clipboard(eth0.ip)
@@ -59,6 +60,7 @@ func _input_event(_viewport, event, _shape_idx):
 			grabbed_offset = position - get_global_mouse_position()
 		if event.button_index == 2 and !event.is_pressed():
 			level.iptable.erase(eth0.ip)
+			level.servers.erase(eth0.ip)
 			queue_free()
 
 func _process(_delta):	
