@@ -33,19 +33,19 @@ func _ready():
 
 func _process(delta):
 	if level.money <= 0:
-		$Panel/FinancesButton.modulate = Color(1,0,0,1)
+		$FinancesToggle.modulate = Color(1,0,0,1)
 		#$GameOver.popup_centered()
 	else:
-		$Panel/FinancesButton.modulate = Color(1,1,1,1)
+		$FinancesToggle.modulate = Color(1,1,1,1)
 	
 	if money_old > level.money:
-			$Panel/FinancesButton.modulate = Color(1,0,0,1)
+			$FinancesToggle.modulate = Color(1,0,0,1)
 			yield(get_tree().create_timer(0.2),"timeout")
 	if money_old < level.money:
-			$Panel/FinancesButton.modulate = Color(0,1,0,1)
+			$FinancesToggle.modulate = Color(0,1,0,1)
 			yield(get_tree().create_timer(0.3),"timeout")
 			
-	$Panel/FinancesButton.text = str(floor(level.money))
+	$FinancesToggle.text = str(floor(level.money))
 	$FinancesPanel/TotalBalance.text = str(floor(level.money))
 	$FinancesPanel/ProductCost.text = str(floor(level.product_cost))
 	$FinancesPanel/ServerCosts.text = str(floor(level.server_costs))
@@ -117,15 +117,18 @@ func _on_Money1000_pressed():
 func _on_GameOver_confirmed():
 	get_tree().change_scene("res://Level.tscn")
 
-
 func add_message(msg):
 	$Messages/List.add_item(msg)
 	$Messages/List.select($Messages/List.get_item_count()-1)
 	$Messages/List.ensure_current_is_visible()
 	
-func add_log(msg):
+func add_log(msg, error=false):
 	$Logs/List.add_item(msg)
-	$Logs/List.select($Logs/List.get_item_count()-1)
+	var current = $Logs/List.get_item_count()-1
+	if error:
+		$Logs/List.set_item_custom_fg_color(current, Color(1,0,0))
+	
+	$Logs/List.select(current)
 	$Logs/List.ensure_current_is_visible()
 
 func _on_AutoAdvance_pressed():
@@ -148,19 +151,19 @@ func _on_AutoAdvance_pressed():
 			$MonthControl/AutoAdvance.pressed = false
 			add_message("Auto advance off")
 
+func _on_restart_pressed():
+	get_tree().change_scene("res://Level.tscn")
+
+
+func _toggle_view(button_pressed, _view):
+	var view = get_node(_view)
+	if button_pressed:
+		view.show()
+	else:
+		view.hide()
+
 func _on_FinancesButton_toggled(button_pressed):
 	if button_pressed:
 		$FinancesPanel.show()
 	else:
 		$FinancesPanel.hide()
-
-
-func _on_restart_pressed():
-	get_tree().change_scene("res://Level.tscn")
-
-
-func _on_DebugPanelToggle_toggled(button_pressed):
-	if button_pressed:
-		$DebugPanel.show()
-	else:
-		$DebugPanel.hide()

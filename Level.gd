@@ -91,7 +91,6 @@ func new_user_request(is_malicious:bool, speed:String="slow"):
 		request.method = methods[randi() % len(methods)]
 		
 	request.data = request.method + " " + request.url
-	#$HUD.add_log(request.data)
 	
 	request.set_origin(user)
 	request.route.append(user.eth0.ip)
@@ -101,8 +100,8 @@ func new_user_request(is_malicious:bool, speed:String="slow"):
 	
 	request.send(req_speed)
 
-func add_log(msg):
-	$HUD.add_log(msg)
+func add_log(msg, is_error=false):
+	$HUD.add_log(msg, is_error)
 
 func set_money(val):
 	if val < 0:	

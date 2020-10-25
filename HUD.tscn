@@ -23,28 +23,6 @@ font_data = SubResource( 1 )
 [sub_resource type="Theme" id=3]
 default_font = SubResource( 2 )
 
-[sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0.0980392, 0.368627, 0.0313726, 1 )
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-shadow_size = 3
-shadow_offset = Vector2( 2, 2 )
-
-[sub_resource type="Theme" id=5]
-Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
-Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
-Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
-Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
-Button/constants/hseparation = 2
-Button/fonts/font = null
-Button/styles/disabled = null
-Button/styles/focus = null
-Button/styles/hover = SubResource( 4 )
-Button/styles/normal = SubResource( 4 )
-Button/styles/pressed = SubResource( 4 )
-
 [sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.172549, 0.231373, 0.258824, 0.670588 )
 corner_radius_top_left = 5
@@ -93,12 +71,34 @@ VScrollBar/styles/scroll_focus = null
 
 [sub_resource type="StyleBoxEmpty" id=18]
 
-[sub_resource type="StyleBoxFlat" id=23]
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.0980392, 0.368627, 0.0313726, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+shadow_size = 3
+shadow_offset = Vector2( 2, 2 )
+
+[sub_resource type="Theme" id=5]
+Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = null
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = SubResource( 4 )
+Button/styles/normal = SubResource( 4 )
+Button/styles/pressed = SubResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=19]
 bg_color = Color( 0.113725, 0.113725, 0.113725, 1 )
 
 [sub_resource type="StyleBoxEmpty" id=22]
 
-[sub_resource type="StyleBoxEmpty" id=19]
+[sub_resource type="StyleBoxEmpty" id=21]
 
 [node name="HUD" type="Node2D"]
 pause_mode = 2
@@ -226,20 +226,6 @@ __meta__ = {
 "_editor_description_": "StaticServer"
 }
 
-[node name="FinancesButton" type="Button" parent="Panel"]
-margin_left = 566.0
-margin_top = -760.0
-margin_right = 650.0
-margin_bottom = -734.0
-theme = SubResource( 5 )
-toggle_mode = true
-text = "300"
-icon = ExtResource( 11 )
-expand_icon = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="ToolTip" type="Panel" parent="."]
 visible = false
 self_modulate = Color( 1, 1, 1, 0.811765 )
@@ -314,77 +300,6 @@ margin_top = 18.0
 margin_right = 145.0
 margin_bottom = 32.0
 text = "0"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="DebugPanelToggle" type="Button" parent="."]
-margin_left = 7.0
-margin_right = 60.0
-margin_bottom = 20.0
-toggle_mode = true
-text = "Debug"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="DebugPanel" type="Panel" parent="."]
-visible = false
-modulate = Color( 1, 1, 1, 0.588235 )
-margin_left = 6.0
-margin_top = 24.0
-margin_right = 198.0
-margin_bottom = 232.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ClearUsers" type="Button" parent="DebugPanel"]
-margin_left = 6.0
-margin_top = 6.0
-margin_right = 148.0
-margin_bottom = 43.0
-text = "clear users"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Request" type="Button" parent="DebugPanel"]
-margin_left = 6.0
-margin_top = 45.0
-margin_right = 171.0
-margin_bottom = 82.0
-text = "send request"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Hacker" type="Button" parent="DebugPanel"]
-margin_left = 6.0
-margin_top = 84.0
-margin_right = 161.0
-margin_bottom = 121.0
-text = "send hacker"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Money1000" type="Button" parent="DebugPanel"]
-margin_left = 6.0
-margin_top = 123.0
-margin_right = 189.0
-margin_bottom = 160.0
-text = "money +=1000"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Restart" type="Button" parent="DebugPanel"]
-margin_left = 6.0
-margin_top = 161.0
-margin_right = 142.0
-margin_bottom = 198.0
-text = "restart"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -556,12 +471,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="FinancesToggle" type="Button" parent="."]
+margin_left = 566.0
+margin_right = 650.0
+margin_bottom = 26.0
+theme = SubResource( 5 )
+toggle_mode = true
+pressed = true
+text = "300"
+icon = ExtResource( 11 )
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="FinancesPanel" type="Panel" parent="."]
 margin_left = 382.0
 margin_top = 32.0
 margin_right = 838.0
 margin_bottom = 96.0
-custom_styles/panel = SubResource( 23 )
+custom_styles/panel = SubResource( 19 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -696,20 +625,110 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="LogsToggle" type="Button" parent="."]
+margin_left = 1173.0
+margin_top = 453.0
+margin_right = 1263.0
+margin_bottom = 473.0
+rect_rotation = 90.0
+rect_pivot_offset = Vector2( 26.5, 0 )
+toggle_mode = true
+pressed = true
+text = "Access Logs"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Logs" type="Node2D" parent="."]
 position = Vector2( 960, 384 )
 
 [node name="List" type="ItemList" parent="Logs"]
-margin_left = -64.0
-margin_top = -224.0
-margin_right = 240.0
-margin_bottom = 288.0
+margin_left = -88.0
+margin_top = -216.0
+margin_right = 216.0
+margin_bottom = 256.0
+grow_vertical = 0
 custom_styles/selected = SubResource( 22 )
-custom_styles/bg = SubResource( 19 )
+custom_styles/bg = SubResource( 21 )
 custom_colors/guide_color = Color( 0, 0, 0, 0 )
-custom_colors/font_color_selected = Color( 1, 0.337255, 0.337255, 1 )
+custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 max_text_lines = 50
+auto_height = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DebugPanelToggle" type="Button" parent="."]
+margin_left = 1172.0
+margin_top = 692.0
+margin_right = 1225.0
+margin_bottom = 712.0
+rect_rotation = 90.0
+rect_pivot_offset = Vector2( 26.5, 0 )
+toggle_mode = true
+text = "Debug"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DebugPanel" type="Panel" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.588235 )
+margin_left = 960.0
+margin_top = 664.0
+margin_right = 1168.0
+margin_bottom = 744.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClearUsers" type="Button" parent="DebugPanel"]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 88.0
+margin_bottom = 26.0
+text = "clear users"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Request" type="Button" parent="DebugPanel"]
+margin_left = 2.0
+margin_top = 32.0
+margin_right = 98.0
+margin_bottom = 52.0
+text = "send request"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hacker" type="Button" parent="DebugPanel"]
+margin_left = 106.0
+margin_top = 32.0
+margin_right = 195.0
+margin_bottom = 52.0
+text = "send hacker"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Money1000" type="Button" parent="DebugPanel"]
+margin_left = 8.0
+margin_top = 56.0
+margin_right = 116.0
+margin_bottom = 76.0
+text = "money +=1000"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Restart" type="Button" parent="DebugPanel"]
+margin_left = 122.0
+margin_top = 8.0
+margin_right = 176.0
+margin_bottom = 28.0
+text = "restart"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -729,13 +748,14 @@ __meta__ = {
 [connection signal="mouse_entered" from="Panel/new_StaticServer" to="." method="_on_panel_button_mouse_entered" binds= [ "StaticServer" ]]
 [connection signal="mouse_exited" from="Panel/new_StaticServer" to="." method="_on_panel_button_mouse_exited"]
 [connection signal="pressed" from="Panel/new_StaticServer" to="." method="_on_panel_button_pressed" binds= [ "StaticServer" ]]
-[connection signal="toggled" from="Panel/FinancesButton" to="." method="_on_FinancesButton_toggled"]
-[connection signal="toggled" from="DebugPanelToggle" to="." method="_on_DebugPanelToggle_toggled"]
+[connection signal="confirmed" from="GameOver" to="." method="_on_GameOver_confirmed"]
+[connection signal="pressed" from="MonthControl/AutoAdvance" to="." method="_on_AutoAdvance_pressed"]
+[connection signal="pressed" from="MonthControl/new_Wave" to="." method="_on_month_pressed"]
+[connection signal="toggled" from="FinancesToggle" to="." method="_toggle_view" binds= [ "FinancesPanel" ]]
+[connection signal="toggled" from="LogsToggle" to="." method="_toggle_view" binds= [ "Logs" ]]
+[connection signal="toggled" from="DebugPanelToggle" to="." method="_toggle_view" binds= [ "DebugPanel" ]]
 [connection signal="pressed" from="DebugPanel/ClearUsers" to="." method="_on_ClearUsers_pressed"]
 [connection signal="pressed" from="DebugPanel/Request" to="." method="_on_Request_pressed"]
 [connection signal="pressed" from="DebugPanel/Hacker" to="." method="_on_Request_pressed" binds= [ true ]]
 [connection signal="pressed" from="DebugPanel/Money1000" to="." method="_on_Money1000_pressed"]
 [connection signal="pressed" from="DebugPanel/Restart" to="." method="_on_restart_pressed"]
-[connection signal="confirmed" from="GameOver" to="." method="_on_GameOver_confirmed"]
-[connection signal="pressed" from="MonthControl/AutoAdvance" to="." method="_on_AutoAdvance_pressed"]
-[connection signal="pressed" from="MonthControl/new_Wave" to="." method="_on_month_pressed"]

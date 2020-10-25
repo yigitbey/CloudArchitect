@@ -61,12 +61,13 @@ func get_response(req):
 		level.messages.append("Hackers managed to steal $" + str(amount_stolen*-1))
 	
 	var income = 0
-	
+	var is_error = true
 	if req.status_code == 200:
 		income = req.money * rev_multiplier
 		level.money += income
+		is_error = false
 		
-	level.add_log(log_format % [req.status_code, req.method, req.url, income])
+	level.add_log(log_format % [req.status_code, req.method, req.url, income], is_error)
 	
 	#TODO: fix ip collision
 	level.iptable.erase(eth0.ip)
