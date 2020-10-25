@@ -102,6 +102,7 @@ bg_color = Color( 0.113725, 0.113725, 0.113725, 1 )
 
 [node name="HUD" type="Node2D"]
 pause_mode = 2
+z_as_relative = false
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 592.0, 616.0, 640.0, 568.0, 544.0, 664.0, 688.0, 520.0 ],
@@ -520,10 +521,10 @@ __meta__ = {
 [node name="ProductCostLabel" type="Label" parent="FinancesPanel"]
 margin_left = 16.0
 margin_top = 26.0
-margin_right = 120.0
+margin_right = 98.0
 margin_bottom = 40.0
 rect_pivot_offset = Vector2( 74, 10.9999 )
-text = "Product Cost:"
+text = "Product Cost"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -542,10 +543,10 @@ __meta__ = {
 [node name="ServerCostsLabel" type="Label" parent="FinancesPanel"]
 margin_left = 113.0
 margin_top = 25.0
-margin_right = 217.0
+margin_right = 196.0
 margin_bottom = 39.0
 rect_pivot_offset = Vector2( 74, 10.9999 )
-text = "Server Costs:"
+text = "Server Costs"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -564,10 +565,10 @@ __meta__ = {
 [node name="MonthlyIncomeLabel" type="Label" parent="FinancesPanel"]
 margin_left = 213.0
 margin_top = 24.0
-margin_right = 317.0
+margin_right = 266.0
 margin_bottom = 38.0
 rect_pivot_offset = Vector2( 74, 10.9999 )
-text = "Income:"
+text = "Income"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -586,10 +587,10 @@ __meta__ = {
 [node name="ProfitLabel" type="Label" parent="FinancesPanel"]
 margin_left = 304.0
 margin_top = 24.0
-margin_right = 408.0
+margin_right = 370.0
 margin_bottom = 38.0
 rect_pivot_offset = Vector2( 74, 10.9999 )
-text = "Net Profit:"
+text = "Net Profit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -605,12 +606,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="VSeparator" type="VSeparator" parent="FinancesPanel"]
+margin_left = 381.0
+margin_right = 385.0
+margin_bottom = 64.0
+
 [node name="Label" type="Label" parent="FinancesPanel"]
 margin_left = 16.0
 margin_top = 8.0
 margin_right = 68.0
 margin_bottom = 22.0
-text = "Monthly Finance"
+text = "Monthly"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -651,6 +657,7 @@ __meta__ = {
 }
 
 [node name="List" type="ItemList" parent="Logs"]
+show_behind_parent = true
 margin_left = 5.0
 margin_top = 472.0
 margin_right = 280.0
