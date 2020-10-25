@@ -17,6 +17,7 @@ _global_script_class_icons={
 
 config/name="CloudArchitect"
 run/main_scene="res://Level.tscn"
+run/low_processor_mode=true
 config/icon="res://icon.png"
 
 [display]
