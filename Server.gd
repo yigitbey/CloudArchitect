@@ -22,11 +22,13 @@ var config_warning: bool = false
 var sizeup_animation_scale = 0.01
 var accepted_content_types
 
+signal tutorial_complete
+
 func init2():
 	instance_size = instance_family + "-" + str(cpu)
 	$CollisionShape2D/AnimatedSprite.animation = type
 	level = get_parent()
-	var margin = level.servers.size()*30
+	var margin = level.servers.size()*50
 	position = Vector2(200+margin, 200+margin)
 	
 	eth0 = Interface.new()
@@ -36,6 +38,7 @@ func init2():
 	
 	level.iptable[eth0.ip] = self
 	level.servers[eth0.ip] = self
+	level.last_created_object = self
 	
 	server_name = eth0.ip
 	OS.set_clipboard(eth0.ip)
@@ -83,7 +86,7 @@ func _process(_delta):
 	if config_warning:
 		$Meta/ToggleConfig.modulate = Color(1,0.2,0.2,1)
 	else:
-		$Meta/ToggleConfig.modulate = Color(1,1,1,1)
+		$Meta/ToggleConfig.modulate = $Meta/ToggleConfig.self_modulate
 		
 func get_response(req):
 	request_animation()
@@ -160,6 +163,7 @@ func upgrade():
 		$Meta/ConfigWindow/Info/UpgradeInstance.disabled = true
 	
 func _on_ToggleConfig_pressed():
+	emit_signal("tutorial_complete", "config_window_open")
 	if $Meta/ConfigWindow.visible:
 		hide_config()
 	else:
@@ -173,7 +177,7 @@ func hide_config():
 	$Meta.z_index = 0
 	$Meta/ConfigWindow.visible = false
 	$Meta/ToggleConfig/Icon.icon_name = "wrench"
-	$Meta/ToggleConfig/Icon.modulate = Color(0.7,0.7,0.7,1)
+	$Meta/ToggleConfig/Icon.modulate = self_modulate
 	
 func show_config():
 	$CollisionShape2D.z_index = 10 

@@ -50,9 +50,9 @@ animations = [ {
 "name": "Database",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ) ],
+"frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "StaticServer",
+"name": "Firewall",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ) ],
@@ -60,14 +60,14 @@ animations = [ {
 "name": "DynamicServer",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "StaticServer",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "LoadBalancer",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "Firewall",
 "speed": 5.0
 } ]
 
@@ -85,7 +85,7 @@ default_font = SubResource( 5 )
 size = 15
 font_data = ExtResource( 10 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=9]
 font_data = ExtResource( 9 )
 
 [node name="Server" type="KinematicBody2D"]
@@ -262,11 +262,13 @@ __meta__ = {
 }
 
 [node name="Icon" type="Label" parent="Meta/ToggleConfig"]
-modulate = Color( 0.647059, 0.647059, 0.647059, 1 )
 margin_left = -3.0
 margin_right = 17.0
 margin_bottom = 22.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_constants/shadow_as_outline = 1
 text = ""
 align = 1
 valign = 1
@@ -274,8 +276,6 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-icon_size = 16
-icon_type = "solid"
 icon_name = "wrench"
 
 [node name="SysLoadBar" type="ProgressBar" parent="Meta"]

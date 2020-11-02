@@ -1,6 +1,7 @@
 extends Node2D
 
 onready var nav_map = $Navigation2D
+var show_tutorial = false
 
 const StaticServer =  preload("res://StaticServer.tscn")
 const DynamicServer = preload("res://DynamicServer.tscn")
@@ -32,6 +33,7 @@ var month_timer: Timer
 
 var request_types = ['static', 'dynamic']
 var servers = {}
+var last_created_object: Node2D
 
 func _ready():
 	get_tree().paused = false
@@ -44,6 +46,8 @@ func _ready():
 	month_timer = $MonthTimer
 	month_timer.wait_time = objects['month']['duration']
 	
+	$Splash.visible = true
+	
 func _process(_delta):
 	server_costs = calculate_server_cost()
 	
@@ -53,6 +57,8 @@ func connect_signals():
 	$HUD.connect('dns_change', self, 'set_dns_record')
 	$HUD.connect('new_server', self, 'new_instance')
 	$HUD.connect('clear', self, 'clear')
+	
+	$HUD.connect('tutorial_complete', $Tutorial, 'tutorial_complete')
 
 func clear():
 	var all = get_tree().get_root().get_child(0).get_children()
@@ -68,8 +74,9 @@ func new_instance(obj_name):
 	var new = obj.instance()
 	add_child(new)
 	new.init2()
+	new.connect("tutorial_complete", $Tutorial, 'tutorial_complete')
+	
 	return new
-
 
 func set_dns_record():
 	dns_record = $HUD.dns_record
@@ -140,3 +147,23 @@ func _on_MonthTimer_timeout():
 	
 	if !$MonthTimer.one_shot:
 		new_month()
+
+func add_highlight(node):
+	var highlight = CanvasItemMaterial.new()
+	highlight.blend_mode = BLEND_MODE_ADD
+	
+	get_tree().get_root().get_node("Level0/HUD/Panel/new_StaticServer").material = highlight
+
+func remove_highlight(node):
+	var empty_material = CanvasItemMaterial.new()
+	
+	get_tree().get_root().get_node("Level0/HUD/Panel/new_StaticServer").material = empty_material
+
+func _on_start_game_pressed():
+	show_tutorial = $Splash/checkbox.pressed
+	$Splash.visible = false
+	
+	if show_tutorial:
+		money = 1000
+		$Tutorial.visible = true
+		$Tutorial.start()

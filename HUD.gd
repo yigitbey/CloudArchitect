@@ -10,6 +10,7 @@ signal clear
 signal new_month
 
 signal new_server(ServerType)
+signal tutorial_complete(action)
 
 export var dns_record = ""
 var objects
@@ -67,10 +68,12 @@ func _on_Request_pressed(is_malicious=false):
 func _on_panel_button_pressed(ServerType):
 	emit_signal("new_"+ServerType)
 	emit_signal("new_server", ServerType)
+	emit_signal("tutorial_complete", "new_"+ServerType)
 	
 func _on_DNS_text_changed(text):
 	dns_record = text
 	emit_signal('dns_change')
+	emit_signal('tutorial_complete', "dns_change")
 
 func _on_ClearUsers_pressed():
 	emit_signal('clear')
@@ -93,7 +96,6 @@ func _on_month_pressed():
 	level.money -= level.server_costs + level.product_cost #TODO: move to level
 	start_month()
 
-
 func start_month():
 	if not dns_record in level.iptable:
 		add_message("DNS is not configured")
@@ -103,6 +105,7 @@ func start_month():
 		level.month_timer.start()
 		add_message("Starting month.")
 		emit_signal("new_month")
+		emit_signal("tutorial_complete", "new_month")
 		return true
 
 func warning_animation(container):

@@ -2,6 +2,7 @@ extends "res://Server.gd"
 
 export var db: String
 
+
 func _init():
 	type = "DynamicServer"
 	config_warning = true
@@ -10,6 +11,7 @@ func _init():
 func _on_DatabaseConfig_text_changed():
 	db = $Meta/ConfigWindow/Database/DatabaseConfig.text
 	if db in level.iptable:
+		emit_signal("tutorial_complete", 'db_configured')
 		config_warning = false
 		$Meta/ConfigWindow/Database/DatabaseConfig.modulate = Color(1,1,1,1)
 

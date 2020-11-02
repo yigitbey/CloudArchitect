@@ -1,7 +1,22 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Server.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Database.gd" type="Script" id=2]
+[ext_resource path="res://addons/FontAwesome5/fa-solid-900.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://addons/FontAwesome5/fa-regular-400.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 15
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 3 )
 
 [node name="Server" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+
+[node name="ClipBoard" parent="Meta" index="1"]
+custom_fonts/font = SubResource( 1 )
+
+[node name="Icon" parent="Meta/ToggleConfig" index="0"]
+custom_fonts/font = SubResource( 2 )
