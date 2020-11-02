@@ -9,7 +9,7 @@ const json = """
 	["You've now started receiving requests from your customers.  If you check the access logs, you can see that you're only able to serve static files for now. You need to create a Dynamic server to serve the API requests.", "Level0/HUD/Panel/new_DynamicServer", "new_DynamicServer"],
 	["Dynamic Servers need Databases to store & retrieve data. Create a Database Server.", "Level0/HUD/Panel/new_Database", "new_Database"],
 	["Now configure your Dynamic Server to use your new Database. Click on the configuration panel of your new server, go to the Database tab and enter your Database IP.", "last_object", "db_configured"],
-	["OK, you are now able to serve API requests, but since your CNAME record is still pointing to your Static Server, how do you expect your customers to make API requests?\n\nYou can create a Load Balancer, configure the backends and point your DNS record to your new Load Balancer.", "Level0/HUD/Panel/new_LoadBalancer", "new_LoadBalancer"]
+	["OK, you are now able to serve API requests, but since your CNAME record is still pointing to your Static Server, you can only serve static files..\n\nYou need to create a Load Balancer, configure the backends and point your DNS record to your new Load Balancer.", "Level0/HUD/Panel/new_LoadBalancer", "new_LoadBalancer"]
   ],
   "entities": {
 	"User":{
