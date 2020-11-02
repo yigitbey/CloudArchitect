@@ -93,6 +93,7 @@ func _on_panel_button_mouse_exited():
 
 
 func _on_month_pressed():
+	level.month_timer.one_shot = true
 	level.money -= level.server_costs + level.product_cost #TODO: move to level
 	start_month()
 
@@ -141,7 +142,6 @@ func add_log(msg, error=false):
 func _on_AutoAdvance_pressed():
 	if level.month_timer.time_left == 0:
 		if start_month():
-			$MonthControl/AutoAdvance/FontAwesome.icon_name = "history"
 			add_message("Auto advance on")
 			$MonthControl/AutoAdvance.pressed = true
 			level.month_timer.one_shot = false
