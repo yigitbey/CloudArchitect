@@ -326,6 +326,7 @@ __meta__ = {
 }
 
 [node name="Splash" type="TextureRect" parent="."]
+visible = false
 margin_right = 1208.0
 margin_bottom = 808.0
 theme = SubResource( 4 )
