@@ -6,7 +6,7 @@ const json = """
 	["Start by adding a static server", "Level0/HUD/Panel/new_StaticServer", "new_StaticServer"],
 	["Now point the CNAME record to your server. Server IP is already copied to your clipboard. ","Level0/HUD/Panel/DNS", "dns_change"],
 	["You are now ready to receive your first requests. Click Play button to start the month.", "Level0/HUD/MonthControl/new_Wave", "new_month"],
-	["You've now started receiving requests from your customers.  If you check the access logs, you can see that you're only able to serve static files for now. You need to create a Dynamic server to serve the API requests.", "Level0/HUD/Panel/new_DynamicServer", "new_DynamicServer"],
+	["You've now started receiving requests from your customers.  If you check the access logs, you can see that you're only able to serve static files for now. You need to create a Dynamic server to properly serve the API requests.", "Level0/HUD/Panel/new_DynamicServer", "new_DynamicServer"],
 	["Dynamic Servers need Databases to store & retrieve data. Create a Database Server.", "Level0/HUD/Panel/new_Database", "new_Database"],
 	["Now configure your Dynamic Server to use your new Database. Click on the configuration panel of your new server, go to the Database tab and enter your Database IP.", "last_object", "db_configured"],
 	["OK, you are now able to serve API requests, but since your CNAME record is still pointing to your Static Server, you can only serve static files..\n\nYou need to create a Load Balancer, configure the backends and point your DNS record to your new Load Balancer.", "Level0/HUD/Panel/new_LoadBalancer", "new_LoadBalancer"]
