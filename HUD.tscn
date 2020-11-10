@@ -319,25 +319,25 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GameOver"]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 184.0
-margin_bottom = 40.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 210.0
+margin_bottom = 74.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label2" type="Label" parent="GameOver/VBoxContainer"]
-margin_right = 176.0
-margin_bottom = 14.0
+margin_right = 194.0
+margin_bottom = 25.0
 text = "Score:"
 align = 1
 
 [node name="Score" type="Label" parent="GameOver/VBoxContainer"]
-margin_top = 18.0
-margin_right = 176.0
-margin_bottom = 32.0
+margin_top = 33.0
+margin_right = 194.0
+margin_bottom = 58.0
 text = "60"
 align = 1
 __meta__ = {
@@ -459,6 +459,7 @@ __meta__ = {
 margin_left = 566.0
 margin_right = 650.0
 margin_bottom = 26.0
+rect_scale = Vector2( 0.5, 0.5 )
 theme = SubResource( 18 )
 toggle_mode = true
 pressed = true
@@ -480,10 +481,11 @@ __meta__ = {
 }
 
 [node name="TotalBalanceLabel" type="Label" parent="FinancesPanel"]
-margin_left = 392.0
-margin_top = 24.0
-margin_right = 448.0
-margin_bottom = 38.0
+margin_left = 356.0
+margin_top = 25.0
+margin_right = 447.0
+margin_bottom = 50.0
+rect_scale = Vector2( 0.5, 0.5 )
 rect_pivot_offset = Vector2( 74, 10.9999 )
 text = "Balance:"
 __meta__ = {
@@ -491,10 +493,11 @@ __meta__ = {
 }
 
 [node name="TotalBalance" type="Label" parent="FinancesPanel"]
-margin_left = 392.0
-margin_top = 40.0
-margin_right = 464.0
-margin_bottom = 54.0
+margin_left = 385.0
+margin_top = 41.0
+margin_right = 457.0
+margin_bottom = 66.0
+rect_scale = Vector2( 0.5, 0.5 )
 rect_pivot_offset = Vector2( 18, 10.9999 )
 text = "5"
 __meta__ = {
@@ -502,10 +505,11 @@ __meta__ = {
 }
 
 [node name="ProductCostLabel" type="Label" parent="FinancesPanel"]
-margin_left = 16.0
-margin_top = 26.0
-margin_right = 98.0
-margin_bottom = 40.0
+margin_left = -19.0
+margin_top = 25.0
+margin_right = 119.0
+margin_bottom = 50.0
+rect_scale = Vector2( 0.5, 0.5 )
 rect_pivot_offset = Vector2( 74, 10.9999 )
 text = "Product Cost"
 __meta__ = {
@@ -513,10 +517,11 @@ __meta__ = {
 }
 
 [node name="ProductCost" type="Label" parent="FinancesPanel"]
-margin_left = 16.0
-margin_top = 40.0
-margin_right = 72.0
-margin_bottom = 54.0
+margin_left = 10.0
+margin_top = 42.0
+margin_right = 66.0
+margin_bottom = 67.0
+rect_scale = Vector2( 0.5, 0.5 )
 rect_pivot_offset = Vector2( 18, 10.9999 )
 text = "0"
 __meta__ = {
@@ -524,10 +529,11 @@ __meta__ = {
 }
 
 [node name="ServerCostsLabel" type="Label" parent="FinancesPanel"]
-margin_left = 113.0
+margin_left = 77.0
 margin_top = 25.0
-margin_right = 196.0
-margin_bottom = 39.0
+margin_right = 212.0
+margin_bottom = 50.0
+rect_scale = Vector2( 0.5, 0.5 )
 rect_pivot_offset = Vector2( 74, 10.9999 )
 text = "Server Costs"
 __meta__ = {
@@ -535,21 +541,23 @@ __meta__ = {
 }
 
 [node name="ServerCosts" type="Label" parent="FinancesPanel"]
-margin_left = 112.0
-margin_top = 41.0
-margin_right = 184.0
-margin_bottom = 55.0
-rect_pivot_offset = Vector2( 18, 10.9999 )
+margin_left = -258.0
+margin_top = -97.0
+margin_right = -245.0
+margin_bottom = -72.0
+rect_scale = Vector2( 0.5, 0.5 )
+rect_pivot_offset = Vector2( 746, 287 )
 text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MonthlyIncomeLabel" type="Label" parent="FinancesPanel"]
-margin_left = 213.0
-margin_top = 24.0
-margin_right = 266.0
-margin_bottom = 38.0
+margin_left = 181.0
+margin_top = 25.0
+margin_right = 264.0
+margin_bottom = 50.0
+rect_scale = Vector2( 0.5, 0.5 )
 rect_pivot_offset = Vector2( 74, 10.9999 )
 text = "Income"
 __meta__ = {
@@ -557,10 +565,11 @@ __meta__ = {
 }
 
 [node name="MonthlyIncome" type="Label" parent="FinancesPanel"]
-margin_left = 214.0
-margin_top = 40.0
-margin_right = 286.0
-margin_bottom = 54.0
+margin_left = 209.0
+margin_top = 42.0
+margin_right = 281.0
+margin_bottom = 67.0
+rect_scale = Vector2( 0.5, 0.5 )
 rect_pivot_offset = Vector2( 18, 10.9999 )
 text = "0"
 __meta__ = {
@@ -568,10 +577,11 @@ __meta__ = {
 }
 
 [node name="ProfitLabel" type="Label" parent="FinancesPanel"]
-margin_left = 304.0
-margin_top = 24.0
-margin_right = 370.0
-margin_bottom = 38.0
+margin_left = 268.0
+margin_top = 25.0
+margin_right = 373.0
+margin_bottom = 50.0
+rect_scale = Vector2( 0.5, 0.5 )
 rect_pivot_offset = Vector2( 74, 10.9999 )
 text = "Net Profit"
 __meta__ = {
@@ -579,10 +589,11 @@ __meta__ = {
 }
 
 [node name="Profit" type="Label" parent="FinancesPanel"]
-margin_left = 304.0
-margin_top = 40.0
-margin_right = 376.0
-margin_bottom = 54.0
+margin_left = 297.0
+margin_top = 41.0
+margin_right = 369.0
+margin_bottom = 66.0
+rect_scale = Vector2( 0.5, 0.5 )
 rect_pivot_offset = Vector2( 18, 10.9999 )
 text = "0"
 __meta__ = {
@@ -595,10 +606,11 @@ margin_right = 385.0
 margin_bottom = 64.0
 
 [node name="Label" type="Label" parent="FinancesPanel"]
-margin_left = 16.0
-margin_top = 8.0
-margin_right = 68.0
-margin_bottom = 22.0
+margin_left = 17.0
+margin_top = 7.0
+margin_right = 106.0
+margin_bottom = 32.0
+rect_scale = Vector2( 0.5, 0.5 )
 text = "Monthly"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -606,9 +618,10 @@ __meta__ = {
 
 [node name="Label2" type="Label" parent="FinancesPanel"]
 margin_left = 392.0
-margin_top = 8.0
-margin_right = 444.0
-margin_bottom = 22.0
+margin_top = 7.0
+margin_right = 446.0
+margin_bottom = 32.0
+rect_scale = Vector2( 0.5, 0.5 )
 text = "Total"
 __meta__ = {
 "_edit_use_anchors_": false
