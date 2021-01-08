@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://assets/Isometric/tile_split_S.png" type="Texture" id=1]
 [ext_resource path="res://assets/Isometric/tile_crossing_E.png" type="Texture" id=2]
@@ -19,7 +19,6 @@
 [ext_resource path="res://Level.gd" type="Script" id=17]
 [ext_resource path="res://assets/Isometric/tile_treeQuad_N.png" type="Texture" id=18]
 [ext_resource path="res://Tutorial.gd" type="Script" id=19]
-[ext_resource path="res://assets/bg.png" type="Texture" id=20]
 [ext_resource path="res://HUD.tscn" type="PackedScene" id=21]
 
 [sub_resource type="TileSet" id=1]
@@ -325,15 +324,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Splash" type="TextureRect" parent="."]
+[node name="Splash" type="ColorRect" parent="."]
 margin_right = 1208.0
 margin_bottom = 808.0
 theme = SubResource( 4 )
-texture = ExtResource( 20 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="checkbox" type="CheckBox" parent="Splash"]
 anchor_left = 0.5
@@ -345,11 +339,13 @@ margin_top = 55.0
 margin_right = 49.0
 margin_bottom = 79.0
 custom_styles/hover = SubResource( 5 )
-custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
-custom_colors/font_color_hover_pressed = Color( 1, 1, 1, 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
-custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover_pressed = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+disabled = true
+pressed = true
 text = "Tutorial"
 __meta__ = {
 "_edit_use_anchors_": false
